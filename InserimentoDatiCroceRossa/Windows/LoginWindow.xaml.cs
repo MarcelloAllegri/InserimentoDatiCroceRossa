@@ -13,16 +13,24 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace InserimentoDatiCroceRossa
+namespace InserimentoDatiCroceRossa.Windows
 {
     /// <summary>
-    /// Logica di interazione per MainWindow.xaml
+    /// Logica di interazione per LoginWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class LoginWindow : Window
     {
-        public MainWindow()
+        public LoginWindow()
         {
             InitializeComponent();
+        }
+
+        private void OkBtn_Click(object sender, RoutedEventArgs e)
+        {
+            DataViewWindow dataViewWindow = new DataViewWindow();
+            dataViewWindow.Show();
+
+            this.Close();
         }
     }
 }
