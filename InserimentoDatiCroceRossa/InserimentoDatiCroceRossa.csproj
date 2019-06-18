@@ -35,8 +35,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -67,6 +76,54 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="DbModel\Car.cs">
+      <DependentUpon>CroceRossaDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModel\CarTar.cs">
+      <DependentUpon>CroceRossaDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModel\CroceRossaDbModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CroceRossaDbModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModel\CroceRossaDbModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CroceRossaDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModel\CroceRossaDbModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CroceRossaDbModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="DbModel\Ent.cs">
+      <DependentUpon>CroceRossaDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModel\Ind.cs">
+      <DependentUpon>CroceRossaDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModel\Ins.cs">
+      <DependentUpon>CroceRossaDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModel\Loc.cs">
+      <DependentUpon>CroceRossaDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModel\Pat.cs">
+      <DependentUpon>CroceRossaDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModel\Per.cs">
+      <DependentUpon>CroceRossaDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModel\Tar.cs">
+      <DependentUpon>CroceRossaDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModel\Usr.cs">
+      <DependentUpon>CroceRossaDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModel\Vol.cs">
+      <DependentUpon>CroceRossaDbModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Windows\DataViewWindow.xaml.cs">
       <DependentUpon>DataViewWindow.xaml</DependentUpon>
     </Compile>
@@ -93,6 +150,14 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EntityDeploy Include="DbModel\CroceRossaDbModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>CroceRossaDbModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="DbModel\CroceRossaDbModel.edmx.diagram">
+      <DependentUpon>CroceRossaDbModel.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -107,6 +172,21 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Croce_logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DbModel\CroceRossaDbModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>CroceRossaDbModel.Context.cs</LastGenOutput>
+      <DependentUpon>CroceRossaDbModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="DbModel\CroceRossaDbModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CroceRossaDbModel.edmx</DependentUpon>
+      <LastGenOutput>CroceRossaDbModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

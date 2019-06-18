@@ -1,4 +1,5 @@
-﻿using System;
+﻿using InserimentoDatiCroceRossa.DbModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,10 +28,33 @@ namespace InserimentoDatiCroceRossa.Windows
 
         private void OkBtn_Click(object sender, RoutedEventArgs e)
         {
-            DataViewWindow dataViewWindow = new DataViewWindow();
-            dataViewWindow.Show();
+            bool check_credentials = checkUser();
 
-            this.Close();
+            if (check_credentials)
+            {
+                DataViewWindow dataViewWindow = new DataViewWindow();
+                dataViewWindow.Show();
+
+                this.Close();
+            }
+            else MessageBox.Show("Invalid username or password!");
+        }
+
+        private bool checkUser()
+        {
+            bool retVal = true;
+
+            using (var db = new CroceRossaEntities())
+            {
+                Usr usr = db.Usr.FirstOrDefault(x => x.UsrNam == UserTextBox.Text);
+                if (usr == null) retVal = false;
+                else
+                {
+                    if (usr.UsrPsw != PasswordBox.Password.ToString()) retVal = false;
+                }
+            }
+
+            return retVal;
         }
     }
 }
