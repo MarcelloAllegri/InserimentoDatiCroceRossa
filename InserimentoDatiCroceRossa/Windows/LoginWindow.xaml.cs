@@ -30,7 +30,8 @@ namespace InserimentoDatiCroceRossa.Windows
 
         private void OkBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (checkDbConnection())
+            string error = checkDbConnection();
+            if (string.IsNullOrEmpty(error))
             {
                 bool check_credentials = checkUser();
 
@@ -41,9 +42,9 @@ namespace InserimentoDatiCroceRossa.Windows
 
                     this.Close();
                 }
-                else MessageBox.Show("Username or password non validi!");
+                else MessageBox.Show("Connessione al database non riuscita!");
             }
-            else MessageBox.Show("Connessione al database non riuscita!");
+            else MessageBox.Show(error);
         }
 
         private bool checkUser()
@@ -63,22 +64,23 @@ namespace InserimentoDatiCroceRossa.Windows
             return retVal;
         }
 
-        private bool checkDbConnection()
+        private string checkDbConnection()
         {
             try
             {
                 using (var db = new CroceRossaEntities())
                 {
                     db.Database.Connection.Open();
+                    string connectionString = db.Database.Connection.ConnectionString;
                 }
             }
-            catch (Exception)
+            catch (Exception e)
             {
 
-                return false;
+                return e.Message;
             }
 
-            return true;
+            return "";
         }
     }
 }
