@@ -97,7 +97,8 @@
           </Key>
           <Property Name="UsrOwnId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UsrNam" Type="varchar" MaxLength="6" Nullable="false" />
-          <Property Name="UsrPsw" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="UsrPsw" Type="varchar(max)" Nullable="false" />
+          <Property Name="UsrTyp" Type="char" MaxLength="1" Nullable="false" />
         </EntityType>
         <EntityType Name="Vol">
           <Key>
@@ -645,7 +646,8 @@
           </Key>
           <Property Name="UsrOwnId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="UsrNam" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="false" />
-          <Property Name="UsrPsw" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="UsrPsw" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="UsrTyp" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -760,6 +762,7 @@
           <EntitySetMapping Name="Usr">
             <EntityTypeMapping TypeName="CroceRossaModel.Usr">
               <MappingFragment StoreEntitySet="Usr">
+                <ScalarProperty Name="UsrTyp" ColumnName="UsrTyp" />
                 <ScalarProperty Name="UsrPsw" ColumnName="UsrPsw" />
                 <ScalarProperty Name="UsrNam" ColumnName="UsrNam" />
                 <ScalarProperty Name="UsrOwnId" ColumnName="UsrOwnId" />

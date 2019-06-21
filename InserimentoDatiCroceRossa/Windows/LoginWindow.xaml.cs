@@ -1,4 +1,6 @@
-﻿using InserimentoDatiCroceRossa.DbModel;
+﻿using InserimentoDatiCroceRossa.DbClasses;
+using InserimentoDatiCroceRossa.DbModel;
+using InserimentoDatiCroceRossa.Objects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,16 +30,20 @@ namespace InserimentoDatiCroceRossa.Windows
 
         private void OkBtn_Click(object sender, RoutedEventArgs e)
         {
-            bool check_credentials = checkUser();
-
-            if (check_credentials)
+            if (checkDbConnection())
             {
-                DataViewWindow dataViewWindow = new DataViewWindow();
-                dataViewWindow.Show();
+                bool check_credentials = checkUser();
 
-                this.Close();
+                if (check_credentials)
+                {
+                    DataViewWindow dataViewWindow = new DataViewWindow();
+                    dataViewWindow.Show();
+
+                    this.Close();
+                }
+                else MessageBox.Show("Username or password non validi!");
             }
-            else MessageBox.Show("Invalid username or password!");
+            else MessageBox.Show("Connessione al database non riuscita!");
         }
 
         private bool checkUser()
@@ -50,11 +56,29 @@ namespace InserimentoDatiCroceRossa.Windows
                 if (usr == null) retVal = false;
                 else
                 {
-                    if (usr.UsrPsw != PasswordBox.Password.ToString()) retVal = false;
+                    if (KriptoEntity.DecryptString(usr.UsrPsw) != PasswordBox.Password.ToString()) retVal = false;
                 }
             }
 
             return retVal;
+        }
+
+        private bool checkDbConnection()
+        {
+            try
+            {
+                using (var db = new CroceRossaEntities())
+                {
+                    db.Database.Connection.Open();
+                }
+            }
+            catch (Exception)
+            {
+
+                return false;
+            }
+
+            return true;
         }
     }
 }

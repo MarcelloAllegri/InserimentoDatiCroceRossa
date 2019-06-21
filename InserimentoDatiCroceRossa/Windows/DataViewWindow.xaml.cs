@@ -23,5 +23,18 @@ namespace InserimentoDatiCroceRossa.Windows
         {
             InitializeComponent();
         }
+
+        private void UsersMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            userViewUserControl.IsEnabled = true;
+            userViewUserControl.Visibility = Visibility.Visible;
+            this.UpdateLayout();
+            userViewUserControl.RefreshData();
+        }
+
+        private void UserMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

@@ -3,11 +3,46 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:InserimentoDatiCroceRossa.Windows"
-        mc:Ignorable="d"
+        xmlns:userControls="clr-namespace:InserimentoDatiCroceRossa.UserControls"
+        xmlns:images="clr-namespace:InserimentoDatiCroceRossa.Objects"
+        mc:Ignorable="d"        
         WindowState="Maximized"
-        Title="DataViewWindow" Height="450" Width="800">
+        Title="Data View" Height="450" Width="800">
+
+    <Window.Resources>
+        
+    </Window.Resources>
+    
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Menu x:Name="GlobalMenu" Height="25" Grid.Row="0">
+
+            <MenuItem Header="Nuovo">
+                <MenuItem Header="Utente" x:Name="UserMenuItem" Click="UserMenuItem_Click">
+                    <MenuItem.Icon>
+                        <Image Source="{images:Images ImageName=account}"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+            </MenuItem>
+
+            <MenuItem Header="Vista">
+                <MenuItem Header="Utenti" x:Name="UsersMenuItem" Click="UsersMenuItem_Click">
+                    <MenuItem.Icon>
+                        <Image Source="{images:Images ImageName=account}"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+            </MenuItem>
+
+            <MenuItem Header="Exit" />
+        </Menu>
+
+
+        <userControls:UserViewUserControl x:Name="userViewUserControl" Visibility="Collapsed" IsEnabled="False" Grid.Row="1"/>                
+                
         
     </Grid>
 </Window>

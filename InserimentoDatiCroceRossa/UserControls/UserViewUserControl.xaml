@@ -1,0 +1,32 @@
+﻿<UserControl x:Class="InserimentoDatiCroceRossa.UserControls.UserViewUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:InserimentoDatiCroceRossa.UserControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <ListView Margin="10" Name="lvUsers">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Account Name" Width="120" DisplayMemberBinding="{Binding Path=AccountName}" />
+                    <GridViewColumn Header="Password" Width="120" DisplayMemberBinding="{Binding Path=Password}" />
+                    <GridViewColumn Header="Tipo Utente " Width="70" DisplayMemberBinding="{Binding Path=UserType}"/>
+
+                    <GridView.ColumnHeaderContainerStyle>
+                        <Style TargetType="{x:Type GridViewColumnHeader}">
+                            <Setter Property="HorizontalContentAlignment" Value="Center" />
+                        </Style>                        
+                    </GridView.ColumnHeaderContainerStyle>                    
+                </GridView>                
+            </ListView.View>
+
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Center" />
+                </Style>
+            </ListView.ItemContainerStyle>
+        </ListView>
+    </Grid>
+</UserControl>

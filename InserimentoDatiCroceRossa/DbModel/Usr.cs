@@ -17,5 +17,6 @@ namespace InserimentoDatiCroceRossa.DbModel
         public int UsrOwnId { get; set; }
         public string UsrNam { get; set; }
         public string UsrPsw { get; set; }
+        public string UsrTyp { get; set; }
     }
 }
