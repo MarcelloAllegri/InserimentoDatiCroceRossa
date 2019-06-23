@@ -29,6 +29,13 @@ namespace InserimentoDatiCroceRossa.UserControls
             UsersService service = new UsersService();
             users = new ObservableCollection<UserEntity>(service.GetAllUser());
             this.lvUsers.ItemsSource = users;
+
+            if (GlobalInfo.IsUserAdmin)
+            {
+                this.UserGrid.Columns.Add(Grid.TryFindResource("PasswordColumn") as GridViewColumn);
+                this.UserGrid.Columns.Move(2, 1);
+                this.UpdateLayout();
+            }
         }
         public UserViewUserControl()
         {

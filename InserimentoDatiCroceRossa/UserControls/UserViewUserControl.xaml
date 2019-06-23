@@ -6,12 +6,23 @@
              xmlns:local="clr-namespace:InserimentoDatiCroceRossa.UserControls"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-        <ListView Margin="10" Name="lvUsers">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <BooleanToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid x:Name="Grid">
+        <Grid.Resources>
+            <ResourceDictionary>
+                <GridViewColumn x:Key="PasswordColumn" Header="Password" Width="120" DisplayMemberBinding="{Binding Path=Password}"  />
+            </ResourceDictionary>
+            
+        </Grid.Resources>
+        <ListView Margin="10" x:Name="lvUsers">
             <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="Account Name" Width="120" DisplayMemberBinding="{Binding Path=AccountName}" />
-                    <GridViewColumn Header="Password" Width="120" DisplayMemberBinding="{Binding Path=Password}" />
+                <GridView x:Name="UserGrid"
+                          AllowsColumnReorder="False">
+                    <GridViewColumn Header="Account Name" Width="120" DisplayMemberBinding="{Binding Path=AccountName}" />                    
                     <GridViewColumn Header="Tipo Utente " Width="70" DisplayMemberBinding="{Binding Path=UserType}"/>
 
                     <GridView.ColumnHeaderContainerStyle>

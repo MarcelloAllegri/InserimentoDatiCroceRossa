@@ -58,6 +58,7 @@ namespace InserimentoDatiCroceRossa.Windows
                 else
                 {
                     if (KriptoEntity.DecryptString(usr.UsrPsw) != PasswordBox.Password.ToString()) retVal = false;
+                    else GlobalInfo.LoggedUser = usr.toUserEntity();
                 }
             }
 
@@ -70,8 +71,7 @@ namespace InserimentoDatiCroceRossa.Windows
             {
                 using (var db = new CroceRossaEntities())
                 {
-                    db.Database.Connection.Open();
-                    string connectionString = db.Database.Connection.ConnectionString;
+                    db.Database.Connection.Open();                    
                 }
             }
             catch (Exception e)

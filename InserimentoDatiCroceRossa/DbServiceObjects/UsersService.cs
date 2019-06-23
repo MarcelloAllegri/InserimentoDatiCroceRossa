@@ -35,6 +35,28 @@ namespace InserimentoDatiCroceRossa.DbClasses
                 db.SaveChanges();
             }
         }
+
+        public void Update(UserEntity user)
+        {
+            using (var db = new CroceRossaEntities())
+            {
+                Usr usr = db.Usr.FirstOrDefault(x => x.UsrOwnId == user.Id);
+                if (usr != null)
+                {
+                    usr = user.toUsr();
+                    db.SaveChanges();
+                }
+            }
+        }
+
+        public void Delete(UserEntity user)
+        {
+            using (var db = new CroceRossaEntities())
+            {
+                db.Usr.Remove(user.toUsr());
+                db.SaveChanges();
+            }
+        }
     }
 
     public static class UsrDbMapper

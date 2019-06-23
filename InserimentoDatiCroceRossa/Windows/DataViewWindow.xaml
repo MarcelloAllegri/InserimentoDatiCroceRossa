@@ -37,7 +37,10 @@
                 </MenuItem>
             </MenuItem>
 
-            <MenuItem Header="Exit" />
+            <MenuItem Header="Esci">
+                <MenuItem Header="Esci" x:Name="ExitMenuItem" Click="ExitMenuItem_Click"/>
+                <MenuItem Header="Logout" x:Name="LogoutButton" Click="LogoutButton_Click"/>
+            </MenuItem>
         </Menu>
 
 

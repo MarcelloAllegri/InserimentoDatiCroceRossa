@@ -36,5 +36,18 @@ namespace InserimentoDatiCroceRossa.Windows
         {
 
         }
+
+        private void ExitMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void LogoutButton_Click(object sender, RoutedEventArgs e)
+        {
+            LoginWindow loginWindow = new LoginWindow();
+            loginWindow.Show();
+            this.Close();
+            
+        }
     }
 }
