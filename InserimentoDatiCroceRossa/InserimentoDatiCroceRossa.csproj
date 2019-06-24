@@ -69,6 +69,10 @@
     <Compile Include="Objects\GlobalInfo.cs" />
     <Compile Include="Objects\KriptoEntity.cs" />
     <Compile Include="Objects\UserEntity.cs" />
+    <Page Include="UserControls\UserUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UserControls\UserViewUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -134,6 +138,9 @@
       <DependentUpon>CroceRossaDbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Objects\Images.cs" />
+    <Compile Include="UserControls\UserUserControl.xaml.cs">
+      <DependentUpon>UserUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\UserViewUserControl.xaml.cs">
       <DependentUpon>UserViewUserControl.xaml</DependentUpon>
     </Compile>
