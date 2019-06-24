@@ -66,6 +66,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="DbServiceObjects\UsersService.cs" />
+    <Compile Include="Objects\BaseEntity.cs" />
     <Compile Include="Objects\GlobalInfo.cs" />
     <Compile Include="Objects\KriptoEntity.cs" />
     <Compile Include="Objects\UserEntity.cs" />
@@ -201,6 +202,7 @@
       <DependentUpon>CroceRossaDbModel.edmx</DependentUpon>
       <LastGenOutput>CroceRossaDbModel.cs</LastGenOutput>
     </Content>
+    <Resource Include="Images\Menu\Floppy.png" />
     <Resource Include="Images\Menu\add.png" />
     <Resource Include="Images\Menu\garbage.png" />
     <Resource Include="Images\Menu\options.png" />

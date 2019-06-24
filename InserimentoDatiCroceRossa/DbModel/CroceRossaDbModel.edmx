@@ -96,7 +96,7 @@
             <PropertyRef Name="UsrOwnId" />
           </Key>
           <Property Name="UsrOwnId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="UsrNam" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="UsrNam" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="UsrPsw" Type="varchar(max)" Nullable="false" />
           <Property Name="UsrTyp" Type="char" MaxLength="1" Nullable="false" />
         </EntityType>
@@ -645,7 +645,7 @@
             <PropertyRef Name="UsrOwnId" />
           </Key>
           <Property Name="UsrOwnId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UsrNam" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="UsrNam" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="UsrPsw" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="UsrTyp" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
         </EntityType>

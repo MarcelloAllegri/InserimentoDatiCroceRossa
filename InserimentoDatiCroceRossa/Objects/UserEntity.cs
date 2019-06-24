@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace InserimentoDatiCroceRossa.Objects
 {
-    public class UserEntity
+    public class UserEntity : BaseEntity
     {
-        public UserEntity()
+        public UserEntity() : base()
         {
 
         }
@@ -19,22 +19,18 @@ namespace InserimentoDatiCroceRossa.Objects
             this.AccountName = accountName;
             this.Password = password;
             this.UserType = userType;
-        }
-
-        private int m_Id;
-
-        public int Id
-        {
-            get { return m_Id; }
-            set { m_Id = value; }
-        }
+        }       
 
         private string m_AccountName;
 
         public string AccountName
         {
             get { return m_AccountName; }
-            set { m_AccountName = value; }
+            set
+            {
+                m_AccountName = value;
+                OnPropertyChanged(nameof(AccountName));
+            }
         }
 
         private string m_Password;
@@ -42,7 +38,11 @@ namespace InserimentoDatiCroceRossa.Objects
         public string Password
         {
             get { return m_Password; }
-            set { m_Password = value; }
+            set
+            {
+                m_Password = value;
+                OnPropertyChanged(nameof(Password));
+            }
         }
 
         private char m_UserType;
@@ -50,7 +50,11 @@ namespace InserimentoDatiCroceRossa.Objects
         public char UserType
         {
             get { return m_UserType; }
-            set { m_UserType = value; }
+            set
+            {
+                m_UserType = value;
+                OnPropertyChanged(nameof(UserType));
+            }
         }
 
 

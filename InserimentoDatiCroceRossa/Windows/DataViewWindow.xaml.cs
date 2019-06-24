@@ -1,4 +1,5 @@
-﻿using System;
+﻿using InserimentoDatiCroceRossa.Objects;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -26,6 +27,7 @@ namespace InserimentoDatiCroceRossa.Windows
 
         private void UsersMenuItem_Click(object sender, RoutedEventArgs e)
         {
+            disableAllUC();
             userViewUserControl.IsEnabled = true;
             userViewUserControl.Visibility = Visibility.Visible;
             this.UpdateLayout();
@@ -34,7 +36,12 @@ namespace InserimentoDatiCroceRossa.Windows
 
         private void UserMenuItem_Click(object sender, RoutedEventArgs e)
         {
-
+            disableAllUC();
+            UserEntity user = new UserEntity();
+            userUserControl.DataContext = user;
+            userUserControl.IsEnabled = true;
+            userUserControl.Visibility = Visibility.Visible;
+            this.UpdateLayout();
         }
 
         private void ExitMenuItem_Click(object sender, RoutedEventArgs e)
@@ -46,8 +53,12 @@ namespace InserimentoDatiCroceRossa.Windows
         {
             LoginWindow loginWindow = new LoginWindow();
             loginWindow.Show();
-            this.Close();
-            
+            this.Close();            
+        }
+
+        private void disableAllUC()
+        {
+            this.userUserControl.Visibility = this.userViewUserControl.Visibility = Visibility.Collapsed;
         }
     }
 }

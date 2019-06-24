@@ -5,20 +5,49 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:images="clr-namespace:InserimentoDatiCroceRossa.Objects"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             x:Name="userUserControl"
+             d:DesignHeight="450" d:DesignWidth="800"
+             Loaded="UserUserControl_Loaded">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>
+            <RowDefinition Height="30"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
 
         <ToolBar Grid.Row="0">
             <Button x:Name="SaveButton" Click="SaveButton_Click">
-                <Image Source="{images:Images ImageName=add}"/>
-            </Button>
-            <Button x:Name="ClearButton" Click="ClearButton_Click">
-                <Image Source="{images:Images ImageName=add}"/>
-            </Button>
+                <Image Source="{images:Images ImageName=Floppy}" Height="Auto" Width="Auto"/>
+            </Button>           
         </ToolBar>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="150"/>
+                <ColumnDefinition Width="150"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            
+            <Label x:Name="AccountNameLabel" Content="Nome Account" Grid.Column="0" Grid.Row="0"/>
+            <TextBox x:Name="AccountNameTextBox" Text="{Binding Path=AccountName,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Grid.Row="0" Margin="5,5,0,0"/>
+
+            <Label x:Name="PasswordLabel" Content="Password" Grid.Column="0" Grid.Row="1"/>
+            <PasswordBox Grid.Row="1" Grid.Column="1" x:Name="passwordBox" PasswordChanged="PasswordBox_PasswordChanged" Margin="5,5,0,0"/>
+            <TextBlock x:Name="PasswordTextBlock" Text="{Binding Path=Password, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Grid.Column="3" Grid.Row="1" Visibility="Collapsed" IsEnabled="False" Margin="5,5,0,0"/>
+            <CheckBox x:Name="ShowPasswordCheckBox" Content="Mostra password" Grid.Column="2" Grid.Row="1" Checked="ShowPasswordCheckBox_Checked" Unchecked="ShowPasswordCheckBox_Unchecked" Margin="5,5,0,0"/>
+
+            <Label x:Name="UserTypeLabel" Content="Tipo utente" Grid.Column="0" Grid.Row="2"/>
+            <ComboBox x:Name="UserTypeComboBox" ItemsSource="{Binding ElementName=userUserControl, Path=UserTypeList}" IsReadOnly="True"
+                      IsEditable="False" SelectionChanged="UserTypeComboBox_SelectionChanged" Grid.Row="2" Grid.Column="1" Margin="5,5,0,0"/>
+            
+            <Label x:Name="LegendaLabel" Content=" A = amministratore -- D = Inserimento dati -- V = Visione dati" Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="3"/>
+        </Grid>
     </Grid>
 </UserControl>

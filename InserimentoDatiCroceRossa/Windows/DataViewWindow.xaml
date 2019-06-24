@@ -44,6 +44,7 @@
         </Menu>
 
 
+        <userControls:UserUserControl x:Name="userUserControl" Visibility="Collapsed" IsEnabled="False" Grid.Row="1"/>
         <userControls:UserViewUserControl x:Name="userViewUserControl" Visibility="Collapsed" IsEnabled="False" Grid.Row="1"/>                
                 
         
