@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="InserimentoDatiCroceRossa.UserControls.UserUserControl"
+﻿<UserControl x:Class="InserimentoDatiCroceRossa.UserControls.UserInfoControl"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -7,20 +7,14 @@
              mc:Ignorable="d" 
              x:Name="userUserControl"
              d:DesignHeight="450" d:DesignWidth="800"
-             Loaded="UserUserControl_Loaded">
+             Loaded="UserUserControl_Loaded"
+             DataContextChanged="UserUserControl_DataContextChanged">
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="30"/>
+        <Grid.RowDefinitions>            
             <RowDefinition/>
-        </Grid.RowDefinitions>
+        </Grid.RowDefinitions>        
 
-        <ToolBar Grid.Row="0">
-            <Button x:Name="SaveButton" Click="SaveButton_Click">
-                <Image Source="{images:Images ImageName=Floppy}" Height="Auto" Width="Auto"/>
-            </Button>           
-        </ToolBar>
-
-        <Grid Grid.Row="1">
+        <Grid Grid.Row="0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="100"/>
                 <ColumnDefinition Width="150"/>

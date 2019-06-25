@@ -27,35 +27,67 @@ namespace InserimentoDatiCroceRossa.DbClasses
             
         }
 
-        public void Add(UserEntity user)
+        public int Add(UserEntity user)
         {
-            using (var db = new CroceRossaEntities())
+            try
             {
-                db.Usr.Add(user.toUsr());
-                db.SaveChanges();
-            }
-        }
-
-        public void Update(UserEntity user)
-        {
-            using (var db = new CroceRossaEntities())
-            {
-                Usr usr = db.Usr.FirstOrDefault(x => x.UsrOwnId == user.Id);
-                if (usr != null)
+                using (var db = new CroceRossaEntities())
                 {
-                    usr = user.toUsr();
+                    db.Usr.Add(user.toUsr());
                     db.SaveChanges();
+
+                    return 0;
                 }
             }
+            catch (Exception)
+            {
+                return -1;
+            }
         }
 
-        public void Delete(UserEntity user)
+        public int Update(UserEntity user)
         {
-            using (var db = new CroceRossaEntities())
+            try
             {
-                db.Usr.Remove(user.toUsr());
-                db.SaveChanges();
+                using (var db = new CroceRossaEntities())
+                {
+                    Usr usr = db.Usr.FirstOrDefault(x => x.UsrOwnId == user.Id);
+                    if (usr != null)
+                    {
+                        usr = user.toUsr();
+                        db.SaveChanges();
+                    }
+                }
+
+                return 0;
             }
+            catch (Exception)
+            {
+                return -1;                
+            }
+            
+        }
+
+        public int Delete(UserEntity user)
+        {
+            try
+            {
+                using (var db = new CroceRossaEntities())
+                {
+                    Usr usr = db.Usr.FirstOrDefault(x => x.UsrOwnId == user.Id);
+                    if (usr != null)
+                    {
+                        db.Usr.Remove(usr);
+                        db.SaveChanges();
+                    }
+                }
+                return 0;
+            }
+            catch (Exception)
+            {
+                return -1;
+            }
+            
         }
     }
 

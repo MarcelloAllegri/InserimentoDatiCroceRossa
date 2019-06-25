@@ -32,17 +32,7 @@ namespace InserimentoDatiCroceRossa.Windows
             userViewUserControl.Visibility = Visibility.Visible;
             this.UpdateLayout();
             userViewUserControl.RefreshData();
-        }
-
-        private void UserMenuItem_Click(object sender, RoutedEventArgs e)
-        {
-            disableAllUC();
-            UserEntity user = new UserEntity();
-            userUserControl.DataContext = user;
-            userUserControl.IsEnabled = true;
-            userUserControl.Visibility = Visibility.Visible;
-            this.UpdateLayout();
-        }
+        }        
 
         private void ExitMenuItem_Click(object sender, RoutedEventArgs e)
         {
@@ -58,7 +48,7 @@ namespace InserimentoDatiCroceRossa.Windows
 
         private void disableAllUC()
         {
-            this.userUserControl.Visibility = this.userViewUserControl.Visibility = Visibility.Collapsed;
+            this.userViewUserControl.Visibility = Visibility.Collapsed;
         }
     }
 }

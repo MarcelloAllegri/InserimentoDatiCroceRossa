@@ -21,7 +21,7 @@ namespace InserimentoDatiCroceRossa.UserControls
     /// <summary>
     /// Logica di interazione per UserUserControl.xaml
     /// </summary>
-    public partial class UserUserControl : UserControl, INotifyPropertyChanged
+    public partial class UserInfoControl : UserControl, INotifyPropertyChanged
     {        
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged(string name)
@@ -42,21 +42,33 @@ namespace InserimentoDatiCroceRossa.UserControls
         }
 
 
-        public UserUserControl()
+        public UserInfoControl()
         {
             InitializeComponent();
         }
 
-        private void SaveButton_Click(object sender, RoutedEventArgs e)
+        public void Save()
         {
             if(CheckData())
             {
                 UsersService userService = new UsersService();
                 if ((this.DataContext as UserEntity).Id == -1)
-                    userService.Add(this.DataContext as UserEntity);
-                else userService.Update(this.DataContext as UserEntity);
-
-                MessageBox.Show("Utente Salvato!");
+                {
+                    if (userService.Add(this.DataContext as UserEntity) == 0)
+                    {
+                        MessageBox.Show("Utente Salvato!");
+                        this.DataContext = new UserEntity();
+                    }
+                    else
+                        MessageBox.Show("Errore durante il salvataggio!");
+                }
+                else
+                {
+                    if (userService.Update(this.DataContext as UserEntity) == 0)
+                        MessageBox.Show("Utente Salvato!");
+                    else MessageBox.Show("Errore durante il salvataggio!");                    
+                }
+                
             }            
         }
 
@@ -125,6 +137,14 @@ namespace InserimentoDatiCroceRossa.UserControls
         {
             this.PasswordTextBlock.Visibility = Visibility.Collapsed;
             this.UpdateLayout();
+        }
+
+        private void UserUserControl_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            this.UserTypeList = new List<char>() { '\0', 'A', 'D', 'V' };
+
+            this.passwordBox.Password = (this.DataContext as UserEntity).Password;
+            this.UserTypeComboBox.SelectedItem = (this.DataContext as UserEntity).UserType;
         }
     }    
 }

@@ -12,22 +12,14 @@
     <Window.Resources>
         
     </Window.Resources>
-    
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Menu x:Name="GlobalMenu" Height="25" Grid.Row="0">
-
-            <MenuItem Header="Nuovo">
-                <MenuItem Header="Utente" x:Name="UserMenuItem" Click="UserMenuItem_Click">
-                    <MenuItem.Icon>
-                        <Image Source="{images:Images ImageName=account}"/>
-                    </MenuItem.Icon>
-                </MenuItem>
-            </MenuItem>
+        <Menu x:Name="GlobalMenu" Height="25" Grid.Row="0">          
 
             <MenuItem Header="Vista">
                 <MenuItem Header="Utenti" x:Name="UsersMenuItem" Click="UsersMenuItem_Click">
@@ -43,10 +35,8 @@
             </MenuItem>
         </Menu>
 
-
-        <userControls:UserUserControl x:Name="userUserControl" Visibility="Collapsed" IsEnabled="False" Grid.Row="1"/>
-        <userControls:UserViewUserControl x:Name="userViewUserControl" Visibility="Collapsed" IsEnabled="False" Grid.Row="1"/>                
-                
         
+        <userControls:UserViewUserControl x:Name="userViewUserControl" Visibility="Collapsed" IsEnabled="False" Grid.Row="1"/>
+
     </Grid>
 </Window>

@@ -70,7 +70,7 @@
     <Compile Include="Objects\GlobalInfo.cs" />
     <Compile Include="Objects\KriptoEntity.cs" />
     <Compile Include="Objects\UserEntity.cs" />
-    <Page Include="UserControls\UserUserControl.xaml">
+    <Page Include="UserControls\UserInfoControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -139,8 +139,8 @@
       <DependentUpon>CroceRossaDbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Objects\Images.cs" />
-    <Compile Include="UserControls\UserUserControl.xaml.cs">
-      <DependentUpon>UserUserControl.xaml</DependentUpon>
+    <Compile Include="UserControls\UserInfoControl.xaml.cs">
+      <DependentUpon>UserInfoControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\UserViewUserControl.xaml.cs">
       <DependentUpon>UserViewUserControl.xaml</DependentUpon>
@@ -202,6 +202,8 @@
       <DependentUpon>CroceRossaDbModel.edmx</DependentUpon>
       <LastGenOutput>CroceRossaDbModel.cs</LastGenOutput>
     </Content>
+    <Resource Include="Objects\close.png" />
+    <Resource Include="Images\Menu\edit.png" />
     <Resource Include="Images\Menu\Floppy.png" />
     <Resource Include="Images\Menu\add.png" />
     <Resource Include="Images\Menu\garbage.png" />

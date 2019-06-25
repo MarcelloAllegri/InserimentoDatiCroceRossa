@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:InserimentoDatiCroceRossa.UserControls"
+             xmlns:images="clr-namespace:InserimentoDatiCroceRossa.Objects"
+             xmlns:userControls="clr-namespace:InserimentoDatiCroceRossa.UserControls"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
@@ -11,33 +12,75 @@
             <BooleanToVisibilityConverter x:Key="BoolToVisibilityConverter" />
         </ResourceDictionary>
     </UserControl.Resources>
-    <Grid x:Name="Grid">
-        <Grid.Resources>
-            <ResourceDictionary>
-                <GridViewColumn x:Key="PasswordColumn" Header="Password" Width="120" DisplayMemberBinding="{Binding Path=Password}"  />
-            </ResourceDictionary>
+    
+    
+    <Grid x:Name="MainGrid">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition/>
             
-        </Grid.Resources>
-        <ListView Margin="10" x:Name="lvUsers">
-            <ListView.View>
-                <GridView x:Name="UserGrid"
-                          AllowsColumnReorder="False">
-                    <GridViewColumn Header="Account Name" Width="120" DisplayMemberBinding="{Binding Path=AccountName}" />                    
-                    <GridViewColumn Header="Tipo Utente " Width="70" DisplayMemberBinding="{Binding Path=UserType}"/>
+        </Grid.RowDefinitions>
+        <ToolBar Grid.Row="0">
+            <Button x:Name="AddButton" Click="AddButton_Click">
+                <Image Source="{images:Images ImageName=add}"/>
+            </Button>            
+            <Button x:Name="ModifyButton" Click="ModifyUserButton_Click">
+                <Image Source="{images:Images ImageName=edit}"/>
+            </Button>
+            <Button x:Name="SaveButton" Click="SaveButton_Click" Visibility="Collapsed">
+                <Image Source="{images:Images ImageName=Floppy}" Height="Auto" Width="Auto" />
+            </Button>
+            
+            <Separator/>
+            
+            <Button x:Name="DeleteButton" Click="DeleteUserButton_Click">
+                <Image Source="{images:Images ImageName=garbage}"/>
+            </Button>
+            <Button x:Name="CloseButton" Click="CloseButton_Click" Visibility="Collapsed">
+                <Image Source="{images:Images ImageName=close}"/>
+            </Button>
+        </ToolBar>
 
-                    <GridView.ColumnHeaderContainerStyle>
-                        <Style TargetType="{x:Type GridViewColumnHeader}">
-                            <Setter Property="HorizontalContentAlignment" Value="Center" />
-                        </Style>                        
-                    </GridView.ColumnHeaderContainerStyle>                    
-                </GridView>                
-            </ListView.View>
+        <TabControl Grid.Row="1" x:Name="TabControl">
+            <TabItem x:Name="ListTabItem">
+                <Grid x:Name="VisualGrid">
+                    <Grid.Resources>
+                        <ResourceDictionary>
+                            <GridViewColumn x:Key="PasswordColumn" Header="Password" Width="120" DisplayMemberBinding="{Binding Path=Password}"  />
+                        </ResourceDictionary>
+                    </Grid.Resources>
+                    <ListView x:Name="lvUsers"                   
+                  SelectionMode="Single">
+                        <ListView.View>
+                            <GridView x:Name="UserGrid"
+                                      AllowsColumnReorder="False">
+                                <GridViewColumn Header="Account Name" Width="120" DisplayMemberBinding="{Binding Path=AccountName}" />
+                                <GridViewColumn Header="Tipo Utente " Width="70" DisplayMemberBinding="{Binding Path=UserType}"/>
 
-            <ListView.ItemContainerStyle>
-                <Style TargetType="ListViewItem">
-                    <Setter Property="HorizontalContentAlignment" Value="Center" />
-                </Style>
-            </ListView.ItemContainerStyle>
-        </ListView>
+                                <GridView.ColumnHeaderContainerStyle>
+                                    <Style TargetType="{x:Type GridViewColumnHeader}">
+                                        <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                    </Style>
+                                </GridView.ColumnHeaderContainerStyle>
+                            </GridView>
+                        </ListView.View>
+
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="ListViewItem">
+                                <Setter Property="HorizontalContentAlignment" Value="Center" />
+                            </Style>
+                        </ListView.ItemContainerStyle>
+                    </ListView>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="userInfoTabItem" Visibility="Collapsed">
+                <userControls:UserInfoControl x:Name="userInfoUserControl"/>
+            </TabItem>
+        </TabControl>
+        
+        
+       
+        
     </Grid>
 </UserControl>
