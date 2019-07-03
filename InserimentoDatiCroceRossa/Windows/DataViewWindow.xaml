@@ -30,7 +30,16 @@
             </MenuItem>
 
             <MenuItem Header="Visualizza">
-                
+                <MenuItem Header="Volontari"></MenuItem>
+                <MenuItem Header="Automezzo"></MenuItem>
+                <MenuItem Header="Targhe"></MenuItem>
+                <MenuItem Header="Indirizzi"></MenuItem>
+                <MenuItem Header="Località"></MenuItem>
+                <MenuItem Header="Pazienti"></MenuItem>
+                <MenuItem Header="Patologie"></MenuItem>
+                <MenuItem Header="Associazione Automezzo/Targa"></MenuItem>
+                <MenuItem Header="Enti"></MenuItem>
+                <MenuItem Header="Tabella Principale"></MenuItem>
             </MenuItem>
 
             <MenuItem Header="Esci">
