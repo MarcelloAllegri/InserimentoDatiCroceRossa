@@ -198,9 +198,6 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Resource Include="Images\Croce_logo.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="DbModel\CroceRossaDbModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>CroceRossaDbModel.Context.cs</LastGenOutput>
@@ -211,6 +208,7 @@
       <DependentUpon>CroceRossaDbModel.edmx</DependentUpon>
       <LastGenOutput>CroceRossaDbModel.cs</LastGenOutput>
     </Content>
+    <Resource Include="Images\Croce_logo.png" />
     <Resource Include="Objects\close.png" />
     <Resource Include="Images\Menu\edit.png" />
     <Resource Include="Images\Menu\Floppy.png" />

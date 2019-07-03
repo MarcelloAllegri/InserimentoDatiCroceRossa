@@ -21,12 +21,16 @@
 
         <Menu x:Name="GlobalMenu" Height="25" Grid.Row="0">          
 
-            <MenuItem Header="Vista">
+            <MenuItem Header="Amministrazione">
                 <MenuItem Header="Utenti" x:Name="UsersMenuItem" Click="UsersMenuItem_Click">
                     <MenuItem.Icon>
                         <Image Source="{images:Images ImageName=account}"/>
                     </MenuItem.Icon>
                 </MenuItem>
+            </MenuItem>
+
+            <MenuItem Header="Visualizza">
+                
             </MenuItem>
 
             <MenuItem Header="Esci">

@@ -42,7 +42,7 @@ namespace InserimentoDatiCroceRossa.Windows
 
                     this.Close();
                 }
-                else MessageBox.Show("Connessione al database non riuscita!");
+                else MessageBox.Show("Username o password non corretti!");
             }
             else MessageBox.Show(error);
         }

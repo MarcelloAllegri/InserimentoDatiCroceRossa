@@ -4,11 +4,11 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"        
         mc:Ignorable="d"
-        Title="Login Window" Height="300" Width="300"
+        Title="Login Window" Height="375" Width="300"
         ResizeMode="NoResize">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="120"/>
+            <RowDefinition Height="225"/>
             <RowDefinition Height="25"/>
             <RowDefinition Height="25"/>
             <RowDefinition Height="25"/>
@@ -23,7 +23,17 @@
             <ColumnDefinition Width="35"/>
         </Grid.ColumnDefinitions>
 
-        <Image Source="/Images/Croce_logo.png" Grid.ColumnSpan="4"/>
+        <Grid Grid.Row="0" Grid.ColumnSpan="4">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="20"/>
+            </Grid.RowDefinitions>
+        
+            <Image Source="/Images/Croce_logo.png" />
+            <TextBlock Grid.Row="1" Text="Comune di Soragna" HorizontalAlignment="Center" Foreground="#c90000" FontWeight="Bold" VerticalAlignment="Top">
+                
+            </TextBlock>
+        </Grid>
         <Label Grid.Row="1" Grid.Column="1" Content="User:" HorizontalAlignment="Center"/>
         <Label Grid.Row="2" Grid.Column="1" Content="Password:" HorizontalAlignment="Center"/>
 
