@@ -138,7 +138,12 @@
     <Compile Include="DbModel\Vol.cs">
       <DependentUpon>CroceRossaDbModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Objects\Images.cs" />
+    <Compile Include="Objects\Utilities.cs" />
+    <Compile Include="Properties\Tooltip.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Tooltip.resx</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\UserInfoControl.xaml.cs">
       <DependentUpon>UserInfoControl.xaml</DependentUpon>
     </Compile>
@@ -170,6 +175,10 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Tooltip.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Tooltip.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EntityDeploy Include="DbModel\CroceRossaDbModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>

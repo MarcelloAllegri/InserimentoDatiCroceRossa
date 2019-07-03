@@ -100,9 +100,14 @@ namespace InserimentoDatiCroceRossa.UserControls
                 return false;
             }
 
+            if(CheckDoppione())
+            {
+                MessageBox.Show("Nome utente duplicato!");
+                return false;
+            }
+
             return true;
         }
-
         private void UserTypeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             char selectedValue = (char)((sender as ComboBox).SelectedValue);
@@ -145,6 +150,19 @@ namespace InserimentoDatiCroceRossa.UserControls
 
             this.passwordBox.Password = (this.DataContext as UserEntity).Password;
             this.UserTypeComboBox.SelectedItem = (this.DataContext as UserEntity).UserType;
+        }
+
+        private bool CheckDoppione()
+        {
+            string userName = (this.DataContext as UserEntity).AccountName;
+
+            UsersService usersService = new UsersService();
+            List<UserEntity> utentiDb = usersService.GetAllUser();
+
+            if (utentiDb.Any(x => x.AccountName.ToLower().Equals(userName.ToLower()) && (this.DataContext as UserEntity).Id != x.Id))
+                return true;
+
+            return false;
         }
     }    
 }

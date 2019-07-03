@@ -2,6 +2,7 @@
 using InserimentoDatiCroceRossa.Objects;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -51,10 +52,10 @@ namespace InserimentoDatiCroceRossa.DbClasses
             {
                 using (var db = new CroceRossaEntities())
                 {
-                    Usr usr = db.Usr.FirstOrDefault(x => x.UsrOwnId == user.Id);
+                    Usr usr = db.Usr.First(x => x.UsrOwnId == user.Id);
                     if (usr != null)
                     {
-                        usr = user.toUsr();
+                        usr = user.toUsr(usr);
                         db.SaveChanges();
                     }
                 }
@@ -102,9 +103,9 @@ namespace InserimentoDatiCroceRossa.DbClasses
             return user;
         }
 
-        public static Usr toUsr(this UserEntity user)
+        public static Usr toUsr(this UserEntity user,Usr usr = null)
         {
-            Usr usr = new Usr();
+            if(usr == null) usr = new Usr();
 
             usr.UsrOwnId = user.Id;
             usr.UsrNam = user.AccountName;

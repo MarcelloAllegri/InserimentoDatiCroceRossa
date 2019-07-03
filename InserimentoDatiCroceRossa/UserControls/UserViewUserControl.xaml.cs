@@ -49,9 +49,7 @@ namespace InserimentoDatiCroceRossa.UserControls
             if(selectedItem != null)
             {
                 UserEntity user = selectedItem as UserEntity;
-                if (user.AccountName.ToLower().Equals("admin"))
-                    MessageBox.Show("Non si può eliminare l'utente amministratore principale!");
-                else
+                if (!user.AccountName.ToLower().Equals("admin"))                    
                 {
                     UsersService service = new UsersService();
                     if (MessageBox.Show("Sei sicuro di voler eliminare \"" + user.AccountName + " \" ?", "Elimina Utente", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
@@ -74,7 +72,7 @@ namespace InserimentoDatiCroceRossa.UserControls
         {
             var selectedItem = this.lvUsers.SelectedItem;
 
-            if (selectedItem != null)
+            if (selectedItem != null && !(selectedItem as UserEntity).AccountName.ToLower().Equals("admin"))
             {
                 this.AddButton.Visibility = this.DeleteButton.Visibility = this.ModifyButton.Visibility = this.ListTabItem.Visibility = Visibility.Collapsed;
                 this.CloseButton.Visibility = this.userInfoTabItem.Visibility = this.SaveButton.Visibility = Visibility.Visible;
@@ -95,6 +93,7 @@ namespace InserimentoDatiCroceRossa.UserControls
             this.TabControl.UpdateLayout();
 
             userInfoUserControl.DataContext = new UserEntity();
+            RefreshData();
         }
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
@@ -104,7 +103,13 @@ namespace InserimentoDatiCroceRossa.UserControls
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
+            this.AddButton.Visibility = this.DeleteButton.Visibility = this.ModifyButton.Visibility = this.ListTabItem.Visibility = Visibility.Collapsed;
+            this.CloseButton.Visibility = this.userInfoTabItem.Visibility = this.SaveButton.Visibility = Visibility.Visible;
 
+            this.userInfoTabItem.IsSelected = true;
+            this.TabControl.UpdateLayout();
+
+            userInfoUserControl.DataContext = new UserEntity();
         }
     }
 }
