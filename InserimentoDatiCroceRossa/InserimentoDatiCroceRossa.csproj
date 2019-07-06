@@ -65,7 +65,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="DbServiceObjects\AutoService.cs" />
     <Compile Include="DbServiceObjects\UsersService.cs" />
+    <Compile Include="Objects\AutoEntity.cs" />
     <Compile Include="Objects\BaseEntity.cs" />
     <Compile Include="Objects\GlobalInfo.cs" />
     <Compile Include="Objects\KriptoEntity.cs" />
