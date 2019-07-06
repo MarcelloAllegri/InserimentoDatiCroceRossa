@@ -41,9 +41,15 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="EntityFramework.SqlServerCompact, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.SqlServerCompact.6.2.0\lib\net45\EntityFramework.SqlServerCompact.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.SqlServerCe, Version=4.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Compact.4.0.8876.1\lib\net40\System.Data.SqlServerCe.dll</HintPath>
+    </Reference>
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
@@ -67,10 +73,16 @@
     </ApplicationDefinition>
     <Compile Include="DbServiceObjects\AutoService.cs" />
     <Compile Include="DbServiceObjects\UsersService.cs" />
+    <Compile Include="Objects\AddressEntity.cs" />
+    <Compile Include="Objects\AuthorityEntity.cs" />
     <Compile Include="Objects\AutoEntity.cs" />
     <Compile Include="Objects\BaseEntity.cs" />
+    <Compile Include="Objects\CarLicencePlateAssociationEntity.cs" />
+    <Compile Include="Objects\CityEntity.cs" />
     <Compile Include="Objects\GlobalInfo.cs" />
     <Compile Include="Objects\KriptoEntity.cs" />
+    <Compile Include="Objects\PathologyEntity.cs" />
+    <Compile Include="Objects\TargaEntity.cs" />
     <Compile Include="Objects\UserEntity.cs" />
     <Page Include="UserControls\UserInfoControl.xaml">
       <SubType>Designer</SubType>
@@ -205,13 +217,14 @@
       <LastGenOutput>CroceRossaDbModel.Context.cs</LastGenOutput>
       <DependentUpon>CroceRossaDbModel.edmx</DependentUpon>
     </Content>
+    <Content Include="DbModel\CroceRossaDbModel.edmx.sql" />
     <Content Include="DbModel\CroceRossaDbModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>CroceRossaDbModel.edmx</DependentUpon>
       <LastGenOutput>CroceRossaDbModel.cs</LastGenOutput>
     </Content>
     <Resource Include="Images\Croce_logo.png" />
-    <Resource Include="Objects\close.png" />
+    <Resource Include="Images\Menu\close.png" />
     <Resource Include="Images\Menu\edit.png" />
     <Resource Include="Images\Menu\Floppy.png" />
     <Resource Include="Images\Menu\add.png" />
@@ -223,4 +236,11 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    if not exist "$(TargetDir)x86" md "$(TargetDir)x86"
+    xcopy /s /y "$(SolutionDir)packages\Microsoft.SqlServer.Compact.4.0.8876.1\NativeBinaries\x86\*.*" "$(TargetDir)x86"
+    if not exist "$(TargetDir)amd64" md "$(TargetDir)amd64"
+    xcopy /s /y "$(SolutionDir)packages\Microsoft.SqlServer.Compact.4.0.8876.1\NativeBinaries\amd64\*.*" "$(TargetDir)amd64"</PostBuildEvent>
+  </PropertyGroup>
 </Project>
