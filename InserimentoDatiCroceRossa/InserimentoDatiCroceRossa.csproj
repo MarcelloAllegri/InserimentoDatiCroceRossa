@@ -79,10 +79,12 @@
     <Compile Include="Objects\BaseEntity.cs" />
     <Compile Include="Objects\CarLicencePlateAssociationEntity.cs" />
     <Compile Include="Objects\CityEntity.cs" />
+    <Compile Include="Objects\DataCollectionEntity.cs" />
     <Compile Include="Objects\GlobalInfo.cs" />
     <Compile Include="Objects\KriptoEntity.cs" />
     <Compile Include="Objects\PathologyEntity.cs" />
-    <Compile Include="Objects\TargaEntity.cs" />
+    <Compile Include="Objects\LicencePlate.cs" />
+    <Compile Include="Objects\PatientEntity.cs" />
     <Compile Include="Objects\UserEntity.cs" />
     <Page Include="UserControls\UserInfoControl.xaml">
       <SubType>Designer</SubType>
@@ -153,6 +155,7 @@
       <DependentUpon>CroceRossaDbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Objects\Utilities.cs" />
+    <Compile Include="Objects\VolunteerEntity.cs" />
     <Compile Include="Properties\Tooltip.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
