@@ -29,6 +29,12 @@ namespace InserimentoDatiCroceRossa.Objects
             set { m_LicencePlateId = value; }
         }
 
+        private DateTime m_AssociationDate;
+        public DateTime AssociationDate
+        {
+            get { return m_AssociationDate; }
+            set { m_AssociationDate = value; }
+        }
 
     }
 }

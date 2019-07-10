@@ -149,5 +149,12 @@ namespace InserimentoDatiCroceRossa.Objects
             set { m_TagNumber = value; }
         }
 
+        private int m_EntityId; 
+        public int EntityId
+        {
+            get { return m_EntityId; }
+            set { m_EntityId = value; }
+        }
+
     }
 }

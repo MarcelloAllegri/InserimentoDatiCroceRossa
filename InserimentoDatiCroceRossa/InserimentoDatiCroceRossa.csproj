@@ -71,7 +71,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="DbServiceObjects\AddressService.cs" />
+    <Compile Include="DbServiceObjects\AuthorityService.cs" />
     <Compile Include="DbServiceObjects\AutoService.cs" />
+    <Compile Include="DbServiceObjects\CarLicPlateAssociationService.cs" />
     <Compile Include="DbServiceObjects\UsersService.cs" />
     <Compile Include="Objects\AddressEntity.cs" />
     <Compile Include="Objects\AuthorityEntity.cs" />
