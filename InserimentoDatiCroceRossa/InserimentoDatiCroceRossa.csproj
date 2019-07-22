@@ -75,6 +75,9 @@
     <Compile Include="DbServiceObjects\AuthorityService.cs" />
     <Compile Include="DbServiceObjects\AutoService.cs" />
     <Compile Include="DbServiceObjects\CarLicPlateAssociationService.cs" />
+    <Compile Include="DbServiceObjects\CityService.cs" />
+    <Compile Include="DbServiceObjects\DataCollectionService.cs" />
+    <Compile Include="DbServiceObjects\LicencePlateService.cs" />
     <Compile Include="DbServiceObjects\UsersService.cs" />
     <Compile Include="Objects\AddressEntity.cs" />
     <Compile Include="Objects\AuthorityEntity.cs" />
@@ -86,7 +89,7 @@
     <Compile Include="Objects\GlobalInfo.cs" />
     <Compile Include="Objects\KriptoEntity.cs" />
     <Compile Include="Objects\PathologyEntity.cs" />
-    <Compile Include="Objects\LicencePlate.cs" />
+    <Compile Include="Objects\LicencePlateEntity.cs" />
     <Compile Include="Objects\PatientEntity.cs" />
     <Compile Include="Objects\UserEntity.cs" />
     <Page Include="UserControls\UserInfoControl.xaml">

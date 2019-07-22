@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace InserimentoDatiCroceRossa.Objects
 {
-    public class LicencePlate : BaseEntity
+    public class LicencePlateEntity : BaseEntity
     {
-        public LicencePlate() : base()
+        public LicencePlateEntity() : base()
         {
 
         }
