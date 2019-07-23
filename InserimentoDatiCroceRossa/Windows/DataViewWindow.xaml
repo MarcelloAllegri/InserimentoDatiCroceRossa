@@ -30,7 +30,7 @@
             </MenuItem>
 
             <MenuItem Header="Visualizza">
-                <MenuItem Header="Volontari"></MenuItem>
+                <MenuItem Header="Volontari" x:Name="VolunteersMenuItem" Click="VolunteersMenuItem_Click"></MenuItem>
                 <MenuItem Header="Automezzo"></MenuItem>
                 <MenuItem Header="Targhe"></MenuItem>
                 <MenuItem Header="Indirizzi"></MenuItem>
@@ -50,6 +50,7 @@
 
         
         <userControls:UserViewUserControl x:Name="userViewUserControl" Visibility="Collapsed" IsEnabled="False" Grid.Row="1"/>
+        <userControls:VolunteerViewUserControl x:Name="volunteerViewUserControl" Visibility="Collapsed" IsEnabled="False" Grid.Row="1"/>
 
     </Grid>
 </Window>

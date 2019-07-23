@@ -49,6 +49,16 @@ namespace InserimentoDatiCroceRossa.Windows
         private void disableAllUC()
         {
             this.userViewUserControl.Visibility = Visibility.Collapsed;
+            this.volunteerViewUserControl.Visibility = Visibility.Collapsed;
+        }
+
+        private void VolunteersMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            disableAllUC();
+            this.volunteerViewUserControl.IsEnabled = true;
+            volunteerViewUserControl.Visibility = Visibility.Visible;
+            this.UpdateLayout();
+            volunteerViewUserControl.RefreshData();
         }
     }
 }

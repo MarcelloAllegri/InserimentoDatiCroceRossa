@@ -1,0 +1,27 @@
+﻿<UserControl x:Class="InserimentoDatiCroceRossa.UserControls.VolunteerDetailUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:InserimentoDatiCroceRossa.UserControls"
+             mc:Ignorable="d" 
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+             d:DesignHeight="450" d:DesignWidth="800"
+             x:Name="volunteerDetailUC">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <xctk:PropertyGrid x:Name="VolunteerPropGrid" 
+                           AutoGenerateProperties="False"
+                           SelectedObject="{Binding ElementName=volunteerDetailUC, Path=DataContext, Mode=TwoWay}"
+                           ShowTitle="False">
+            <xctk:PropertyGrid.PropertyDefinitions>
+                <xctk:PropertyDefinition x:Name="SurnameProperty" DisplayName="Name" TargetProperties="Name"/>
+                <xctk:PropertyDefinition x:Name="NameProperty" DisplayName="Surname" TargetProperties="Surname"/>
+            </xctk:PropertyGrid.PropertyDefinitions>
+        </xctk:PropertyGrid>
+    </Grid>
+</UserControl>
