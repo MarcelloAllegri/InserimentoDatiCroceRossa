@@ -78,7 +78,10 @@
     <Compile Include="DbServiceObjects\CityService.cs" />
     <Compile Include="DbServiceObjects\DataCollectionService.cs" />
     <Compile Include="DbServiceObjects\LicencePlateService.cs" />
+    <Compile Include="DbServiceObjects\PathologyService.cs" />
+    <Compile Include="DbServiceObjects\PatientService.cs" />
     <Compile Include="DbServiceObjects\UsersService.cs" />
+    <Compile Include="DbServiceObjects\VolunteerService.cs" />
     <Compile Include="Objects\AddressEntity.cs" />
     <Compile Include="Objects\AuthorityEntity.cs" />
     <Compile Include="Objects\AutoEntity.cs" />
