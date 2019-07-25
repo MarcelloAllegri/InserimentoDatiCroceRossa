@@ -110,6 +110,14 @@
     <Compile Include="Objects\LicencePlateEntity.cs" />
     <Compile Include="Objects\PatientEntity.cs" />
     <Compile Include="Objects\UserEntity.cs" />
+    <Page Include="UserControls\AddressDetailUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\AddressViewUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UserControls\UserInfoControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -192,6 +200,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Tooltip.resx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\AddressDetailUserControl.xaml.cs">
+      <DependentUpon>AddressDetailUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\AddressViewUserControl.xaml.cs">
+      <DependentUpon>AddressViewUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\UserInfoControl.xaml.cs">
       <DependentUpon>UserInfoControl.xaml</DependentUpon>

@@ -68,7 +68,10 @@ namespace InserimentoDatiCroceRossa.UserControls
                 if (MessageBox.Show("Sei sicuro di voler eliminare \"" + volunteer.Name + " " + volunteer.Surname + " \" ?", "Elimina Volontario", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                 {
                     if (service.Delete(volunteer) == 0)
+                    {
                         MessageBox.Show("cancellato!");
+                        this.RefreshData();
+                    }
                     else
                         MessageBox.Show("NON cancellato!");
                 }

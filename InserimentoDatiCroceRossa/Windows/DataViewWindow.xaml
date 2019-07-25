@@ -33,7 +33,7 @@
                 <MenuItem Header="Volontari" x:Name="VolunteersMenuItem" Click="VolunteersMenuItem_Click"></MenuItem>
                 <MenuItem Header="Automezzo"></MenuItem>
                 <MenuItem Header="Targhe"></MenuItem>
-                <MenuItem Header="Indirizzi"></MenuItem>
+                <MenuItem Header="Indirizzi" x:Name="AddressMenuItem" Click="AddressMenuItem_Click"></MenuItem>
                 <MenuItem Header="Località"></MenuItem>
                 <MenuItem Header="Pazienti"></MenuItem>
                 <MenuItem Header="Patologie"></MenuItem>
@@ -51,6 +51,7 @@
         
         <userControls:UserViewUserControl x:Name="userViewUserControl" Visibility="Collapsed" IsEnabled="False" Grid.Row="1"/>
         <userControls:VolunteerViewUserControl x:Name="volunteerViewUserControl" Visibility="Collapsed" IsEnabled="False" Grid.Row="1"/>
+        <userControls:AddressViewUserControl x:Name="addressViewUserControl" Visibility="Collapsed" IsEnabled="False" Grid.Row="1"/>
 
     </Grid>
 </Window>
