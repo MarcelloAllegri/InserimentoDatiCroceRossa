@@ -1,0 +1,24 @@
+﻿<UserControl x:Class="InserimentoDatiCroceRossa.UserControls.AutoDetailUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:InserimentoDatiCroceRossa.UserControls"
+             mc:Ignorable="d" 
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+             x:Name="autoDetailUC">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <xctk:PropertyGrid x:Name="AutoPropGrid" 
+                           AutoGenerateProperties="False"
+                           SelectedObject="{Binding ElementName=autoDetailUC, Path=DataContext, Mode=TwoWay}"
+                           ShowTitle="False">
+            <xctk:PropertyGrid.PropertyDefinitions>
+                <xctk:PropertyDefinition x:Name="AutoProperty" DisplayName="Name" TargetProperties="CarName"/>
+            </xctk:PropertyGrid.PropertyDefinitions>
+        </xctk:PropertyGrid>
+    </Grid>
+</UserControl>

@@ -38,7 +38,7 @@
                 <MenuItem Header="Pazienti"></MenuItem>
                 <MenuItem Header="Patologie"></MenuItem>
                 <MenuItem Header="Associazione Automezzo/Targa"></MenuItem>
-                <MenuItem Header="Enti"></MenuItem>
+                <MenuItem Header="Enti" x:Name="AuthoritiesMenuItem" Click="AuthoritiesMenuItem_Click"></MenuItem>
                 <MenuItem Header="Tabella Principale"></MenuItem>
             </MenuItem>
 
@@ -52,6 +52,7 @@
         <userControls:UserViewUserControl x:Name="userViewUserControl" Visibility="Collapsed" IsEnabled="False" Grid.Row="1"/>
         <userControls:VolunteerViewUserControl x:Name="volunteerViewUserControl" Visibility="Collapsed" IsEnabled="False" Grid.Row="1"/>
         <userControls:AddressViewUserControl x:Name="addressViewUserControl" Visibility="Collapsed" IsEnabled="False" Grid.Row="1"/>
+        <userControls:AuthorityViewUserControl x:Name="authorityViewUserControl" Visibility="Collapsed" IsEnabled="False" Grid.Row="1"/>
 
     </Grid>
 </Window>

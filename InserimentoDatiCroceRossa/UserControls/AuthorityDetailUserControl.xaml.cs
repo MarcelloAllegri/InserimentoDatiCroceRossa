@@ -8,24 +8,24 @@ using System.Windows.Controls;
 namespace InserimentoDatiCroceRossa.UserControls
 {
     /// <summary>
-    /// Logica di interazione per AddressDetailUserControl.xaml
+    /// Logica di interazione per AuthorityDetailUserControl.xaml
     /// </summary>
-    public partial class AddressDetailUserControl : UserControl
+    public partial class AuthorityDetailUserControl : UserControl
     {
-        public AddressDetailUserControl()
+        public AuthorityDetailUserControl()
         {
             InitializeComponent();
         }
 
         private bool CheckDoppione()
         {
-            string addressName = (this.DataContext as AddressEntity).AddressName.ToLower();
-            
+            string authorityName = (this.DataContext as AuthorityEntity).AuthorityName.ToLower();
 
-            AddressService service = new AddressService();
-            List<AddressEntity> indirizziDb = service.GetAllAddresses();
 
-            if (indirizziDb.Any(x => x.AddressName.ToLower().Equals(addressName)))
+            AuthorityService service = new AuthorityService();
+            List<AuthorityEntity> entities = service.GetAllAuthorities();
+
+            if (entities.Any(x => x.AuthorityName.ToLower().Equals(authorityName)))
                 return true;
 
             return false;
@@ -33,11 +33,11 @@ namespace InserimentoDatiCroceRossa.UserControls
 
         private bool CheckData()
         {
-            if (string.IsNullOrEmpty((this.DataContext as AddressEntity).AddressName))
+            if (string.IsNullOrEmpty((this.DataContext as AuthorityEntity).AuthorityName))
             {
-                MessageBox.Show("indirizzo vuoto!");
+                MessageBox.Show("nome vuoto!");
                 return false;
-            }           
+            }
 
             return true;
         }
@@ -46,20 +46,20 @@ namespace InserimentoDatiCroceRossa.UserControls
         {
             if (CheckData())
             {
-                AddressService service = new AddressService();
-                if ((this.DataContext as AddressEntity).Id == -1 && !CheckDoppione())
+                AuthorityService service = new AuthorityService();
+                if ((this.DataContext as AuthorityEntity).Id == -1 && !CheckDoppione())
                 {
-                    if (service.Add(this.DataContext as AddressEntity) == 0)
+                    if (service.Add(this.DataContext as AuthorityEntity) == 0)
                     {
                         MessageBox.Show("Salvato!");
-                        this.DataContext = new AddressEntity();
+                        this.DataContext = new AuthorityEntity();
                     }
                     else
                         MessageBox.Show("Errore durante il salvataggio!");
                 }
                 else
                 {
-                    if (service.Update(this.DataContext as AddressEntity) == 0)
+                    if (service.Update(this.DataContext as AuthorityEntity) == 0)
                         MessageBox.Show("Salvato!");
                     else MessageBox.Show("Errore durante il salvataggio!");
                 }

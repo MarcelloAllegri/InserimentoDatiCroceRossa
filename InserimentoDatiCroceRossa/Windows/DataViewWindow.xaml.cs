@@ -51,6 +51,7 @@ namespace InserimentoDatiCroceRossa.Windows
             this.userViewUserControl.Visibility = Visibility.Collapsed;
             this.volunteerViewUserControl.Visibility = Visibility.Collapsed;
             this.addressViewUserControl.Visibility = Visibility.Collapsed;
+            this.authorityViewUserControl.Visibility = Visibility.Collapsed;
         }
 
         private void VolunteersMenuItem_Click(object sender, RoutedEventArgs e)
@@ -69,6 +70,15 @@ namespace InserimentoDatiCroceRossa.Windows
             addressViewUserControl.Visibility = Visibility.Visible;
             this.UpdateLayout();
             addressViewUserControl.RefreshData();
+        }
+
+        private void AuthoritiesMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            disableAllUC();
+            this.authorityViewUserControl.IsEnabled = true;
+            authorityViewUserControl.Visibility = Visibility.Visible;
+            this.UpdateLayout();
+            authorityViewUserControl.RefreshData();
         }
     }
 }

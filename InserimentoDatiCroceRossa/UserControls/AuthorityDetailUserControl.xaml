@@ -1,0 +1,23 @@
+﻿<UserControl x:Class="InserimentoDatiCroceRossa.UserControls.AuthorityDetailUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"              
+             mc:Ignorable="d" 
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+             x:Name="authorityDetailUC">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <xctk:PropertyGrid x:Name="AuthorityPropGrid" 
+                           AutoGenerateProperties="False"
+                           SelectedObject="{Binding ElementName=authorityDetailUC, Path=DataContext, Mode=TwoWay}"
+                           ShowTitle="False">
+            <xctk:PropertyGrid.PropertyDefinitions>
+                <xctk:PropertyDefinition x:Name="AuthorityProperty" DisplayName="Name" TargetProperties="AuthorityName"/>
+            </xctk:PropertyGrid.PropertyDefinitions>
+        </xctk:PropertyGrid>
+    </Grid>
+</UserControl>

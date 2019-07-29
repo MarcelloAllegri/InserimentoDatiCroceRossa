@@ -8,24 +8,24 @@ using System.Windows.Controls;
 namespace InserimentoDatiCroceRossa.UserControls
 {
     /// <summary>
-    /// Logica di interazione per AddressDetailUserControl.xaml
+    /// Logica di interazione per AutoDetailUserControl.xaml
     /// </summary>
-    public partial class AddressDetailUserControl : UserControl
+    public partial class AutoDetailUserControl : UserControl
     {
-        public AddressDetailUserControl()
+        public AutoDetailUserControl()
         {
             InitializeComponent();
         }
 
         private bool CheckDoppione()
         {
-            string addressName = (this.DataContext as AddressEntity).AddressName.ToLower();
-            
+            string carName = (this.DataContext as AutoEntity).CarName.ToLower();
 
-            AddressService service = new AddressService();
-            List<AddressEntity> indirizziDb = service.GetAllAddresses();
 
-            if (indirizziDb.Any(x => x.AddressName.ToLower().Equals(addressName)))
+            AutoService service = new AutoService();
+            List<AutoEntity> cars = service.GetAllCars();
+
+            if (cars.Any(x => x.CarName.ToLower().Equals(carName)))
                 return true;
 
             return false;
@@ -33,11 +33,11 @@ namespace InserimentoDatiCroceRossa.UserControls
 
         private bool CheckData()
         {
-            if (string.IsNullOrEmpty((this.DataContext as AddressEntity).AddressName))
+            if (string.IsNullOrEmpty((this.DataContext as AutoEntity).CarName))
             {
-                MessageBox.Show("indirizzo vuoto!");
+                MessageBox.Show("nome vuoto!");
                 return false;
-            }           
+            }
 
             return true;
         }
@@ -46,20 +46,20 @@ namespace InserimentoDatiCroceRossa.UserControls
         {
             if (CheckData())
             {
-                AddressService service = new AddressService();
-                if ((this.DataContext as AddressEntity).Id == -1 && !CheckDoppione())
+                AutoService service = new AutoService();
+                if ((this.DataContext as AutoEntity).Id == -1 && !CheckDoppione())
                 {
-                    if (service.Add(this.DataContext as AddressEntity) == 0)
+                    if (service.Add(this.DataContext as AutoEntity) == 0)
                     {
                         MessageBox.Show("Salvato!");
-                        this.DataContext = new AddressEntity();
+                        this.DataContext = new AutoEntity();
                     }
                     else
                         MessageBox.Show("Errore durante il salvataggio!");
                 }
                 else
                 {
-                    if (service.Update(this.DataContext as AddressEntity) == 0)
+                    if (service.Update(this.DataContext as AutoEntity) == 0)
                         MessageBox.Show("Salvato!");
                     else MessageBox.Show("Errore durante il salvataggio!");
                 }

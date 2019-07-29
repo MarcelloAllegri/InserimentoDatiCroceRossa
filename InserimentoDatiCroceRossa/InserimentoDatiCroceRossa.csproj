@@ -53,6 +53,7 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -115,6 +116,22 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\AddressViewUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\AuthorityDetailUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\AuthorityViewUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\AutoDetailUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\AutoViewUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -206,6 +223,18 @@
     </Compile>
     <Compile Include="UserControls\AddressViewUserControl.xaml.cs">
       <DependentUpon>AddressViewUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\AuthorityDetailUserControl.xaml.cs">
+      <DependentUpon>AuthorityDetailUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\AuthorityViewUserControl.xaml.cs">
+      <DependentUpon>AuthorityViewUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\AutoDetailUserControl.xaml.cs">
+      <DependentUpon>AutoDetailUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\AutoViewUserControl.xaml.cs">
+      <DependentUpon>AutoViewUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\UserInfoControl.xaml.cs">
       <DependentUpon>UserInfoControl.xaml</DependentUpon>
