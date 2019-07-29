@@ -23,7 +23,7 @@ namespace InserimentoDatiCroceRossa.DbModel
         public int CarTarOwnId { get; set; }
         public int CarId { get; set; }
         public int TarId { get; set; }
-        public System.DateTime CarTarDch { get; set; }
+        public bool CarTarEnb { get; set; }
     
         public virtual Car Car { get; set; }
         public virtual Tar Tar { get; set; }

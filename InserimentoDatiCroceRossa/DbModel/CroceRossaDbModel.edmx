@@ -19,7 +19,7 @@
           <Property Name="CarTarOwnId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CarId" Type="int" Nullable="false" />
           <Property Name="TarId" Type="int" Nullable="false" />
-          <Property Name="CarTarDch" Type="datetime" Nullable="false" />
+          <Property Name="CarTarEnb" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Ent">
           <Key>
@@ -332,10 +332,10 @@
           <Property Name="CarTarOwnId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CarId" Type="Int32" Nullable="false" />
           <Property Name="TarId" Type="Int32" Nullable="false" />
-          <Property Name="CarTarDch" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="Car" Relationship="Self.FK__CarTar__CarId__60A75C0F" FromRole="CarTar" ToRole="Car" />
           <NavigationProperty Name="Tar" Relationship="Self.FK__CarTar__TarId__619B8048" FromRole="CarTar" ToRole="Tar" />
           <NavigationProperty Name="Ins" Relationship="Self.FK__Ins__InsCarTarId__6C190EBB" FromRole="CarTar" ToRole="Ins" />
+          <Property Name="CarTarEnb" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="Ent">
           <Key>
@@ -666,10 +666,10 @@
           <EntitySetMapping Name="CarTar">
             <EntityTypeMapping TypeName="CroceRossaModel.CarTar">
               <MappingFragment StoreEntitySet="CarTar">
+                <ScalarProperty Name="CarTarEnb" ColumnName="CarTarEnb" />
                 <ScalarProperty Name="CarTarOwnId" ColumnName="CarTarOwnId" />
                 <ScalarProperty Name="CarId" ColumnName="CarId" />
                 <ScalarProperty Name="TarId" ColumnName="TarId" />
-                <ScalarProperty Name="CarTarDch" ColumnName="CarTarDch" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

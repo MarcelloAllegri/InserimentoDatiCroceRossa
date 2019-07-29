@@ -92,7 +92,7 @@ namespace InserimentoDatiCroceRossa.DbServiceObjects
 
             association.CarId = carTar.CarId;
             association.Id = carTar.CarTarOwnId;
-            association.AssociationDate = carTar.CarTarDch;
+            association.IsEnabled = carTar.CarTarEnb;
             association.LicencePlateId = carTar.TarId;
 
             return association;
@@ -104,7 +104,7 @@ namespace InserimentoDatiCroceRossa.DbServiceObjects
 
             carTar.CarId = association.CarId;
             carTar.CarTarOwnId = association.Id;
-            carTar.CarTarDch = association.AssociationDate;
+            carTar.CarTarEnb = association.IsEnabled;
             carTar.TarId = association.LicencePlateId;
 
             return carTar;

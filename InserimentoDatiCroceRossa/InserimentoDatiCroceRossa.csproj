@@ -87,6 +87,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Converters\Converters.cs" />
     <Compile Include="DbServiceObjects\AddressService.cs" />
     <Compile Include="DbServiceObjects\AuthorityService.cs" />
     <Compile Include="DbServiceObjects\AutoService.cs" />
@@ -132,6 +133,22 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\AutoViewUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\CarLicPlateAssociationDetailUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\CarLicPlateAssociationsViewUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\LicencePlatesDetailUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\LicencePlatesViewUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -236,6 +253,18 @@
     <Compile Include="UserControls\AutoViewUserControl.xaml.cs">
       <DependentUpon>AutoViewUserControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\CarLicPlateAssociationDetailUserControl.xaml.cs">
+      <DependentUpon>CarLicPlateAssociationDetailUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\CarLicPlateAssociationsViewUserControl.xaml.cs">
+      <DependentUpon>CarLicPlateAssociationsViewUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\LicencePlatesDetailUserControl.xaml.cs">
+      <DependentUpon>LicencePlatesDetailUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\LicencePlatesViewUserControl.xaml.cs">
+      <DependentUpon>LicencePlatesViewUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\UserInfoControl.xaml.cs">
       <DependentUpon>UserInfoControl.xaml</DependentUpon>
     </Compile>
@@ -301,12 +330,13 @@
       <LastGenOutput>CroceRossaDbModel.Context.cs</LastGenOutput>
       <DependentUpon>CroceRossaDbModel.edmx</DependentUpon>
     </Content>
-    <Content Include="DbModel\CroceRossaDbModel.edmx.sql" />
     <Content Include="DbModel\CroceRossaDbModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>CroceRossaDbModel.edmx</DependentUpon>
       <LastGenOutput>CroceRossaDbModel.cs</LastGenOutput>
     </Content>
+    <Resource Include="Images\Menu\Enabled.png" />
+    <Resource Include="Images\Menu\NotEnable.png" />
     <Resource Include="Images\Croce_logo.png" />
     <Resource Include="Images\Menu\close.png" />
     <Resource Include="Images\Menu\edit.png" />

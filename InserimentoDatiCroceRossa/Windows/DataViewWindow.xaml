@@ -31,13 +31,13 @@
 
             <MenuItem Header="Visualizza">
                 <MenuItem Header="Volontari" x:Name="VolunteersMenuItem" Click="VolunteersMenuItem_Click"></MenuItem>
-                <MenuItem Header="Automezzo"></MenuItem>
-                <MenuItem Header="Targhe"></MenuItem>
+                <MenuItem Header="Automezzo" x:Name="CarMenuItem" Click="CarMenuItem_Click"/>
+                <MenuItem Header="Targhe" x:Name="LicencePlatesMenuItem" Click="LicencePlatesMenuItem_Click"></MenuItem>
                 <MenuItem Header="Indirizzi" x:Name="AddressMenuItem" Click="AddressMenuItem_Click"></MenuItem>
                 <MenuItem Header="Località"></MenuItem>
                 <MenuItem Header="Pazienti"></MenuItem>
                 <MenuItem Header="Patologie"></MenuItem>
-                <MenuItem Header="Associazione Automezzo/Targa"></MenuItem>
+                <MenuItem Header="Associazione Automezzo/Targa" x:Name="AssociationTabItem" Click="AssociationTabItem_Click"></MenuItem>
                 <MenuItem Header="Enti" x:Name="AuthoritiesMenuItem" Click="AuthoritiesMenuItem_Click"></MenuItem>
                 <MenuItem Header="Tabella Principale"></MenuItem>
             </MenuItem>
@@ -53,6 +53,8 @@
         <userControls:VolunteerViewUserControl x:Name="volunteerViewUserControl" Visibility="Collapsed" IsEnabled="False" Grid.Row="1"/>
         <userControls:AddressViewUserControl x:Name="addressViewUserControl" Visibility="Collapsed" IsEnabled="False" Grid.Row="1"/>
         <userControls:AuthorityViewUserControl x:Name="authorityViewUserControl" Visibility="Collapsed" IsEnabled="False" Grid.Row="1"/>
-
+        <userControls:AutoViewUserControl x:Name="autoViewUserControl" Visibility="Collapsed" IsEnabled="False" Grid.Row="1"/>
+        <userControls:LicencePlateViewUserControl x:Name="licencePlateViewUserControl" Visibility="Collapsed" IsEnabled="False" Grid.Row="1"/>
+        <userControls:CarLicPlateAssociationsViewUserControl x:Name="carLicPlateAssociationsViewUserControl" Visibility="Collapsed" IsEnabled="False" Grid.Row="1"/>
     </Grid>
 </Window>

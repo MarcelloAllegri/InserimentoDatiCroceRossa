@@ -18,7 +18,11 @@ namespace InserimentoDatiCroceRossa.Objects
         public int CarId
         {
             get { return m_CarId; }
-            set { m_CarId = value; }
+            set
+            {
+                m_CarId = value;
+                this.CarName = new DbServiceObjects.AutoService().GetAllCars().FirstOrDefault(x => x.Id == value).CarName;
+            }
         }
 
         private int m_LicencePlateId;
@@ -26,15 +30,37 @@ namespace InserimentoDatiCroceRossa.Objects
         public int LicencePlateId
         {
             get { return m_LicencePlateId; }
-            set { m_LicencePlateId = value; }
+            set
+            {
+                m_LicencePlateId = value;
+                this.LicencePlate = new DbServiceObjects.LicencePlateService().GetAllLicencePlates().FirstOrDefault(x => x.Id == value).Targa;
+            }
         }
 
-        private DateTime m_AssociationDate;
-        public DateTime AssociationDate
+        private bool m_IsEnabled;
+        public bool IsEnabled
         {
-            get { return m_AssociationDate; }
-            set { m_AssociationDate = value; }
+            get { return m_IsEnabled; }
+            set { m_IsEnabled = value; }
         }
+
+        private string m_CarName;
+
+        public string CarName
+        {
+            get { return m_CarName; }
+            set { m_CarName = value; }
+        }
+
+        private string m_LicencePlate;
+
+        public string LicencePlate
+        {
+            get { return m_LicencePlate; }
+            set { m_LicencePlate = value; }
+        }
+
+
 
     }
 }

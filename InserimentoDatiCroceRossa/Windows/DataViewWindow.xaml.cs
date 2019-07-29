@@ -52,6 +52,9 @@ namespace InserimentoDatiCroceRossa.Windows
             this.volunteerViewUserControl.Visibility = Visibility.Collapsed;
             this.addressViewUserControl.Visibility = Visibility.Collapsed;
             this.authorityViewUserControl.Visibility = Visibility.Collapsed;
+            autoViewUserControl.Visibility = Visibility.Collapsed;
+            licencePlateViewUserControl.Visibility = Visibility.Collapsed;
+            carLicPlateAssociationsViewUserControl.Visibility = Visibility.Collapsed;
         }
 
         private void VolunteersMenuItem_Click(object sender, RoutedEventArgs e)
@@ -79,6 +82,33 @@ namespace InserimentoDatiCroceRossa.Windows
             authorityViewUserControl.Visibility = Visibility.Visible;
             this.UpdateLayout();
             authorityViewUserControl.RefreshData();
+        }
+
+        private void CarMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            disableAllUC();
+            this.autoViewUserControl.IsEnabled = true;
+            autoViewUserControl.Visibility = Visibility.Visible;
+            this.UpdateLayout();
+            autoViewUserControl.RefreshData();
+        }
+
+        private void LicencePlatesMenuItem_Click(object sender, RoutedEventArgs e)
+        {            
+            disableAllUC();
+            this.licencePlateViewUserControl.IsEnabled = true;
+            licencePlateViewUserControl.Visibility = Visibility.Visible;
+            this.UpdateLayout();
+            licencePlateViewUserControl.RefreshData();
+        }
+
+        private void AssociationTabItem_Click(object sender, RoutedEventArgs e)
+        {            
+            disableAllUC();
+            this.carLicPlateAssociationsViewUserControl.IsEnabled = true;
+            carLicPlateAssociationsViewUserControl.Visibility = Visibility.Visible;
+            this.UpdateLayout();
+            carLicPlateAssociationsViewUserControl.RefreshData();
         }
     }
 }
