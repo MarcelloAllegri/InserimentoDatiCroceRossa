@@ -29,10 +29,11 @@ namespace InserimentoDatiCroceRossa.DbServiceObjects
             {
                 using (var db = new CroceRossaEntities())
                 {
-                    db.CarTar.Add(entity.toCarTar());
+                    CarTar carTar = entity.toCarTar();
+                    db.CarTar.Add(carTar);
                     db.SaveChanges();
 
-                    return 0;
+                    return carTar.CarTarOwnId;
                 }
             }
             catch

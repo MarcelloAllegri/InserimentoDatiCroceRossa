@@ -22,7 +22,7 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <!--<ToolBar Grid.Row="0">
+        <ToolBar Grid.Row="0">
             <Button x:Name="AddButton" Click="AddButton_Click" ToolTip="{x:Static p:Tooltip.New}">
                 <Image Source="{utility:Images ImageName=add}"/>
             </Button>
@@ -41,7 +41,7 @@
             <Button x:Name="CloseButton" Click="CloseButton_Click" Visibility="Collapsed" ToolTip="{x:Static p:Tooltip.Close}">
                 <Image Source="{utility:Images ImageName=close}"/>
             </Button>
-        </ToolBar>-->
+        </ToolBar>
 
         <TabControl Grid.Row="1" x:Name="TabControl">
             <TabItem x:Name="AssociationListTabItem">

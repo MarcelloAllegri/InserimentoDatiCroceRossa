@@ -61,6 +61,29 @@ namespace InserimentoDatiCroceRossa.Objects
         }
 
 
+        private List<AutoEntity> m_CarList;
+
+        public List<AutoEntity> CarList
+        {
+            get { return m_CarList; }
+            set
+            {
+                m_CarList = value;
+                OnPropertyChanged(nameof(CarList));
+            }
+        }
+
+        private List<LicencePlateEntity> m_LicencePlateList;
+
+        public List<LicencePlateEntity> LicencePlateList
+        {
+            get { return m_LicencePlateList; }
+            set
+            {
+                m_LicencePlateList = value;
+                OnPropertyChanged(nameof(LicencePlateList));
+            }
+        }
 
     }
 }

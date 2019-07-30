@@ -2,11 +2,47 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:InserimentoDatiCroceRossa.UserControls"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"             
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+             x:Name="carLicPlateAssociationDetailUC">
+    
     <Grid>
-            
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="250"/>
+        </Grid.ColumnDefinitions>
+
+        <Label Content="Automezzo" Grid.Row="1" Grid.Column="0" Margin="5,0,0,0"/>
+        <Label Content="Targa" Grid.Row="2" Grid.Column="0" Margin="5,0,0,0"/>
+        <Label Content="Abilitato" Grid.Row="3" Grid.Column="0" Margin="5,0,0,0"/>
+
+        <ComboBox x:Name="CarSelectionComboBox"
+                  Margin="5,5,0,0"
+                  Grid.Column="1" Grid.Row="1"                  
+                  ItemsSource="{Binding ElementName=carLicPlateAssociationDetailUC,Path=DataContext.CarList}"
+                  SelectedValuePath="Id"
+                  SelectedValue="{Binding ElementName=carLicPlateAssociationDetailUC,Path=DataContext.CarId,Mode=TwoWay}"
+                  DisplayMemberPath="CarName"/>
+
+        <ComboBox x:Name="LicencePlateSelectionComboBox"
+                  Margin="5,5,0,0"
+                  Grid.Column="1" Grid.Row="2"
+                  ItemsSource="{Binding ElementName=carLicPlateAssociationDetailUC,Path=DataContext.LicencePlateList}"
+                  SelectedValuePath="Id"
+                  SelectedValue="{Binding ElementName=carLicPlateAssociationDetailUC,Path=DataContext.LicencePlateId,Mode=TwoWay}"
+                  DisplayMemberPath="Targa"/>
+        
+        <CheckBox x:Name="EnableAssociationCheckBox"
+                  Margin="5,5,0,0"
+                  Grid.Column="1" Grid.Row="3"
+                  IsChecked="{Binding ElementName=carLicPlateAssociationDetailUC,Path=DataContext.IsEnabled,Mode=TwoWay}"/>
     </Grid>
 </UserControl>
