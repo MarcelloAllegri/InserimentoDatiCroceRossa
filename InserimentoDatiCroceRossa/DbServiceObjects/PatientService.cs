@@ -33,8 +33,9 @@ namespace InserimentoDatiCroceRossa.DbServiceObjects
                     return 0;
                 }
             }
-            catch
+            catch(Exception e)
             {
+                string message = e.Message;
                 return -1;
             }
         }

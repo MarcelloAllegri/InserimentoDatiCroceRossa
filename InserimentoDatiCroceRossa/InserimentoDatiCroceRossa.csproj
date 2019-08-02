@@ -144,11 +144,35 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UserControls\CityDetailUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\CityViewUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UserControls\LicencePlatesDetailUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\LicencePlatesViewUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\PathologyDetailUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\PathologyViewUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\PatientDetailUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\PatientViewUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -259,11 +283,29 @@
     <Compile Include="UserControls\CarLicPlateAssociationsViewUserControl.xaml.cs">
       <DependentUpon>CarLicPlateAssociationsViewUserControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\CityDetailUserControl.xaml.cs">
+      <DependentUpon>CityDetailUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\CityViewUserControl.xaml.cs">
+      <DependentUpon>CityViewUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\LicencePlatesDetailUserControl.xaml.cs">
       <DependentUpon>LicencePlatesDetailUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\LicencePlatesViewUserControl.xaml.cs">
       <DependentUpon>LicencePlatesViewUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\PathologyDetailUserControl.xaml.cs">
+      <DependentUpon>PathologyDetailUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\PathologyViewUserControl.xaml.cs">
+      <DependentUpon>PathologyViewUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\PatientDetailUserControl.xaml.cs">
+      <DependentUpon>PatientDetailUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\PatientViewUserControl.xaml.cs">
+      <DependentUpon>PatientViewUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\UserInfoControl.xaml.cs">
       <DependentUpon>UserInfoControl.xaml</DependentUpon>

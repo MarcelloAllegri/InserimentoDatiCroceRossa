@@ -52,9 +52,12 @@ namespace InserimentoDatiCroceRossa.Windows
             this.volunteerViewUserControl.Visibility = Visibility.Collapsed;
             this.addressViewUserControl.Visibility = Visibility.Collapsed;
             this.authorityViewUserControl.Visibility = Visibility.Collapsed;
-            autoViewUserControl.Visibility = Visibility.Collapsed;
-            licencePlateViewUserControl.Visibility = Visibility.Collapsed;
-            carLicPlateAssociationsViewUserControl.Visibility = Visibility.Collapsed;
+            this.autoViewUserControl.Visibility = Visibility.Collapsed;
+            this.licencePlateViewUserControl.Visibility = Visibility.Collapsed;
+            this.carLicPlateAssociationsViewUserControl.Visibility = Visibility.Collapsed;
+            this.cityViewUserControl.Visibility = Visibility.Collapsed;
+            this.pathologyViewUserControl.Visibility = Visibility.Collapsed;
+            this.patientViewUserControl.Visibility = Visibility.Collapsed;
         }
 
         private void VolunteersMenuItem_Click(object sender, RoutedEventArgs e)
@@ -109,6 +112,33 @@ namespace InserimentoDatiCroceRossa.Windows
             carLicPlateAssociationsViewUserControl.Visibility = Visibility.Visible;
             this.UpdateLayout();
             carLicPlateAssociationsViewUserControl.RefreshData();
+        }
+
+        private void CityMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            disableAllUC();
+            this.cityViewUserControl.IsEnabled = true;
+            cityViewUserControl.Visibility = Visibility.Visible;
+            this.UpdateLayout();
+            cityViewUserControl.RefreshData();
+        }
+
+        private void PathologyMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            disableAllUC();
+            this.pathologyViewUserControl.IsEnabled = true;
+            pathologyViewUserControl.Visibility = Visibility.Visible;
+            this.UpdateLayout();
+            pathologyViewUserControl.RefreshData();
+        }
+
+        private void PatientMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            disableAllUC();
+            this.patientViewUserControl.IsEnabled = true;
+            patientViewUserControl.Visibility = Visibility.Visible;
+            this.UpdateLayout();
+            patientViewUserControl.RefreshData();
         }
     }
 }

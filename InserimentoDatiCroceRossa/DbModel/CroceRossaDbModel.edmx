@@ -78,7 +78,7 @@
             <PropertyRef Name="PerOwnId" />
           </Key>
           <Property Name="PerOwnId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="PerFCd" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="PerFCd" Type="varchar" MaxLength="16" />
           <Property Name="PerNam" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="PerSur" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="PerSex" Type="bit" />
@@ -409,7 +409,7 @@
             <PropertyRef Name="PerOwnId" />
           </Key>
           <Property Name="PerOwnId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="PerFCd" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PerFCd" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
           <Property Name="PerNam" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="PerSur" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="PerSex" Type="Boolean" />

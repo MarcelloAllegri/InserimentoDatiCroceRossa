@@ -34,9 +34,9 @@
                 <MenuItem Header="Automezzo" x:Name="CarMenuItem" Click="CarMenuItem_Click"/>
                 <MenuItem Header="Targhe" x:Name="LicencePlatesMenuItem" Click="LicencePlatesMenuItem_Click"></MenuItem>
                 <MenuItem Header="Indirizzi" x:Name="AddressMenuItem" Click="AddressMenuItem_Click"></MenuItem>
-                <MenuItem Header="Località"></MenuItem>
-                <MenuItem Header="Pazienti"></MenuItem>
-                <MenuItem Header="Patologie"></MenuItem>
+                <MenuItem Header="Località" x:Name="CityMenuItem" Click="CityMenuItem_Click"></MenuItem>
+                <MenuItem Header="Pazienti" x:Name="PatientMenuItem" Click="PatientMenuItem_Click"></MenuItem>
+                <MenuItem Header="Patologie" x:Name="PathologyMenuItem" Click="PathologyMenuItem_Click"></MenuItem>
                 <MenuItem Header="Associazione Automezzo/Targa" x:Name="AssociationTabItem" Click="AssociationTabItem_Click"></MenuItem>
                 <MenuItem Header="Enti" x:Name="AuthoritiesMenuItem" Click="AuthoritiesMenuItem_Click"></MenuItem>
                 <MenuItem Header="Tabella Principale"></MenuItem>
@@ -56,5 +56,8 @@
         <userControls:AutoViewUserControl x:Name="autoViewUserControl" Visibility="Collapsed" IsEnabled="False" Grid.Row="1"/>
         <userControls:LicencePlateViewUserControl x:Name="licencePlateViewUserControl" Visibility="Collapsed" IsEnabled="False" Grid.Row="1"/>
         <userControls:CarLicPlateAssociationsViewUserControl x:Name="carLicPlateAssociationsViewUserControl" Visibility="Collapsed" IsEnabled="False" Grid.Row="1"/>
+        <userControls:CityViewUserControl x:Name="cityViewUserControl" Visibility="Collapsed" IsEnabled="False" Grid.Row="1"/>
+        <userControls:PathologyViewUserControl x:Name="pathologyViewUserControl" Visibility="Collapsed" IsEnabled="False" Grid.Row="1"/>
+        <userControls:PatientViewUserControl x:Name="patientViewUserControl" Visibility="Collapsed" IsEnabled="False" Grid.Row="1"/>
     </Grid>
 </Window>

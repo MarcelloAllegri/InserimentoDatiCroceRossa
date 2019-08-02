@@ -10,7 +10,7 @@ namespace InserimentoDatiCroceRossa.Objects
     {
         public PatientEntity() : base()
         {
-
+            if (Id == -1) this.Bday = DateTime.Today;
         }
 
         private string m_FiscalCode;
@@ -51,6 +51,25 @@ namespace InserimentoDatiCroceRossa.Objects
         {
             get { return m_Birthday; }
             set { m_Birthday = value; }
+        }
+
+        public int SexConverter
+        {
+            get { return !Sex.HasValue ? 0 : Sex.Value == false ? 1 : 2; }
+            set
+            {
+                switch (value)
+                {
+                    case 1: Sex = false; break; // maschio
+                    case 2: Sex = true; break; //femmina
+                    default: Sex = null; break; //Non specificato
+                }
+            }
+        }
+
+        public string SexConverterString
+        {
+            get { return !Sex.HasValue ? "Non Specificato" : Sex.Value == false ? "M" : "F"; }
         }
 
     }
