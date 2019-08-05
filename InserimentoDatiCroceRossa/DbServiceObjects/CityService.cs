@@ -23,6 +23,18 @@ namespace InserimentoDatiCroceRossa.DbServiceObjects
             return cities;
         }
 
+        public CityEntity GetCityById(int id)
+        {
+            CityEntity city = new CityEntity();
+            if(id != -1)
+            {
+                using (var db = new CroceRossaEntities())
+                    city = db.Loc.FirstOrDefault(x => x.LocOwnId == id).toCityEntity();
+            }
+
+            return city;
+        }
+
         public int Add(CityEntity cities)
         {
             try

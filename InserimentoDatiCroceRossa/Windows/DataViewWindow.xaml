@@ -39,7 +39,7 @@
                 <MenuItem Header="Patologie" x:Name="PathologyMenuItem" Click="PathologyMenuItem_Click"></MenuItem>
                 <MenuItem Header="Associazione Automezzo/Targa" x:Name="AssociationTabItem" Click="AssociationTabItem_Click"></MenuItem>
                 <MenuItem Header="Enti" x:Name="AuthoritiesMenuItem" Click="AuthoritiesMenuItem_Click"></MenuItem>
-                <MenuItem Header="Tabella Principale"></MenuItem>
+                <MenuItem Header="Tabella Principale" x:Name="DataCollectionMenuItem" Click="DataCollectionMenuItem_Click"></MenuItem>
             </MenuItem>
 
             <MenuItem Header="Esci">
@@ -47,7 +47,6 @@
                 <MenuItem Header="Logout" x:Name="LogoutButton" Click="LogoutButton_Click"/>
             </MenuItem>
         </Menu>
-
         
         <userControls:UserViewUserControl x:Name="userViewUserControl" Visibility="Collapsed" IsEnabled="False" Grid.Row="1"/>
         <userControls:VolunteerViewUserControl x:Name="volunteerViewUserControl" Visibility="Collapsed" IsEnabled="False" Grid.Row="1"/>
@@ -59,5 +58,7 @@
         <userControls:CityViewUserControl x:Name="cityViewUserControl" Visibility="Collapsed" IsEnabled="False" Grid.Row="1"/>
         <userControls:PathologyViewUserControl x:Name="pathologyViewUserControl" Visibility="Collapsed" IsEnabled="False" Grid.Row="1"/>
         <userControls:PatientViewUserControl x:Name="patientViewUserControl" Visibility="Collapsed" IsEnabled="False" Grid.Row="1"/>
+        <userControls:DataCollectionViewUserControl x:Name="dataCollectionViewUserControl" Visibility="Collapsed" IsEnabled="False" Grid.Row="1"/>
+        
     </Grid>
 </Window>

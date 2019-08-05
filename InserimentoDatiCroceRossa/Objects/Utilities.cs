@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Forms;
 using System.Windows.Markup;
 using System.Windows.Media.Imaging;
 
@@ -32,6 +29,21 @@ namespace InserimentoDatiCroceRossa.Objects
                               Int32Rect.Empty,
                               BitmapSizeOptions.FromEmptyOptions());
             }
+        }
+    }
+    public class WaitCursor : IDisposable
+    {
+        private Cursor m_oldCursor = null;
+
+        public WaitCursor()
+        {
+            m_oldCursor = Cursor.Current;
+            Cursor.Current = Cursors.WaitCursor;
+        }
+
+        public void Dispose()
+        {
+            Cursor.Current = m_oldCursor;
         }
     }
 }

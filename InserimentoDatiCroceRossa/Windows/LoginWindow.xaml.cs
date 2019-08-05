@@ -53,7 +53,7 @@ namespace InserimentoDatiCroceRossa.Windows
 
             using (var db = new CroceRossaEntities())
             {
-                Usr usr = db.Usr.FirstOrDefault(x => x.UsrNam == UserTextBox.Text);
+                Usr usr = db.Usr.FirstOrDefault(x => x.UsrNam.Equals(UserTextBox.Text.ToString()));
                 if (usr == null) retVal = false;
                 else
                 {

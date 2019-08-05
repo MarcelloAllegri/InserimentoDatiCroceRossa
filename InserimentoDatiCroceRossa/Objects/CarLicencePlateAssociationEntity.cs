@@ -69,7 +69,7 @@ namespace InserimentoDatiCroceRossa.Objects
             set
             {
                 m_CarList = value;
-                OnPropertyChanged(nameof(CarList));
+                NotifyPropertyChanged(nameof(CarList));
             }
         }
 
@@ -81,7 +81,7 @@ namespace InserimentoDatiCroceRossa.Objects
             set
             {
                 m_LicencePlateList = value;
-                OnPropertyChanged(nameof(LicencePlateList));
+                NotifyPropertyChanged(nameof(LicencePlateList));
             }
         }
 

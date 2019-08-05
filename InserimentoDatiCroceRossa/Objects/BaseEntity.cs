@@ -23,11 +23,11 @@ namespace InserimentoDatiCroceRossa.Objects
             set
             {
                 m_Id = value;
-                OnPropertyChanged(nameof(Id));
+                NotifyPropertyChanged(nameof(Id));
             }
         }
 
-        protected void OnPropertyChanged(string name)
+        protected void NotifyPropertyChanged(string name)
         {
             PropertyChangedEventHandler handler = PropertyChanged;
             if (handler != null)

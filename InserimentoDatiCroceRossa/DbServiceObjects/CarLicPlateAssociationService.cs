@@ -23,6 +23,27 @@ namespace InserimentoDatiCroceRossa.DbServiceObjects
             return Association;
         }
 
+        public CarLicencePlateAssociationEntity GetAssociationById(int id)
+        {
+            CarLicencePlateAssociationEntity association = new CarLicencePlateAssociationEntity();
+
+            using (var db = new CroceRossaEntities())
+            {
+                association = db.CarTar.FirstOrDefault(x => x.CarTarOwnId == id).toCarLicencePlateAssociationEntity();
+
+                if(association.Id != -1)
+                {
+                    if(association.CarId != -1)
+                        association.CarName = db.Car.FirstOrDefault(x => x.CarOwnId == association.CarId).CarNam;
+
+                    if (association.LicencePlateId != -1)
+                        association.LicencePlate = db.Tar.FirstOrDefault(x => x.TarOwnId == association.LicencePlateId).TarVal;
+                }
+            }
+
+            return association;
+        }
+
         public int Add(CarLicencePlateAssociationEntity entity)
         {
             try

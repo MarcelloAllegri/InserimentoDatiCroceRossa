@@ -29,6 +29,10 @@ namespace InserimentoDatiCroceRossa.Objects
             set { m_Surname = value; }
         }
 
+        public string SurnameAndName
+        {
+            get { return string.Concat(Surname, " ", Name); }
+        }
 
     }
 }

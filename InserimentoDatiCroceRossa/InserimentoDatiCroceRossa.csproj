@@ -106,6 +106,7 @@
     <Compile Include="Objects\CarLicencePlateAssociationEntity.cs" />
     <Compile Include="Objects\CityEntity.cs" />
     <Compile Include="Objects\DataCollectionEntity.cs" />
+    <Compile Include="Objects\DataCollectionViewEntity.cs" />
     <Compile Include="Objects\GlobalInfo.cs" />
     <Compile Include="Objects\KriptoEntity.cs" />
     <Compile Include="Objects\PathologyEntity.cs" />
@@ -149,6 +150,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\CityViewUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\DataCollectionDetailUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\DataCollectionViewUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -288,6 +297,12 @@
     </Compile>
     <Compile Include="UserControls\CityViewUserControl.xaml.cs">
       <DependentUpon>CityViewUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\DataCollectionDetailUserControl.xaml.cs">
+      <DependentUpon>DataCollectionDetailUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\DataCollectionViewUserControl.xaml.cs">
+      <DependentUpon>DataCollectionViewUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\LicencePlatesDetailUserControl.xaml.cs">
       <DependentUpon>LicencePlatesDetailUserControl.xaml</DependentUpon>

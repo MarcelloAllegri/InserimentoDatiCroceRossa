@@ -23,6 +23,21 @@ namespace InserimentoDatiCroceRossa.DbServiceObjects
             return Authorities;
         }
 
+        public AuthorityEntity GetAuthorityById(int id)
+        {
+            AuthorityEntity authority = new AuthorityEntity();
+
+            if(id != -1)
+            {
+                using (var db = new CroceRossaEntities())
+                {
+                    authority = db.Ent.FirstOrDefault(x => x.EntOwnId == id).toAuthorityEntity();
+                }
+            }
+
+            return authority;
+        }
+
         public int Add(AuthorityEntity entity)
         {
             try

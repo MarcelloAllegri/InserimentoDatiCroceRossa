@@ -29,7 +29,7 @@ namespace InserimentoDatiCroceRossa.Objects
             set
             {
                 m_AccountName = value;
-                OnPropertyChanged(nameof(AccountName));
+                NotifyPropertyChanged(nameof(AccountName));
             }
         }
 
@@ -41,7 +41,7 @@ namespace InserimentoDatiCroceRossa.Objects
             set
             {
                 m_Password = value;
-                OnPropertyChanged(nameof(Password));
+                NotifyPropertyChanged(nameof(Password));
             }
         }
 
@@ -53,7 +53,7 @@ namespace InserimentoDatiCroceRossa.Objects
             set
             {
                 m_UserType = value;
-                OnPropertyChanged(nameof(UserType));
+                NotifyPropertyChanged(nameof(UserType));
             }
         }
 

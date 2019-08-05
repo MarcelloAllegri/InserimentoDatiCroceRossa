@@ -21,6 +21,18 @@ namespace InserimentoDatiCroceRossa.DbServiceObjects
             return volunteers;
         }
 
+        public VolunteerEntity GetVolunteerById(int id)
+        {
+            VolunteerEntity volunteer = new VolunteerEntity();
+
+            using (var db = new CroceRossaEntities())
+            {
+                volunteer = db.Vol.FirstOrDefault(x => x.VolOwnId == id).toVolunteerEntity();
+            }
+
+            return volunteer;
+        }
+
         public int Add(VolunteerEntity volunteer)
         {
             try

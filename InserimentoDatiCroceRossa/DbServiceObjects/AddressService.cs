@@ -23,6 +23,20 @@ namespace InserimentoDatiCroceRossa.DbServiceObjects
             return addresses;
         }
 
+        public AddressEntity GetAddressById(int id)
+        {
+            AddressEntity address = new AddressEntity();
+            if (id != -1) 
+            {
+                using (var db = new CroceRossaEntities())
+                {
+                    address = db.Ind.FirstOrDefault(x => x.IndOwnId == id).toAddressEntity();
+                }
+            }
+
+            return address;
+        }
+
         public int Add(AddressEntity address)
         {
             try

@@ -43,7 +43,9 @@
                         <ListView.View>
                             <GridView x:Name="AddressGrid"
                                       AllowsColumnReorder="False">
-                                <GridViewColumn Header="Indirizzo" Width="Auto" DisplayMemberBinding="{Binding Path=AddressName}"/>                                
+                                <GridViewColumn Header="Indirizzo" 
+                                                Width="Auto" 
+                                                DisplayMemberBinding="{Binding Path=AddressName}"/>
                             </GridView>
                         </ListView.View>
                     </ListView>

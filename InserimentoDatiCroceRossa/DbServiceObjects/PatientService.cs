@@ -8,6 +8,19 @@ namespace InserimentoDatiCroceRossa.DbServiceObjects
 {
     public class PatientService
     {
+        public PatientEntity GetPatientById(int id)
+        {
+            
+            PatientEntity patient = new PatientEntity();
+
+            using (var db = new CroceRossaEntities())
+            {
+                patient = db.Per.FirstOrDefault(x=> x.PerOwnId == id).toPatientEntity();
+            }
+            
+            return patient == null ? new PatientEntity() : patient;
+        }
+
         public List<PatientEntity> GetAllPatients()
         {
             List<Per> perDbList = new List<Per>();

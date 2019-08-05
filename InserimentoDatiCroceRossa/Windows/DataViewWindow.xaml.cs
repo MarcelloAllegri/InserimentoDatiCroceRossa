@@ -58,6 +58,7 @@ namespace InserimentoDatiCroceRossa.Windows
             this.cityViewUserControl.Visibility = Visibility.Collapsed;
             this.pathologyViewUserControl.Visibility = Visibility.Collapsed;
             this.patientViewUserControl.Visibility = Visibility.Collapsed;
+            this.dataCollectionViewUserControl.Visibility = Visibility.Collapsed;
         }
 
         private void VolunteersMenuItem_Click(object sender, RoutedEventArgs e)
@@ -139,6 +140,15 @@ namespace InserimentoDatiCroceRossa.Windows
             patientViewUserControl.Visibility = Visibility.Visible;
             this.UpdateLayout();
             patientViewUserControl.RefreshData();
+        }
+
+        private void DataCollectionMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            disableAllUC();
+            this.dataCollectionViewUserControl.IsEnabled = true;
+            dataCollectionViewUserControl.Visibility = Visibility.Visible;
+            this.UpdateLayout();
+            dataCollectionViewUserControl.RefreshData();
         }
     }
 }
