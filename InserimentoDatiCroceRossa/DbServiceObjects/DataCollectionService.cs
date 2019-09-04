@@ -91,7 +91,7 @@ namespace InserimentoDatiCroceRossa.DbServiceObjects
             ins.InsOwnId = dataList.Id;
             ins.InsCarTarId = dataList.CarLicPlateAssociationId;
             ins.InsChrTo = dataList.EntityId;
-            ins.InsIndId = dataList.AddressId;
+            ins.InsIndVal = dataList.AddressValue;
             ins.InsKmInt = dataList.ReturnKm;
             ins.InsKmOut = dataList.ExitKm;
             ins.InsPatId = dataList.PathologyId;
@@ -107,6 +107,7 @@ namespace InserimentoDatiCroceRossa.DbServiceObjects
             ins.InsTimIn = dataList.ReturnTime;
             ins.InsTimOut = dataList.ExitTime;
             ins.InsCrtNum = dataList.TagNumber;
+            ins.InsPlcVal = dataList.PlaceValue;
             return ins;
         }
 
@@ -117,12 +118,12 @@ namespace InserimentoDatiCroceRossa.DbServiceObjects
                 Id = ins.InsOwnId,
                 CarLicPlateAssociationId = ins.InsCarTarId,
                 EntityId = ins.InsChrTo,
-                AddressId = ins.InsIndId,
+                AddressValue = ins.InsIndVal,
                 ReturnKm = ins.InsKmInt,
                 ExitKm = ins.InsKmOut,
                 PathologyId = ins.InsPatId,
                 PatientId = ins.InsPerId,
-                ServiceDate = ins.InsSvrDat,            
+                ServiceDate = ins.InsSvrDat,
                 ServiceFromId = ins.InsSvrFrm,
                 ServiceToId = ins.InsSvrTo,
                 ServiceType = ins.InsTyp,
@@ -132,7 +133,8 @@ namespace InserimentoDatiCroceRossa.DbServiceObjects
                 BillNumber = ins.InsBilNum,
                 ReturnTime = ins.InsTimIn,
                 ExitTime = ins.InsTimOut,
-                TagNumber = ins.InsCrtNum
+                TagNumber = ins.InsCrtNum,
+                PlaceValue = ins.InsPlcVal
             };
         }
     }

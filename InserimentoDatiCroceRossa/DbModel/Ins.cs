@@ -20,7 +20,6 @@ namespace InserimentoDatiCroceRossa.DbModel
         public int InsSvrTo { get; set; }
         public int InsTyp { get; set; }
         public int InsPerId { get; set; }
-        public int InsIndId { get; set; }
         public int InsPatId { get; set; }
         public int InsCarTarId { get; set; }
         public Nullable<System.TimeSpan> InsTimIn { get; set; }
@@ -33,10 +32,11 @@ namespace InserimentoDatiCroceRossa.DbModel
         public int InsChrTo { get; set; }
         public int InsBilNum { get; set; }
         public int InsCrtNum { get; set; }
+        public string InsIndVal { get; set; }
+        public string InsPlcVal { get; set; }
     
         public virtual CarTar CarTar { get; set; }
         public virtual Ent Ent { get; set; }
-        public virtual Ind Ind { get; set; }
         public virtual Vol Vol { get; set; }
         public virtual Pat Pat { get; set; }
         public virtual Per Per { get; set; }

@@ -5,6 +5,7 @@ using InserimentoDatiCroceRossa.Objects;
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 
 namespace InserimentoDatiCroceRossa.UserControls
 {
@@ -22,12 +23,32 @@ namespace InserimentoDatiCroceRossa.UserControls
         private void DataCollectionViewUserControl_Loaded(object sender, RoutedEventArgs e)
         {
             this.RefreshData();
+
+            CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(lvDataCollection.ItemsSource);
+            view.Filter = Filter();
+        }
+
+        private Predicate<object> Filter()
+        {
+            if (string.IsNullOrEmpty(FilterTextBox.Text))
+                return null;
+            else
+                return new Predicate<object>(o =>  ((DataCollectionViewEntity)o).AddressValue.ToLower().Contains(FilterTextBox.Text.ToLower())
+                || ((DataCollectionViewEntity)o).AutoAndLicPlate.ToLower().Contains(FilterTextBox.Text.ToLower())
+                || ((DataCollectionViewEntity)o).DriverName.ToLower().Contains(FilterTextBox.Text.ToLower())
+                || ((DataCollectionViewEntity)o).EntityName.ToLower().Contains(FilterTextBox.Text.ToLower())
+                || ((DataCollectionViewEntity)o).PlaceValue.ToLower().Contains(FilterTextBox.Text.ToLower())
+                || ((DataCollectionViewEntity)o).PatientFCdAndFullName.ToLower().Contains(FilterTextBox.Text.ToLower())
+                || ((DataCollectionViewEntity)o).Rescuer1Name.ToLower().Contains(FilterTextBox.Text.ToLower())
+                || ((DataCollectionViewEntity)o).Rescuer2Name.ToLower().Contains(FilterTextBox.Text.ToLower())
+                || ((DataCollectionViewEntity)o).ServiceTypeToString.ToLower().Contains(FilterTextBox.Text.ToLower())); 
         }
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
             this.AddButton.Visibility = this.DeleteButton.Visibility = this.ModifyButton.Visibility = this.DataCollectionListTabItem.Visibility = Visibility.Collapsed;
             this.CloseButton.Visibility = this.dataCollectionDetailTabItem.Visibility = this.SaveButton.Visibility = Visibility.Visible;
+            FilterTextBox.IsEnabled = false;
 
             this.dataCollectionDetailTabItem.IsSelected = true;
             this.TabControl.UpdateLayout();
@@ -43,6 +64,7 @@ namespace InserimentoDatiCroceRossa.UserControls
             {
                 this.AddButton.Visibility = this.DeleteButton.Visibility = this.ModifyButton.Visibility = this.DataCollectionListTabItem.Visibility = Visibility.Collapsed;
                 this.CloseButton.Visibility = this.dataCollectionDetailTabItem.Visibility = this.SaveButton.Visibility = Visibility.Visible;
+                FilterTextBox.IsEnabled = false;
 
                 this.dataCollectionDetailTabItem.IsSelected = true;
                 this.TabControl.UpdateLayout();
@@ -84,6 +106,7 @@ namespace InserimentoDatiCroceRossa.UserControls
         {
             this.AddButton.Visibility = this.DeleteButton.Visibility = this.ModifyButton.Visibility = this.DataCollectionListTabItem.Visibility = Visibility.Visible;
             this.CloseButton.Visibility = this.SaveButton.Visibility = this.dataCollectionDetailTabItem.Visibility = Visibility.Collapsed;
+            FilterTextBox.IsEnabled = true;
 
             this.DataCollectionListTabItem.IsSelected = true;
             this.TabControl.UpdateLayout();
@@ -102,6 +125,11 @@ namespace InserimentoDatiCroceRossa.UserControls
                 this.lvDataCollection.ItemsSource = dataCollectionList;
             }
             
-        }        
+        }
+
+        private void FilterTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            CollectionViewSource.GetDefaultView(lvDataCollection.ItemsSource).Refresh();
+        }
     }
 }

@@ -88,6 +88,39 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Converters\Converters.cs" />
+    <Compile Include="DbModel\Car.cs">
+      <DependentUpon>CroceRossaDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModel\CarTar.cs">
+      <DependentUpon>CroceRossaDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModel\Ent.cs">
+      <DependentUpon>CroceRossaDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModel\Ind.cs">
+      <DependentUpon>CroceRossaDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModel\Ins.cs">
+      <DependentUpon>CroceRossaDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModel\Loc.cs">
+      <DependentUpon>CroceRossaDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModel\Pat.cs">
+      <DependentUpon>CroceRossaDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModel\Per.cs">
+      <DependentUpon>CroceRossaDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModel\Tar.cs">
+      <DependentUpon>CroceRossaDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModel\Usr.cs">
+      <DependentUpon>CroceRossaDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbModel\Vol.cs">
+      <DependentUpon>CroceRossaDbModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="DbServiceObjects\AddressService.cs" />
     <Compile Include="DbServiceObjects\AuthorityService.cs" />
     <Compile Include="DbServiceObjects\AutoService.cs" />
@@ -213,12 +246,6 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="DbModel\Car.cs">
-      <DependentUpon>CroceRossaDbModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DbModel\CarTar.cs">
-      <DependentUpon>CroceRossaDbModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="DbModel\CroceRossaDbModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -233,33 +260,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>CroceRossaDbModel.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="DbModel\Ent.cs">
-      <DependentUpon>CroceRossaDbModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DbModel\Ind.cs">
-      <DependentUpon>CroceRossaDbModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DbModel\Ins.cs">
-      <DependentUpon>CroceRossaDbModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DbModel\Loc.cs">
-      <DependentUpon>CroceRossaDbModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DbModel\Pat.cs">
-      <DependentUpon>CroceRossaDbModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DbModel\Per.cs">
-      <DependentUpon>CroceRossaDbModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DbModel\Tar.cs">
-      <DependentUpon>CroceRossaDbModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DbModel\Usr.cs">
-      <DependentUpon>CroceRossaDbModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DbModel\Vol.cs">
-      <DependentUpon>CroceRossaDbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Objects\Utilities.cs" />
     <Compile Include="Objects\VolunteerEntity.cs" />

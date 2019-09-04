@@ -14,16 +14,7 @@ namespace InserimentoDatiCroceRossa.DbModel
     
     public partial class Ind
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Ind()
-        {
-            this.Ins = new HashSet<Ins>();
-        }
-    
         public int IndOwnId { get; set; }
         public string IndVal { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Ins> Ins { get; set; }
     }
 }

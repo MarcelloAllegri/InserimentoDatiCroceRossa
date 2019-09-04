@@ -45,7 +45,6 @@
           <Property Name="InsSvrTo" Type="int" Nullable="false" />
           <Property Name="InsTyp" Type="int" Nullable="false" />
           <Property Name="InsPerId" Type="int" Nullable="false" />
-          <Property Name="InsIndId" Type="int" Nullable="false" />
           <Property Name="InsPatId" Type="int" Nullable="false" />
           <Property Name="InsCarTarId" Type="int" Nullable="false" />
           <Property Name="InsTimIn" Type="time" Precision="7" />
@@ -58,6 +57,8 @@
           <Property Name="InsChrTo" Type="int" Nullable="false" />
           <Property Name="InsBilNum" Type="int" Nullable="false" />
           <Property Name="InsCrtNum" Type="int" Nullable="false" />
+          <Property Name="InsIndVal" Type="varchar" MaxLength="100" />
+          <Property Name="InsPlcVal" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Loc">
           <Key>
@@ -168,18 +169,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Ins__InsIndId__6A30C649">
-          <End Role="Ind" Type="Self.Ind" Multiplicity="1" />
-          <End Role="Ins" Type="Self.Ins" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Ind">
-              <PropertyRef Name="IndOwnId" />
-            </Principal>
-            <Dependent Role="Ins">
-              <PropertyRef Name="InsIndId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__Ins__InsPatId__6B24EA82">
           <End Role="Pat" Type="Self.Pat" Multiplicity="1" />
           <End Role="Ins" Type="Self.Ins" Multiplicity="*" />
@@ -284,10 +273,6 @@
             <End Role="Ent" EntitySet="Ent" />
             <End Role="Ins" EntitySet="Ins" />
           </AssociationSet>
-          <AssociationSet Name="FK__Ins__InsIndId__6A30C649" Association="Self.FK__Ins__InsIndId__6A30C649">
-            <End Role="Ind" EntitySet="Ind" />
-            <End Role="Ins" EntitySet="Ins" />
-          </AssociationSet>
           <AssociationSet Name="FK__Ins__InsPatId__6B24EA82" Association="Self.FK__Ins__InsPatId__6B24EA82">
             <End Role="Pat" EntitySet="Pat" />
             <End Role="Ins" EntitySet="Ins" />
@@ -351,7 +336,6 @@
           </Key>
           <Property Name="IndOwnId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IndVal" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Ins" Relationship="Self.FK__Ins__InsIndId__6A30C649" FromRole="Ind" ToRole="Ins" />
         </EntityType>
         <EntityType Name="Ins">
           <Key>
@@ -363,7 +347,6 @@
           <Property Name="InsSvrTo" Type="Int32" Nullable="false" />
           <Property Name="InsTyp" Type="Int32" Nullable="false" />
           <Property Name="InsPerId" Type="Int32" Nullable="false" />
-          <Property Name="InsIndId" Type="Int32" Nullable="false" />
           <Property Name="InsPatId" Type="Int32" Nullable="false" />
           <Property Name="InsCarTarId" Type="Int32" Nullable="false" />
           <Property Name="InsTimIn" Type="Time" Precision="7" />
@@ -378,7 +361,6 @@
           <Property Name="InsCrtNum" Type="Int32" Nullable="false" />
           <NavigationProperty Name="CarTar" Relationship="Self.FK__Ins__InsCarTarId__6C190EBB" FromRole="Ins" ToRole="CarTar" />
           <NavigationProperty Name="Ent" Relationship="Self.FK__Ins__InsChrTo__6FE99F9F" FromRole="Ins" ToRole="Ent" />
-          <NavigationProperty Name="Ind" Relationship="Self.FK__Ins__InsIndId__6A30C649" FromRole="Ins" ToRole="Ind" />
           <NavigationProperty Name="Vol" Relationship="Self.FK__Ins__InsAutId__6D0D32F4" FromRole="Ins" ToRole="Vol" />
           <NavigationProperty Name="Pat" Relationship="Self.FK__Ins__InsPatId__6B24EA82" FromRole="Ins" ToRole="Pat" />
           <NavigationProperty Name="Per" Relationship="Self.FK__Ins__InsPerId__693CA210" FromRole="Ins" ToRole="Per" />
@@ -386,6 +368,8 @@
           <NavigationProperty Name="Vol2" Relationship="Self.FK__Ins__InsSoc2Id__6EF57B66" FromRole="Ins" ToRole="Vol" />
           <NavigationProperty Name="Loc" Relationship="Self.FK__Ins__InsSvrFrm__6754599E" FromRole="Ins" ToRole="Loc" />
           <NavigationProperty Name="Loc1" Relationship="Self.FK__Ins__InsSvrTo__68487DD7" FromRole="Ins" ToRole="Loc" />
+          <Property Name="InsIndVal" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="InsPlcVal" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Loc">
           <Key>
@@ -480,18 +464,6 @@
             </Principal>
             <Dependent Role="Ins">
               <PropertyRef Name="InsChrTo" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Ins__InsIndId__6A30C649">
-          <End Role="Ind" Type="Self.Ind" Multiplicity="1" />
-          <End Role="Ins" Type="Self.Ins" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Ind">
-              <PropertyRef Name="IndOwnId" />
-            </Principal>
-            <Dependent Role="Ins">
-              <PropertyRef Name="InsIndId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -606,10 +578,6 @@
             <End Role="Ent" EntitySet="Ent" />
             <End Role="Ins" EntitySet="Ins" />
           </AssociationSet>
-          <AssociationSet Name="FK__Ins__InsIndId__6A30C649" Association="Self.FK__Ins__InsIndId__6A30C649">
-            <End Role="Ind" EntitySet="Ind" />
-            <End Role="Ins" EntitySet="Ins" />
-          </AssociationSet>
           <AssociationSet Name="FK__Ins__InsAutId__6D0D32F4" Association="Self.FK__Ins__InsAutId__6D0D32F4">
             <End Role="Vol" EntitySet="Vol" />
             <End Role="Ins" EntitySet="Ins" />
@@ -692,13 +660,14 @@
           <EntitySetMapping Name="Ins">
             <EntityTypeMapping TypeName="CroceRossaModel.Ins">
               <MappingFragment StoreEntitySet="Ins">
+                <ScalarProperty Name="InsPlcVal" ColumnName="InsPlcVal" />
+                <ScalarProperty Name="InsIndVal" ColumnName="InsIndVal" />
                 <ScalarProperty Name="InsOwnId" ColumnName="InsOwnId" />
                 <ScalarProperty Name="InsSvrDat" ColumnName="InsSvrDat" />
                 <ScalarProperty Name="InsSvrFrm" ColumnName="InsSvrFrm" />
                 <ScalarProperty Name="InsSvrTo" ColumnName="InsSvrTo" />
                 <ScalarProperty Name="InsTyp" ColumnName="InsTyp" />
                 <ScalarProperty Name="InsPerId" ColumnName="InsPerId" />
-                <ScalarProperty Name="InsIndId" ColumnName="InsIndId" />
                 <ScalarProperty Name="InsPatId" ColumnName="InsPatId" />
                 <ScalarProperty Name="InsCarTarId" ColumnName="InsCarTarId" />
                 <ScalarProperty Name="InsTimIn" ColumnName="InsTimIn" />

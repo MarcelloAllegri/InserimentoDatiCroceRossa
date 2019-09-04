@@ -44,22 +44,17 @@ namespace InserimentoDatiCroceRossa.Objects
 
                 return string.Empty;
             }
-        }
+        }        
 
-        public string AddressName
-        {
-            get { return base.AddressId == -1 ? string.Empty : new AddressService().GetAddressById(base.AddressId).AddressName; }
-        }
+        //public string ServiceFrom
+        //{
+        //    get { return base.ServiceFromId != -1 ? new CityService().GetCityById(base.ServiceFromId).CityName : string.Empty; }
+        //}
 
-        public string ServiceFrom
-        {
-            get { return base.ServiceFromId != -1 ? new CityService().GetCityById(base.ServiceFromId).CityName : string.Empty; }
-        }
-
-        public string ServiceTo
-        {
-            get { return base.ServiceToId != -1 ? new CityService().GetCityById(base.ServiceToId).CityName : string.Empty; }
-        }
+        //public string ServiceTo
+        //{
+        //    get { return base.ServiceToId != -1 ? new CityService().GetCityById(base.ServiceToId).CityName : string.Empty; }
+        //}
 
         public string AutoAndLicPlate
         {

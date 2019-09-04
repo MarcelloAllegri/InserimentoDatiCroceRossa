@@ -53,12 +53,21 @@ namespace InserimentoDatiCroceRossa.Objects
             set { m_PatientId = value; }
         }
 
-        private int m_AddressId;
+        private string m_AddressValue;
 
-        public int AddressId
+        public string AddressValue
         {
-            get { return m_AddressId; }
-            set { m_AddressId = value; }
+            get { return m_AddressValue; }
+            set { m_AddressValue = value; }
+        }
+
+        
+        private string m_PlaceValue;
+
+        public string PlaceValue
+        {
+            get { return m_PlaceValue; }
+            set { m_PlaceValue = value; }
         }
 
         private int m_PathologyId;

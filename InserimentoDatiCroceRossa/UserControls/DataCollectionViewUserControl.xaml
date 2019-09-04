@@ -11,6 +11,7 @@
     <Grid x:Name="MainGrid">
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
+            
             <RowDefinition/>
         </Grid.RowDefinitions>
 
@@ -33,6 +34,10 @@
             <Button x:Name="CloseButton" Click="CloseButton_Click" Visibility="Collapsed" ToolTip="{x:Static p:Tooltip.Close}">
                 <Image Source="{utility:Images ImageName=close}"/>
             </Button>
+
+            <Separator/>
+
+            <TextBox Name="FilterTextBox" Margin="5,0,5,0" Width="50" TextChanged="FilterTextBox_TextChanged" />
         </ToolBar>        
 
         <TabControl Grid.Row="1" x:Name="TabControl">
@@ -47,9 +52,10 @@
                                 <GridViewColumn Header="Tipologia di servizio" Width="Auto" DisplayMemberBinding="{Binding Path=ServiceTypeToString,Mode=OneWay}"/>
                                 <GridViewColumn Header="Paziente" Width="Auto" DisplayMemberBinding="{Binding Path=PatientFCdAndFullName,Mode=OneWay}"/>
                                 <GridViewColumn Header="Patologia" Width="Auto" DisplayMemberBinding="{Binding Path=PathologyName,Mode=OneWay}"/>
-                                <GridViewColumn Header="Indirizzo" Width="Auto" DisplayMemberBinding="{Binding Path=AddressName,Mode=OneWay}"/>
-                                <GridViewColumn Header="Servizio da" Width="Auto" DisplayMemberBinding="{Binding Path=ServiceFrom,Mode=OneWay}"/>
-                                <GridViewColumn Header="Servizio a" Width="Auto" DisplayMemberBinding="{Binding Path=ServiceTo,Mode=OneWay}"/>
+                                <GridViewColumn Header="Indirizzo" Width="Auto" DisplayMemberBinding="{Binding Path=AddressValue,Mode=OneWay}"/>
+                                <GridViewColumn Header="Città" Width="Auto" DisplayMemberBinding="{Binding Path=PlaceValue,Mode=OneWay}"/>
+                                <!--<GridViewColumn Header="Servizio da" Width="Auto" DisplayMemberBinding="{Binding Path=ServiceFrom,Mode=OneWay}"/>
+                                <GridViewColumn Header="Servizio a" Width="Auto" DisplayMemberBinding="{Binding Path=ServiceTo,Mode=OneWay}"/>-->
                                 <GridViewColumn Header="Auto CRI" Width="Auto" DisplayMemberBinding="{Binding Path=AutoAndLicPlate,Mode=OneWay}"/>
                                 <GridViewColumn Header="Uscita ore" Width="Auto" DisplayMemberBinding="{Binding Path=ExitTime,Mode=OneWay}"/>
                                 <GridViewColumn Header="Rientro ore" Width="Auto" DisplayMemberBinding="{Binding Path=ReturnTime,Mode=OneWay}"/>

@@ -19,7 +19,6 @@
         <AssociationConnector Association="CroceRossaModel.FK__CarTar__TarId__619B8048" ManuallyRouted="false" />
         <AssociationConnector Association="CroceRossaModel.FK__Ins__InsCarTarId__6C190EBB" ManuallyRouted="false" />
         <AssociationConnector Association="CroceRossaModel.FK__Ins__InsChrTo__6FE99F9F" ManuallyRouted="false" />
-        <AssociationConnector Association="CroceRossaModel.FK__Ins__InsIndId__6A30C649" ManuallyRouted="false" />
         <AssociationConnector Association="CroceRossaModel.FK__Ins__InsAutId__6D0D32F4" ManuallyRouted="false" />
         <AssociationConnector Association="CroceRossaModel.FK__Ins__InsPatId__6B24EA82" ManuallyRouted="false" />
         <AssociationConnector Association="CroceRossaModel.FK__Ins__InsPerId__693CA210" ManuallyRouted="false" />
