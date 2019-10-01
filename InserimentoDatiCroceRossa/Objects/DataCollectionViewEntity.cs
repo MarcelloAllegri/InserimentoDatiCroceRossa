@@ -11,9 +11,11 @@ namespace InserimentoDatiCroceRossa.Objects
     {
         public DataCollectionViewEntity() : base()
         {
-           
-        }
+            base.PathologyId = base.PatientId = base.Id = base.Rescuer1Id = base.Rescuer2Id = base.ServiceToId = 
+                base.ServiceFromId = base.CarLicPlateAssociationId = base.DriverId = base.EntityId = -1;
 
+            this.ServiceDate = DateTime.Today;
+        }
         public string ServiceTypeToString
         {
             get
@@ -31,7 +33,6 @@ namespace InserimentoDatiCroceRossa.Objects
                 }
             }
         }
-
         public string PatientFCdAndFullName
         {
             get
@@ -45,17 +46,6 @@ namespace InserimentoDatiCroceRossa.Objects
                 return string.Empty;
             }
         }        
-
-        //public string ServiceFrom
-        //{
-        //    get { return base.ServiceFromId != -1 ? new CityService().GetCityById(base.ServiceFromId).CityName : string.Empty; }
-        //}
-
-        //public string ServiceTo
-        //{
-        //    get { return base.ServiceToId != -1 ? new CityService().GetCityById(base.ServiceToId).CityName : string.Empty; }
-        //}
-
         public string AutoAndLicPlate
         {
             get
@@ -69,25 +59,38 @@ namespace InserimentoDatiCroceRossa.Objects
                 }
             }
         }
-
+        public string LicPlateByAssociationId
+        {
+            get
+            {
+                if (base.CarLicPlateAssociationId == -1)
+                    return string.Empty;
+                else
+                {
+                    CarLicencePlateAssociationEntity item = new CarLicPlateAssociationService().GetAssociationById(base.CarLicPlateAssociationId);
+                    return item.LicencePlate;
+                }
+            }
+        }
         public string DriverName
         {
             get { return base.DriverId == -1 ? string.Empty : new VolunteerService().GetVolunteerById(base.DriverId).SurnameAndName; }
         }
-
         public string Rescuer1Name
         {
             get { return base.Rescuer1Id == -1 ? string.Empty : new VolunteerService().GetVolunteerById(base.Rescuer1Id).SurnameAndName; }
         }
-
         public string Rescuer2Name
         {
             get { return base.Rescuer2Id == -1 ? string.Empty : new VolunteerService().GetVolunteerById(base.Rescuer2Id).SurnameAndName; }
         }
-
         public string EntityName
         {
             get { return base.EntityId == -1 ? string.Empty : new AuthorityService().GetAuthorityById(base.EntityId).AuthorityName; }
+        }
+        public string PathologyName
+        {
+            get { return new PathologyService().GetPathologyById(base.PathologyId).PathologyName; }            
         }
     }
 }

@@ -84,7 +84,7 @@ namespace InserimentoDatiCroceRossa.Objects
         {
             get { return m_CarLicPlateAssociationId; }
             set { m_CarLicPlateAssociationId = value; }
-        }
+        }      
 
         private TimeSpan? m_ExitTime;
 

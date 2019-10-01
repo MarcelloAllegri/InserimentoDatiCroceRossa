@@ -3,17 +3,21 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:InserimentoDatiCroceRossa.UserControls"
+             xmlns:userControls="clr-namespace:InserimentoDatiCroceRossa.UserControls"
              xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
-             x:Name="dataCollectionDetailUserControl">
+             xmlns:utility="clr-namespace:InserimentoDatiCroceRossa.Objects"
+             xmlns:p="clr-namespace:InserimentoDatiCroceRossa.Properties"
+             x:Name="dataCollectionDetailUserControl"
+             Loaded="DataCollectionDetailUserControl_Loaded">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="150"/>
-            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="150"/>
-            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="*"/>            
+            
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
@@ -26,6 +30,9 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="30"/>
             <RowDefinition Height="Auto"/>            
         </Grid.RowDefinitions>
 
@@ -35,20 +42,149 @@
 
         <xctk:IntegerUpDown Grid.Row="0" Grid.Column="1" Margin="0,5,0,0" Value="{Binding ElementName=dataCollectionDetailUserControl,Path=DataContext.BillNumber,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
 
-        <GroupBox Grid.Row="3" Grid.ColumnSpan="4">
+        <DockPanel Grid.Row="1" Grid.Column="1" Margin="0,5,0,0">
+            <Button x:Name="PatientChooserButton" Content="..." Click="PatientChooserButton_Click" Width="25" DockPanel.Dock="Right"/>
+            <TextBox x:Name="SelectedPatientTextBox" IsReadOnly="True" />            
+        </DockPanel>
+        
+        <ComboBox Grid.Row="2" Grid.Column="1" Margin="0,5,0,0"
+                  ItemsSource="{Binding ElementName=dataCollectionDetailUserControl,Path=PathologiesCollection,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"
+                  SelectedValuePath="Id"
+                  SelectedValue="{Binding ElementName=dataCollectionDetailUserControl,Path=DataContext.PathologyId,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                  DisplayMemberPath="PathologyName"/>
+        
+        <GroupBox Grid.Row="3" Grid.ColumnSpan="5" Header="Servizio" BorderThickness="2">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="150"/>
-                    <ColumnDefinition Width="200"/>
+                    <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="150"/>
-                    <ColumnDefinition Width="200"/>
+                    <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>                    
                 </Grid.RowDefinitions>
+
+                <TextBlock Grid.Row="0" Name="ServiceDateTextBlock" Text="Data Servizio" Margin="5,5,0,0"/>
+                <TextBlock Grid.Row="0" Grid.Column="2" Name="ServiceTypologyTextBlock" Text="Tipologia Servizio" Margin="5,5,0,0"/>
+
+                <xctk:DateTimePicker Grid.Row="0" 
+                                     Grid.Column="1"
+                                     Margin="0,5,0,0"
+                                     AllowTextInput="False"                                                                     
+                                     ShowButtonSpinner="False"
+                                     TimePickerVisibility ="Collapsed"
+                                     Value="{Binding ElementName=dataCollectionDetailUserControl,Path=DataContext.ServiceDate,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                     Format="ShortDate"
+                                     FormatString="dd - MM - yyyy"/>
+
+                <ComboBox Grid.Row="0" Grid.Column="3" Margin="0,5,0,0"
+                          ItemsSource="{Binding ElementName=dataCollectionDetailUserControl,Path=ServiceTypologiesCollection,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"
+                          SelectedValuePath="Key"
+                          SelectedValue="{Binding ElementName=dataCollectionDetailUserControl,Path=DataContext.ServiceType,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                          DisplayMemberPath="Value"/>
+
+                <TextBlock Grid.Row="1" Name="ServicePlaceTextBlock" Text="Località Servizio" Margin="5,5,0,0"/>                
+                <TextBlock Grid.Row="1" Grid.Column="2" Name="ServiceRoadtextBlock" Text="Via Servizio" Margin="5,5,0,0"/>
+
+                <TextBox Grid.Row="1" Grid.Column="1" Margin="0,5,0,0" 
+                         Text="{Binding ElementName=dataCollectionDetailUserControl,Path=DataContext.PlaceValue,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox Grid.Row="1" Grid.Column="3" Margin="0,5,0,0" 
+                         Text="{Binding ElementName=dataCollectionDetailUserControl,Path=DataContext.AddressValue,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>                
             </Grid>
         </GroupBox>
+
+        <TextBlock Grid.Row="4" Name="CarTextBlock" Text="Mezzo" Margin="5,5,0,0"/>
+        <TextBlock Grid.Row="4" Grid.Column="2" Name="LicencePlateTextBlock" Text="Targa" Margin="5,5,0,0"/>
+
+        <ComboBox Grid.Row="4" Grid.Column="1" Margin="0,5,0,0"
+                  ItemsSource="{Binding ElementName=dataCollectionDetailUserControl,Path=CarLicPlateAssociations,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"
+                  SelectedValuePath="Id"
+                  SelectedValue="{Binding ElementName=dataCollectionDetailUserControl,Path=DataContext.CarLicPlateAssociationId,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                  DisplayMemberPath="CarName"/>
+        <TextBlock Grid.Row="4" Grid.Column="3" Margin="5,5,0,0"
+                   Text="{Binding ElementName=dataCollectionDetailUserControl,Path=DataContext.LicPlateByAssociationId,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" />
+        
+        <TextBlock Grid.Row="5" Name="ExitTimeTextBlock" Text="Uscita Ore" Margin="5,5,0,0"/>
+        <xctk:TimePicker Grid.Row="5"
+                         Grid.Column="1"
+                         Margin="0,5,0,0"
+                         AllowTextInput="True"
+                         TextAlignment="Left"
+                         ShowButtonSpinner="False"
+                         ShowDropDownButton="False"
+                         Value="{Binding ElementName=dataCollectionDetailUserControl,Path=DataContext.ExitTime,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"                            
+                         FormatString=" HH:mm"/>
+        <TextBlock Grid.Row="5" Grid.Column="2" Name="ReturningTimeTextBlock" Text="Rientro ore" Margin="5,5,0,0"/>
+        <xctk:TimePicker Grid.Row="5"
+                         Grid.Column="3"
+                         Margin="0,5,0,0"
+                         AllowTextInput="True"
+                         TextAlignment="Left"
+                         ShowButtonSpinner="False"
+                         ShowDropDownButton="False"
+                         Value="{Binding ElementName=dataCollectionDetailUserControl,Path=DataContext.ReturnTime,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"                            
+                         FormatString=" HH:mm"/>
+        
+        <TextBlock Grid.Row="6" Name="ExitKmTextBlock" Text="Km uscita" Margin="5,5,0,0"/>
+        <xctk:IntegerUpDown Grid.Row="6" Grid.Column="1" Margin="0,5,0,0"
+                            ShowButtonSpinner="False"
+                            IsEnabled="False"
+                            Value="{Binding ElementName=dataCollectionDetailUserControl,Path=DataContext.ExitKm,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
+        <TextBlock Grid.Row="6" Grid.Column="2" Name="ReturningKmTextBlock" Text="Km Rientro" Margin="5,5,0,0"/>
+        <xctk:IntegerUpDown Grid.Row="6" Grid.Column="3" Margin="0,5,0,0"
+                            ShowButtonSpinner="False"
+                            IsEnabled="False"
+                            Value="{Binding ElementName=dataCollectionDetailUserControl,Path=DataContext.ExitKm,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
+
+        <TextBlock Grid.Row="7" Name="DriverTextBlock" Text="Autista" Margin="5,5,0,0"/>
+        <ComboBox Grid.Row="7" Grid.Column="1" Margin="0,5,0,0"
+                  ItemsSource="{Binding ElementName=dataCollectionDetailUserControl,Path=VolunteersList,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"
+                  SelectedValuePath="Id"
+                  SelectedValue="{Binding ElementName=dataCollectionDetailUserControl,Path=DataContext.DriverId,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                  DisplayMemberPath="SurnameAndName"/>
+
+        <TextBlock Grid.Row="8" Name="FirstRescuerTextBlock" Text="1° Soccorritore" Margin="5,5,0,0"/>
+        <ComboBox Grid.Row="8" Grid.Column="1" Margin="0,5,0,0"
+                  ItemsSource="{Binding ElementName=dataCollectionDetailUserControl,Path=VolunteersList,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"
+                  SelectedValuePath="Id"
+                  SelectedValue="{Binding ElementName=dataCollectionDetailUserControl,Path=DataContext.Rescuer1Id,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                  DisplayMemberPath="SurnameAndName"/>
+        <TextBlock Grid.Row="8" Grid.Column="2" Name="SecondRescuerTextBlock" Text="2° Soccorritore" Margin="5,5,0,0"/>
+        <ComboBox Grid.Row="8" Grid.Column="3" Margin="0,5,0,0"
+                  ItemsSource="{Binding ElementName=dataCollectionDetailUserControl,Path=VolunteersList,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"
+                  SelectedValuePath="Id"
+                  SelectedValue="{Binding ElementName=dataCollectionDetailUserControl,Path=DataContext.Rescuer2Id,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                  DisplayMemberPath="SurnameAndName"/>
+        
+        <TextBlock Grid.Row="9" Name="PublicAthorityTextBlock" Text="Viaggio a carico di" Margin="5,5,0,0"/>
+        <ComboBox Grid.Row="9" Grid.Column="1" Margin="0,5,0,0"
+                  ItemsSource="{Binding ElementName=dataCollectionDetailUserControl,Path=EntitiesList,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"
+                  SelectedValuePath="Id"
+                  SelectedValue="{Binding ElementName=dataCollectionDetailUserControl,Path=DataContext.EntityId,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                  DisplayMemberPath="AuthorityName"/>
+        
+        <TextBlock Grid.Row="9" Grid.Column="2" Name="TagNrTextBlock" Text="Numero Cartellino" Margin="5,5,0,0"/>
+        <xctk:IntegerUpDown Grid.Row="9" Grid.Column="3" Margin="0,5,0,0"
+                            ShowButtonSpinner="False"
+                            IsEnabled="False"
+                            Minimum="1"
+                            Value="{Binding ElementName=dataCollectionDetailUserControl,Path=DataContext.TagNumber,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
+
+        <ToolBar Grid.Row="11" Visibility="Collapsed" x:Name="PatientChooserToolbar" Grid.ColumnSpan="4">
+            <Button x:Name="SaveButton" Click="SaveButton_Click" ToolTip="{x:Static p:Tooltip.Save}">
+                <Image Source="{utility:Images ImageName=Floppy}" Height="Auto" Width="Auto" />
+            </Button>
+
+            <Separator/>
+
+            <Button x:Name="CloseButton" Click="CloseButton_Click"  ToolTip="{x:Static p:Tooltip.Close}">
+                <Image Source="{utility:Images ImageName=close}"/>
+            </Button>
+        </ToolBar>
+        
+        <userControls:PatientChooserUserControl x:Name="patientChooserUserControl" Visibility="Collapsed" Grid.Row="12" Grid.ColumnSpan="4"/>
     </Grid>
 </UserControl>

@@ -21,6 +21,20 @@ namespace InserimentoDatiCroceRossa.DbServiceObjects
             return pathologies;
         }
 
+        public PathologyEntity GetPathologyById(int pathologyId)
+        {
+            PathologyEntity pathology = new PathologyEntity(); 
+
+            if (pathologyId > 0)
+            {
+                using (var db = new CroceRossaEntities())
+                {
+                    var pat = db.Pat.FirstOrDefault(x => x.PatOwnId == pathologyId);
+                    pathology = pat == null ? new PathologyEntity() : pat.toPathologyEntity();
+                }
+            }
+            return pathology;
+        }
         public int Add(PathologyEntity pathology)
         {
             try
@@ -79,7 +93,7 @@ namespace InserimentoDatiCroceRossa.DbServiceObjects
             {
                 return -1;
             }
-        }
+        }        
     }
     public static class PatDbMapper
     {

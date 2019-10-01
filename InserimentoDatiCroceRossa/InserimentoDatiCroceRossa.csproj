@@ -210,6 +210,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UserControls\PatientChooserUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UserControls\PatientDetailUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -315,6 +319,9 @@
     </Compile>
     <Compile Include="UserControls\PathologyViewUserControl.xaml.cs">
       <DependentUpon>PathologyViewUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\PatientChooserUserControl.xaml.cs">
+      <DependentUpon>PatientChooserUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\PatientDetailUserControl.xaml.cs">
       <DependentUpon>PatientDetailUserControl.xaml</DependentUpon>

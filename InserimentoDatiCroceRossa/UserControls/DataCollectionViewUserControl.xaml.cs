@@ -53,7 +53,7 @@ namespace InserimentoDatiCroceRossa.UserControls
             this.dataCollectionDetailTabItem.IsSelected = true;
             this.TabControl.UpdateLayout();
 
-            dataCollectionDetailUserControl.DataContext = new DataCollectionEntity();
+            dataCollectionDetailUserControl.DataContext = new DataCollectionViewEntity();
         }
 
         private void ModifyButton_Click(object sender, RoutedEventArgs e)
