@@ -80,6 +80,18 @@ namespace InserimentoDatiCroceRossa.DbServiceObjects
                 return -1;
             }
         }
+        public int GetKmByAssociationId(int Id)
+        {
+            int km = 0;
+
+            using (var db = new CroceRossaEntities())
+            {
+                if (db.Ins.Any() && db.Ins.Any(x => x.InsCarTarId == Id))
+                    km = db.Ins.Where(x => x.InsCarTarId == Id).Max(x => x.InsKmInt);
+            }
+
+            return km;
+        }
     }
 
     public static class InsDbMapper

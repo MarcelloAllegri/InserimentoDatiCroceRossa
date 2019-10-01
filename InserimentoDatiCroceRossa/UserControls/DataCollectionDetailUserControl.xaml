@@ -99,13 +99,13 @@
         <TextBlock Grid.Row="4" Name="CarTextBlock" Text="Mezzo" Margin="5,5,0,0"/>
         <TextBlock Grid.Row="4" Grid.Column="2" Name="LicencePlateTextBlock" Text="Targa" Margin="5,5,0,0"/>
 
-        <ComboBox Grid.Row="4" Grid.Column="1" Margin="0,5,0,0"
+        <ComboBox Grid.Row="4" Grid.Column="1" Margin="0,5,0,0" x:Name="CarLicPlateSelectionComboBox"
                   ItemsSource="{Binding ElementName=dataCollectionDetailUserControl,Path=CarLicPlateAssociations,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"
                   SelectedValuePath="Id"
                   SelectedValue="{Binding ElementName=dataCollectionDetailUserControl,Path=DataContext.CarLicPlateAssociationId,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
-                  DisplayMemberPath="CarName"/>
-        <TextBlock Grid.Row="4" Grid.Column="3" Margin="5,5,0,0"
-                   Text="{Binding ElementName=dataCollectionDetailUserControl,Path=DataContext.LicPlateByAssociationId,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" />
+                  DisplayMemberPath="CarName"
+                  SelectionChanged="CarLicPlateSelectionComboBox_SelectionChanged"/>
+        <TextBlock Grid.Row="4" Grid.Column="3" Margin="5,5,0,0" x:Name="LicencePlateTextBox"/>
         
         <TextBlock Grid.Row="5" Name="ExitTimeTextBlock" Text="Uscita Ore" Margin="5,5,0,0"/>
         <xctk:TimePicker Grid.Row="5"
@@ -183,8 +183,7 @@
             <Button x:Name="CloseButton" Click="CloseButton_Click"  ToolTip="{x:Static p:Tooltip.Close}">
                 <Image Source="{utility:Images ImageName=close}"/>
             </Button>
-        </ToolBar>
-        
+        </ToolBar>        
         <userControls:PatientChooserUserControl x:Name="patientChooserUserControl" Visibility="Collapsed" Grid.Row="12" Grid.ColumnSpan="4"/>
     </Grid>
 </UserControl>

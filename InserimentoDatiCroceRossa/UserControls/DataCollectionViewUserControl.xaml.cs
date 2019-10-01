@@ -69,7 +69,7 @@ namespace InserimentoDatiCroceRossa.UserControls
                 this.dataCollectionDetailTabItem.IsSelected = true;
                 this.TabControl.UpdateLayout();
 
-                dataCollectionDetailUserControl.DataContext = selectedItem as DataCollectionEntity;
+                dataCollectionDetailUserControl.DataContext = selectedItem as DataCollectionViewEntity;
             }
         }
 
@@ -111,7 +111,7 @@ namespace InserimentoDatiCroceRossa.UserControls
             this.DataCollectionListTabItem.IsSelected = true;
             this.TabControl.UpdateLayout();
 
-            dataCollectionDetailUserControl.DataContext = new DataCollectionEntity();
+            dataCollectionDetailUserControl.DataContext = new DataCollectionViewEntity();
             RefreshData();
         }
 

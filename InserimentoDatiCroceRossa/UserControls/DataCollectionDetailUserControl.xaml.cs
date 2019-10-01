@@ -30,7 +30,6 @@ namespace InserimentoDatiCroceRossa.UserControls
         private ObservableCollection<CarLicencePlateAssociationEntity> m_carLicPlateAssociations;
         private ObservableCollection<VolunteerEntity> m_volunteersList;
         private ObservableCollection<AuthorityEntity> m_entitiesList;
-
         protected void NotifyPropertyChanged(string name)
         {
             PropertyChangedEventHandler handler = PropertyChanged;
@@ -106,12 +105,10 @@ namespace InserimentoDatiCroceRossa.UserControls
         {
             InitializeComponent();
         }
-
         private void DataCollectionDetailUserControl_Loaded(object sender, RoutedEventArgs e)
         {
             this.RefreshBackgroundData();
         }
-
         private void RefreshBackgroundData()
         {
             using (new WaitCursor())
@@ -123,14 +120,12 @@ namespace InserimentoDatiCroceRossa.UserControls
                 this.EntitiesList = new ObservableCollection<AuthorityEntity>(new AuthorityService().GetAllAuthorities());
             }
         }
-
         private void PatientChooserButton_Click(object sender, RoutedEventArgs e)
         {
             this.PatientChooserToolbar.Visibility = Visibility.Visible;
             this.patientChooserUserControl.Visibility = Visibility.Visible;
             this.patientChooserUserControl.RefreshData();
         }
-
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
             var selectedItem = this.patientChooserUserControl.lvPatient.SelectedItem;
@@ -141,11 +136,19 @@ namespace InserimentoDatiCroceRossa.UserControls
                 this.SelectedPatientTextBox.Text = (this.DataContext as DataCollectionViewEntity).PatientFCdAndFullName;
             }
         }
-
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             this.PatientChooserToolbar.Visibility = Visibility.Collapsed;
             this.patientChooserUserControl.Visibility = Visibility.Collapsed;
+        }
+
+        private void CarLicPlateSelectionComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (this.DataContext != null)
+            {
+                LicencePlateTextBox.Text = (this.DataContext as DataCollectionViewEntity).LicPlateByAssociationId;
+                (this.DataContext as DataCollectionViewEntity).ExitKm = new DataCollectionService().GetKmByAssociationId((this.DataContext as DataCollectionViewEntity).CarLicPlateAssociationId);
+            }
         }
     }
 }

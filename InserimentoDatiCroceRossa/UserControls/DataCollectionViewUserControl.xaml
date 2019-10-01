@@ -37,7 +37,7 @@
 
             <Separator/>
 
-            <TextBox Name="FilterTextBox" Margin="5,0,5,0" Width="50" TextChanged="FilterTextBox_TextChanged" />
+            <TextBox Name="FilterTextBox" Margin="5,0,5,0" TextChanged="FilterTextBox_TextChanged" Width="200"/>
         </ToolBar>        
 
         <TabControl Grid.Row="1" x:Name="TabControl">
