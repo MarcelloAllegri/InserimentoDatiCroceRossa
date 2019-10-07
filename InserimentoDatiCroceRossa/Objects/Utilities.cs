@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Drawing;
+using System.Globalization;
 using System.IO;
 using System.Windows;
+using System.Windows.Data;
 using System.Windows.Forms;
 using System.Windows.Markup;
 using System.Windows.Media.Imaging;
@@ -44,6 +46,24 @@ namespace InserimentoDatiCroceRossa.Objects
         public void Dispose()
         {
             Cursor.Current = m_oldCursor;
+        }
+    }
+    public class DateTimeToTimespanConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return value;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            if (value != null && value is DateTime)
+            {
+                DateTime time = (DateTime)value;
+                return new TimeSpan(time.Hour, time.Minute, 0);
+            }
+
+            return null;
         }
     }
 }

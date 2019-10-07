@@ -8,10 +8,10 @@ namespace InserimentoDatiCroceRossa.DbServiceObjects
 {
     public class DataCollectionService
     {
-        public List<DataCollectionEntity> GetAllData()
+        public List<DataCollectionViewEntity> GetAllData()
         {
             List<Ins> dataDb = new List<Ins>();
-            List<DataCollectionEntity> dataList = new List<DataCollectionEntity>();
+            List<DataCollectionViewEntity> dataList = new List<DataCollectionViewEntity>();
 
             using (var db = new CroceRossaEntities())
             {
@@ -33,7 +33,7 @@ namespace InserimentoDatiCroceRossa.DbServiceObjects
                     return 0;
                 }
             }
-            catch
+            catch (Exception ex)
             {
                 return -1;
             }
@@ -108,12 +108,12 @@ namespace InserimentoDatiCroceRossa.DbServiceObjects
             ins.InsKmOut = dataList.ExitKm;
             ins.InsPatId = dataList.PathologyId;
             ins.InsPerId = dataList.PatientId;
-            ins.InsSvrDat = dataList.ServiceDate;
-            ins.InsSvrFrm = dataList.ServiceFromId;
-            ins.InsSvrTo = dataList.ServiceToId;
+            ins.InsSvrDat = dataList.ServiceDate;            
             ins.InsTyp = dataList.ServiceType;
             ins.InsSoc1Id = dataList.Rescuer1Id;
-            ins.InsSoc2Id = dataList.Rescuer2Id;
+            if (dataList.Rescuer2Id != -1)
+                ins.InsSoc2Id = dataList.Rescuer2Id;
+            else ins.InsSoc2Id = null;
             ins.InsAutId = dataList.DriverId;
             ins.InsBilNum = dataList.BillNumber;
             ins.InsTimIn = dataList.ReturnTime;
@@ -123,9 +123,9 @@ namespace InserimentoDatiCroceRossa.DbServiceObjects
             return ins;
         }
 
-        public static DataCollectionEntity toDataCollectionEntity(this Ins ins)
+        public static DataCollectionViewEntity toDataCollectionEntity(this Ins ins)
         {
-            return new DataCollectionEntity()
+            return new DataCollectionViewEntity()
             {
                 Id = ins.InsOwnId,
                 CarLicPlateAssociationId = ins.InsCarTarId,
@@ -135,12 +135,10 @@ namespace InserimentoDatiCroceRossa.DbServiceObjects
                 ExitKm = ins.InsKmOut,
                 PathologyId = ins.InsPatId,
                 PatientId = ins.InsPerId,
-                ServiceDate = ins.InsSvrDat,
-                ServiceFromId = ins.InsSvrFrm,
-                ServiceToId = ins.InsSvrTo,
+                ServiceDate = ins.InsSvrDat,               
                 ServiceType = ins.InsTyp,
                 Rescuer1Id = ins.InsSoc1Id,
-                Rescuer2Id = ins.InsSoc2Id,
+                Rescuer2Id = ins.InsSoc2Id.HasValue ? ins.InsSoc2Id.Value : -1,
                 DriverId = ins.InsAutId,
                 BillNumber = ins.InsBilNum,
                 ReturnTime = ins.InsTimIn,

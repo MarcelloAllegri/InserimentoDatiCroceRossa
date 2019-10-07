@@ -11,6 +11,11 @@
              xmlns:p="clr-namespace:InserimentoDatiCroceRossa.Properties"
              x:Name="dataCollectionDetailUserControl"
              Loaded="DataCollectionDetailUserControl_Loaded">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <utility:DateTimeToTimespanConverter x:Key="dateTimeToTimespanConverter"/>
+        </ResourceDictionary>
+    </UserControl.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="150"/>
@@ -115,7 +120,7 @@
                          TextAlignment="Left"
                          ShowButtonSpinner="False"
                          ShowDropDownButton="False"
-                         Value="{Binding ElementName=dataCollectionDetailUserControl,Path=DataContext.ExitTime,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"                            
+                         Value="{Binding ElementName=dataCollectionDetailUserControl,Path=DataContext.ExitTime,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,Converter={StaticResource dateTimeToTimespanConverter}}"                            
                          FormatString=" HH:mm"/>
         <TextBlock Grid.Row="5" Grid.Column="2" Name="ReturningTimeTextBlock" Text="Rientro ore" Margin="5,5,0,0"/>
         <xctk:TimePicker Grid.Row="5"
@@ -125,7 +130,7 @@
                          TextAlignment="Left"
                          ShowButtonSpinner="False"
                          ShowDropDownButton="False"
-                         Value="{Binding ElementName=dataCollectionDetailUserControl,Path=DataContext.ReturnTime,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"                            
+                         Value="{Binding ElementName=dataCollectionDetailUserControl,Path=DataContext.ReturnTime,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,Converter={StaticResource dateTimeToTimespanConverter}}"                            
                          FormatString=" HH:mm"/>
         
         <TextBlock Grid.Row="6" Name="ExitKmTextBlock" Text="Km uscita" Margin="5,5,0,0"/>
@@ -136,8 +141,8 @@
         <TextBlock Grid.Row="6" Grid.Column="2" Name="ReturningKmTextBlock" Text="Km Rientro" Margin="5,5,0,0"/>
         <xctk:IntegerUpDown Grid.Row="6" Grid.Column="3" Margin="0,5,0,0"
                             ShowButtonSpinner="False"
-                            IsEnabled="False"
-                            Value="{Binding ElementName=dataCollectionDetailUserControl,Path=DataContext.ExitKm,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
+                            IsEnabled="true"
+                            Value="{Binding ElementName=dataCollectionDetailUserControl,Path=DataContext.ReturnKm,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
 
         <TextBlock Grid.Row="7" Name="DriverTextBlock" Text="Autista" Margin="5,5,0,0"/>
         <ComboBox Grid.Row="7" Grid.Column="1" Margin="0,5,0,0"
@@ -169,7 +174,7 @@
         <TextBlock Grid.Row="9" Grid.Column="2" Name="TagNrTextBlock" Text="Numero Cartellino" Margin="5,5,0,0"/>
         <xctk:IntegerUpDown Grid.Row="9" Grid.Column="3" Margin="0,5,0,0"
                             ShowButtonSpinner="False"
-                            IsEnabled="False"
+                            IsEnabled="True"
                             Minimum="1"
                             Value="{Binding ElementName=dataCollectionDetailUserControl,Path=DataContext.TagNumber,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
 

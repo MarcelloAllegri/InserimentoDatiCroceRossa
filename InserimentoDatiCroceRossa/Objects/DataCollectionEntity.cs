@@ -91,7 +91,11 @@ namespace InserimentoDatiCroceRossa.Objects
         public TimeSpan? ExitTime
         {
             get { return m_ExitTime; }
-            set { m_ExitTime = value; NotifyPropertyChanged(nameof(ExitTime)); }
+            set 
+            {                
+                m_ExitTime = value; 
+                NotifyPropertyChanged(nameof(ExitTime)); 
+            }
         }
 
         private TimeSpan? m_ReturnTime;

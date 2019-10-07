@@ -41,8 +41,6 @@
           </Key>
           <Property Name="InsOwnId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="InsSvrDat" Type="datetime" Nullable="false" />
-          <Property Name="InsSvrFrm" Type="int" Nullable="false" />
-          <Property Name="InsSvrTo" Type="int" Nullable="false" />
           <Property Name="InsTyp" Type="int" Nullable="false" />
           <Property Name="InsPerId" Type="int" Nullable="false" />
           <Property Name="InsPatId" Type="int" Nullable="false" />
@@ -53,7 +51,7 @@
           <Property Name="InsKmInt" Type="int" Nullable="false" />
           <Property Name="InsAutId" Type="int" Nullable="false" />
           <Property Name="InsSoc1Id" Type="int" Nullable="false" />
-          <Property Name="InsSoc2Id" Type="int" Nullable="false" />
+          <Property Name="InsSoc2Id" Type="int" />
           <Property Name="InsChrTo" Type="int" Nullable="false" />
           <Property Name="InsBilNum" Type="int" Nullable="false" />
           <Property Name="InsCrtNum" Type="int" Nullable="false" />
@@ -206,7 +204,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Ins__InsSoc2Id__6EF57B66">
-          <End Role="Vol" Type="Self.Vol" Multiplicity="1" />
+          <End Role="Vol" Type="Self.Vol" Multiplicity="0..1" />
           <End Role="Ins" Type="Self.Ins" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Vol">
@@ -214,30 +212,6 @@
             </Principal>
             <Dependent Role="Ins">
               <PropertyRef Name="InsSoc2Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Ins__InsSvrFrm__6754599E">
-          <End Role="Loc" Type="Self.Loc" Multiplicity="1" />
-          <End Role="Ins" Type="Self.Ins" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Loc">
-              <PropertyRef Name="LocOwnId" />
-            </Principal>
-            <Dependent Role="Ins">
-              <PropertyRef Name="InsSvrFrm" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Ins__InsSvrTo__68487DD7">
-          <End Role="Loc" Type="Self.Loc" Multiplicity="1" />
-          <End Role="Ins" Type="Self.Ins" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Loc">
-              <PropertyRef Name="LocOwnId" />
-            </Principal>
-            <Dependent Role="Ins">
-              <PropertyRef Name="InsSvrTo" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -289,14 +263,6 @@
             <End Role="Vol" EntitySet="Vol" />
             <End Role="Ins" EntitySet="Ins" />
           </AssociationSet>
-          <AssociationSet Name="FK__Ins__InsSvrFrm__6754599E" Association="Self.FK__Ins__InsSvrFrm__6754599E">
-            <End Role="Loc" EntitySet="Loc" />
-            <End Role="Ins" EntitySet="Ins" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Ins__InsSvrTo__68487DD7" Association="Self.FK__Ins__InsSvrTo__68487DD7">
-            <End Role="Loc" EntitySet="Loc" />
-            <End Role="Ins" EntitySet="Ins" />
-          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -343,8 +309,6 @@
           </Key>
           <Property Name="InsOwnId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="InsSvrDat" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="InsSvrFrm" Type="Int32" Nullable="false" />
-          <Property Name="InsSvrTo" Type="Int32" Nullable="false" />
           <Property Name="InsTyp" Type="Int32" Nullable="false" />
           <Property Name="InsPerId" Type="Int32" Nullable="false" />
           <Property Name="InsPatId" Type="Int32" Nullable="false" />
@@ -355,7 +319,7 @@
           <Property Name="InsKmInt" Type="Int32" Nullable="false" />
           <Property Name="InsAutId" Type="Int32" Nullable="false" />
           <Property Name="InsSoc1Id" Type="Int32" Nullable="false" />
-          <Property Name="InsSoc2Id" Type="Int32" Nullable="false" />
+          <Property Name="InsSoc2Id" Type="Int32" />
           <Property Name="InsChrTo" Type="Int32" Nullable="false" />
           <Property Name="InsBilNum" Type="Int32" Nullable="false" />
           <Property Name="InsCrtNum" Type="Int32" Nullable="false" />
@@ -366,8 +330,6 @@
           <NavigationProperty Name="Per" Relationship="Self.FK__Ins__InsPerId__693CA210" FromRole="Ins" ToRole="Per" />
           <NavigationProperty Name="Vol1" Relationship="Self.FK__Ins__InsSoc1Id__6E01572D" FromRole="Ins" ToRole="Vol" />
           <NavigationProperty Name="Vol2" Relationship="Self.FK__Ins__InsSoc2Id__6EF57B66" FromRole="Ins" ToRole="Vol" />
-          <NavigationProperty Name="Loc" Relationship="Self.FK__Ins__InsSvrFrm__6754599E" FromRole="Ins" ToRole="Loc" />
-          <NavigationProperty Name="Loc1" Relationship="Self.FK__Ins__InsSvrTo__68487DD7" FromRole="Ins" ToRole="Loc" />
           <Property Name="InsIndVal" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="InsPlcVal" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
@@ -377,8 +339,6 @@
           </Key>
           <Property Name="LocOwnId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="LocPlc" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Ins" Relationship="Self.FK__Ins__InsSvrFrm__6754599E" FromRole="Loc" ToRole="Ins" />
-          <NavigationProperty Name="Ins1" Relationship="Self.FK__Ins__InsSvrTo__68487DD7" FromRole="Loc" ToRole="Ins" />
         </EntityType>
         <EntityType Name="Pat">
           <Key>
@@ -516,7 +476,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Ins__InsSoc2Id__6EF57B66">
-          <End Role="Vol" Type="Self.Vol" Multiplicity="1" />
+          <End Role="Vol" Type="Self.Vol" Multiplicity="0..1" />
           <End Role="Ins" Type="Self.Ins" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Vol">
@@ -524,30 +484,6 @@
             </Principal>
             <Dependent Role="Ins">
               <PropertyRef Name="InsSoc2Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Ins__InsSvrFrm__6754599E">
-          <End Role="Loc" Type="Self.Loc" Multiplicity="1" />
-          <End Role="Ins" Type="Self.Ins" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Loc">
-              <PropertyRef Name="LocOwnId" />
-            </Principal>
-            <Dependent Role="Ins">
-              <PropertyRef Name="InsSvrFrm" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Ins__InsSvrTo__68487DD7">
-          <End Role="Loc" Type="Self.Loc" Multiplicity="1" />
-          <End Role="Ins" Type="Self.Ins" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Loc">
-              <PropertyRef Name="LocOwnId" />
-            </Principal>
-            <Dependent Role="Ins">
-              <PropertyRef Name="InsSvrTo" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -596,14 +532,6 @@
           </AssociationSet>
           <AssociationSet Name="FK__Ins__InsSoc2Id__6EF57B66" Association="Self.FK__Ins__InsSoc2Id__6EF57B66">
             <End Role="Vol" EntitySet="Vol" />
-            <End Role="Ins" EntitySet="Ins" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Ins__InsSvrFrm__6754599E" Association="Self.FK__Ins__InsSvrFrm__6754599E">
-            <End Role="Loc" EntitySet="Loc" />
-            <End Role="Ins" EntitySet="Ins" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Ins__InsSvrTo__68487DD7" Association="Self.FK__Ins__InsSvrTo__68487DD7">
-            <End Role="Loc" EntitySet="Loc" />
             <End Role="Ins" EntitySet="Ins" />
           </AssociationSet>
           <EntitySet Name="Usr" EntityType="CroceRossaModel.Usr" />
@@ -664,8 +592,6 @@
                 <ScalarProperty Name="InsIndVal" ColumnName="InsIndVal" />
                 <ScalarProperty Name="InsOwnId" ColumnName="InsOwnId" />
                 <ScalarProperty Name="InsSvrDat" ColumnName="InsSvrDat" />
-                <ScalarProperty Name="InsSvrFrm" ColumnName="InsSvrFrm" />
-                <ScalarProperty Name="InsSvrTo" ColumnName="InsSvrTo" />
                 <ScalarProperty Name="InsTyp" ColumnName="InsTyp" />
                 <ScalarProperty Name="InsPerId" ColumnName="InsPerId" />
                 <ScalarProperty Name="InsPatId" ColumnName="InsPatId" />

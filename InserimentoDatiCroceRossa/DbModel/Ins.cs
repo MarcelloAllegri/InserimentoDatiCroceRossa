@@ -16,8 +16,6 @@ namespace InserimentoDatiCroceRossa.DbModel
     {
         public int InsOwnId { get; set; }
         public System.DateTime InsSvrDat { get; set; }
-        public int InsSvrFrm { get; set; }
-        public int InsSvrTo { get; set; }
         public int InsTyp { get; set; }
         public int InsPerId { get; set; }
         public int InsPatId { get; set; }
@@ -28,7 +26,7 @@ namespace InserimentoDatiCroceRossa.DbModel
         public int InsKmInt { get; set; }
         public int InsAutId { get; set; }
         public int InsSoc1Id { get; set; }
-        public int InsSoc2Id { get; set; }
+        public Nullable<int> InsSoc2Id { get; set; }
         public int InsChrTo { get; set; }
         public int InsBilNum { get; set; }
         public int InsCrtNum { get; set; }
@@ -42,7 +40,5 @@ namespace InserimentoDatiCroceRossa.DbModel
         public virtual Per Per { get; set; }
         public virtual Vol Vol1 { get; set; }
         public virtual Vol Vol2 { get; set; }
-        public virtual Loc Loc { get; set; }
-        public virtual Loc Loc1 { get; set; }
     }
 }

@@ -75,7 +75,7 @@ namespace InserimentoDatiCroceRossa.UserControls
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
-            //dataCollectionDetailUserControl.Save();
+            dataCollectionDetailUserControl.Save();
         }
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
@@ -120,7 +120,7 @@ namespace InserimentoDatiCroceRossa.UserControls
             using (new WaitCursor())
             {
                 this.dataCollectionList = new ObservableCollection<DataCollectionViewEntity>();
-                new DataCollectionService().GetAllData().ForEach(item => { this.dataCollectionList.Add((DataCollectionViewEntity)item); });
+                new DataCollectionService().GetAllData().ForEach(item => { this.dataCollectionList.Add(item); });
                 this.lvDataCollection.ItemsSource = null;
                 this.lvDataCollection.ItemsSource = dataCollectionList;
             }

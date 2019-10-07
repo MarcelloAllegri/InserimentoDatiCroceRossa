@@ -100,7 +100,6 @@ namespace InserimentoDatiCroceRossa.UserControls
                 NotifyPropertyChanged(nameof(EntitiesList));
             }
         }
-
         public DataCollectionDetailUserControl()
         {
             InitializeComponent();
@@ -108,7 +107,7 @@ namespace InserimentoDatiCroceRossa.UserControls
         private void DataCollectionDetailUserControl_Loaded(object sender, RoutedEventArgs e)
         {
             this.RefreshBackgroundData();
-        }
+        }        
         private void RefreshBackgroundData()
         {
             using (new WaitCursor())
@@ -141,14 +140,94 @@ namespace InserimentoDatiCroceRossa.UserControls
             this.PatientChooserToolbar.Visibility = Visibility.Collapsed;
             this.patientChooserUserControl.Visibility = Visibility.Collapsed;
         }
-
         private void CarLicPlateSelectionComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (this.DataContext != null)
+            if (this.DataContext != null && (this.DataContext as DataCollectionViewEntity).ReturnKm < (this.DataContext as DataCollectionViewEntity).ExitKm)
             {
                 LicencePlateTextBox.Text = (this.DataContext as DataCollectionViewEntity).LicPlateByAssociationId;
                 (this.DataContext as DataCollectionViewEntity).ExitKm = new DataCollectionService().GetKmByAssociationId((this.DataContext as DataCollectionViewEntity).CarLicPlateAssociationId);
             }
+        }    
+        public bool CanSave() 
+        {
+            if (this.DataContext != null)
+            {
+                DataCollectionViewEntity data = this.DataContext as DataCollectionViewEntity;
+
+                if(data.PatientId == -1)
+                {
+                    MessageBox.Show("Paziente non selezionato!");
+                    return false;
+                }
+
+                if(data.PathologyId == -1)
+                {
+                    MessageBox.Show("Patologia non selezionata!");
+                    return false;
+                }
+
+                if(data.CarLicPlateAssociationId == -1)
+                {
+                    MessageBox.Show("Mezzo non selezionato!");
+                    return false;
+                }
+
+                if(data.EntityId == -1)
+                {
+                    MessageBox.Show("Viaggio a carico di .. vuoto!");
+                    return false;
+                }
+
+                if(data.DriverId == -1)
+                {
+                    MessageBox.Show("Autista non selezionato!");
+                    return false;
+                }
+
+                if(data.Rescuer1Id == -1)
+                {
+                    MessageBox.Show("Soccorritore n°1 non selezionato");
+                    return false;
+                }
+
+                if(data.Rescuer2Id != -1 && data.Rescuer1Id == data.Rescuer2Id)
+                {
+                    MessageBox.Show("I 2 soccorritori sono uguali!");
+                    return false;
+                }
+
+                if (data.ExitKm > data.ReturnKm)
+                {
+                    MessageBox.Show("I km di arrivo sono minori di quelli di ritorno!");
+                    return false;
+                }
+
+                if(data.ExitTime == null || data.ReturnTime == null)
+                {
+                    MessageBox.Show("Orario di partenza/ritorno non compilato!");
+                    return false;
+                }
+
+                return true;
+            }
+            return false;
         }
+
+        public void Save()
+        {
+            if(this.CanSave())
+            {
+                int result;
+                var data = this.DataContext as DataCollectionViewEntity;
+                if (data.Id == -1)
+                    result = new DataCollectionService().Add(data);
+                else result = new DataCollectionService().Update(data);
+
+                if (result == 0)
+                    MessageBox.Show("Dati Salvati!");
+                else MessageBox.Show("Errore durante il salvataggio!");
+            }
+        }
+
     }
 }
