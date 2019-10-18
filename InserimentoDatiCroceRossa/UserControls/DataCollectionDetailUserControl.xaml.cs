@@ -142,7 +142,7 @@ namespace InserimentoDatiCroceRossa.UserControls
         }
         private void CarLicPlateSelectionComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (this.DataContext != null && (this.DataContext as DataCollectionViewEntity).ReturnKm < (this.DataContext as DataCollectionViewEntity).ExitKm)
+            if (this.DataContext != null && (this.DataContext as DataCollectionViewEntity).ReturnKm <= (this.DataContext as DataCollectionViewEntity).ExitKm)
             {
                 LicencePlateTextBox.Text = (this.DataContext as DataCollectionViewEntity).LicPlateByAssociationId;
                 (this.DataContext as DataCollectionViewEntity).ExitKm = new DataCollectionService().GetKmByAssociationId((this.DataContext as DataCollectionViewEntity).CarLicPlateAssociationId);

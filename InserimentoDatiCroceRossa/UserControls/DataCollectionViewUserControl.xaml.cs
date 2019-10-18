@@ -55,6 +55,7 @@ namespace InserimentoDatiCroceRossa.UserControls
 
             dataCollectionDetailUserControl.DataContext = new DataCollectionViewEntity();
             dataCollectionDetailUserControl.RefreshBackgroundData();
+            dataCollectionDetailUserControl.SelectedPatientTextBox.Text = string.Empty;
         }
 
         private void ModifyButton_Click(object sender, RoutedEventArgs e)
