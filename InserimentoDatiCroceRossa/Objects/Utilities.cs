@@ -52,7 +52,13 @@ namespace InserimentoDatiCroceRossa.Objects
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return value;
+            if (value != null && value is TimeSpan?)
+            {
+                TimeSpan time = (TimeSpan)value;
+                return new DateTime(1, 1, 1, time.Hours, time.Minutes, 0); //time.Hour, time.Minute, 0);,
+            }
+
+            return new DateTime();
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

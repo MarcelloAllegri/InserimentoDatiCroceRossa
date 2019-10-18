@@ -106,9 +106,9 @@ namespace InserimentoDatiCroceRossa.UserControls
         }
         private void DataCollectionDetailUserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            this.RefreshBackgroundData();
+            //this.RefreshBackgroundData();
         }        
-        private void RefreshBackgroundData()
+        public void RefreshBackgroundData()
         {
             using (new WaitCursor())
             {
@@ -116,7 +116,7 @@ namespace InserimentoDatiCroceRossa.UserControls
                 this.PatientsCollection = new ObservableCollection<PatientEntity>(new PatientService().GetAllPatients());
                 this.CarLicPlateAssociations = new ObservableCollection<CarLicencePlateAssociationEntity>(new CarLicPlateAssociationService().GetAllAssociation().Where(x=>x.IsEnabled == true).OrderBy(x=> x.CarName));
                 this.VolunteersList = new ObservableCollection<VolunteerEntity>(new VolunteerService().GetAllVolunteers());
-                this.EntitiesList = new ObservableCollection<AuthorityEntity>(new AuthorityService().GetAllAuthorities());
+                this.EntitiesList = new ObservableCollection<AuthorityEntity>(new AuthorityService().GetAllAuthorities());                
             }
         }
         private void PatientChooserButton_Click(object sender, RoutedEventArgs e)

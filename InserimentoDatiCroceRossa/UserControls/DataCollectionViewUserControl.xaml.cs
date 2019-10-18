@@ -54,6 +54,7 @@ namespace InserimentoDatiCroceRossa.UserControls
             this.TabControl.UpdateLayout();
 
             dataCollectionDetailUserControl.DataContext = new DataCollectionViewEntity();
+            dataCollectionDetailUserControl.RefreshBackgroundData();
         }
 
         private void ModifyButton_Click(object sender, RoutedEventArgs e)
@@ -69,7 +70,9 @@ namespace InserimentoDatiCroceRossa.UserControls
                 this.dataCollectionDetailTabItem.IsSelected = true;
                 this.TabControl.UpdateLayout();
 
+                dataCollectionDetailUserControl.RefreshBackgroundData();
                 dataCollectionDetailUserControl.DataContext = selectedItem as DataCollectionViewEntity;
+                dataCollectionDetailUserControl.SelectedPatientTextBox.Text = (dataCollectionDetailUserControl.DataContext as DataCollectionViewEntity).PatientFCdAndFullName;
             }
         }
 
