@@ -106,7 +106,11 @@ namespace InserimentoDatiCroceRossa.UserControls
         }
         private void DataCollectionDetailUserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            //this.RefreshBackgroundData();
+            if (this.DataContext != null)
+            {
+                LicencePlateTextBox.Text = (this.DataContext as DataCollectionViewEntity).LicPlateByAssociationId;
+                (this.DataContext as DataCollectionViewEntity).ExitKm = new DataCollectionService().GetKmByAssociationId((this.DataContext as DataCollectionViewEntity).CarLicPlateAssociationId);
+            }
         }        
         public void RefreshBackgroundData()
         {
@@ -190,7 +194,7 @@ namespace InserimentoDatiCroceRossa.UserControls
                     return false;
                 }
 
-                if(data.Rescuer2Id != -1 && data.Rescuer1Id == data.Rescuer2Id)
+                if (data.Rescuer2Id != -1 && data.Rescuer1Id == data.Rescuer2Id)
                 {
                     MessageBox.Show("I 2 soccorritori sono uguali!");
                     return false;

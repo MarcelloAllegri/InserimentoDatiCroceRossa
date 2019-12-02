@@ -22,6 +22,7 @@ namespace InserimentoDatiCroceRossa.Windows
     {
         public DataViewWindow()
         {
+            Style = (Style)FindResource(typeof(Window));
             InitializeComponent();
         }
 

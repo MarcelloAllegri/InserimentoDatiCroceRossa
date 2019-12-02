@@ -58,20 +58,7 @@ namespace InserimentoDatiCroceRossa.Objects
                     return string.Concat(item.CarName, " - ", item.LicencePlate);
                 }
             }
-        }
-        public string LicPlateByAssociationId
-        {
-            get
-            {
-                if (base.CarLicPlateAssociationId == -1)
-                    return string.Empty;
-                else
-                {
-                    CarLicencePlateAssociationEntity item = new CarLicPlateAssociationService().GetAssociationById(base.CarLicPlateAssociationId);
-                    return item.LicencePlate;
-                }
-            }
-        }
+        }        
         public string DriverName
         {
             get { return base.DriverId == -1 ? string.Empty : new VolunteerService().GetVolunteerById(base.DriverId).SurnameAndName; }

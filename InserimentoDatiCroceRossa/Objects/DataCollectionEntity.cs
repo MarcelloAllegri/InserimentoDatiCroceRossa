@@ -1,4 +1,5 @@
-﻿using System;
+﻿using InserimentoDatiCroceRossa.DbServiceObjects;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -83,7 +84,9 @@ namespace InserimentoDatiCroceRossa.Objects
         public int CarLicPlateAssociationId
         {
             get { return m_CarLicPlateAssociationId; }
-            set { m_CarLicPlateAssociationId = value; NotifyPropertyChanged(nameof(CarLicPlateAssociationId)); }
+            set { m_CarLicPlateAssociationId = value; 
+                NotifyPropertyChanged(nameof(CarLicPlateAssociationId)); 
+                NotifyPropertyChanged(nameof(LicPlateByAssociationId)); }
         }      
 
         private TimeSpan? m_ExitTime;
@@ -119,7 +122,12 @@ namespace InserimentoDatiCroceRossa.Objects
         public int ReturnKm
         {
             get { return m_ReturnKm; }
-            set { m_ReturnKm = value; NotifyPropertyChanged(nameof(ReturnKm)); }
+            set 
+            { 
+                m_ReturnKm = value; 
+                NotifyPropertyChanged(nameof(ReturnKm));
+                NotifyPropertyChanged(nameof(KmDiff));
+            }
         }
 
         private int m_DriverId;
@@ -167,6 +175,25 @@ namespace InserimentoDatiCroceRossa.Objects
         {
             get { return m_EntityId; }
             set { m_EntityId = value; NotifyPropertyChanged(nameof(EntityId)); }
+        }
+
+        public string KmDiff 
+        {
+            get => (this.ReturnKm - this.ExitKm).ToString();
+        }
+
+        public string LicPlateByAssociationId
+        {
+            get
+            {
+                if (CarLicPlateAssociationId == -1)
+                    return string.Empty;
+                else
+                {
+                    CarLicencePlateAssociationEntity item = new CarLicPlateAssociationService().GetAssociationById(CarLicPlateAssociationId);
+                    return item.LicencePlate;
+                }
+            }
         }
 
     }

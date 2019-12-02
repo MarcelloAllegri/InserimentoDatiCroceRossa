@@ -25,6 +25,7 @@ namespace InserimentoDatiCroceRossa.Windows
     {
         public LoginWindow()
         {
+            Style = (Style)FindResource(typeof(Window));
             InitializeComponent();
         }
 
