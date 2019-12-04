@@ -32,6 +32,7 @@ namespace InserimentoDatiCroceRossa.UserControls
                         disableConcurrentRecords(id);
                         MessageBox.Show("Salvato!");
                         this.DataContext = new CarLicencePlateAssociationEntity();
+                        populateLists();
                     }
                     else
                         MessageBox.Show("Errore durante il salvataggio!");

@@ -37,7 +37,7 @@ namespace InserimentoDatiCroceRossa.UserControls
             PatientService service = new PatientService();
             List<PatientEntity> patients = service.GetAllPatients();
 
-            if (patients.Any(x => x.FiscalCode.ToLower().Equals(patient.FiscalCode.ToLower()) && x.Id != patient.Id))
+            if (patients.Any(x => !string.IsNullOrEmpty(x.FiscalCode) && x.FiscalCode.ToLower().Equals(patient.FiscalCode.ToLower()) && x.Id != patient.Id))
             {
                 MessageBox.Show("Esiste già un paziente con lo stesso codice fiscale!");
                 return true;
@@ -49,12 +49,6 @@ namespace InserimentoDatiCroceRossa.UserControls
         {
             PatientEntity patient = (this.DataContext as PatientEntity);
 
-            if (string.IsNullOrEmpty(patient.FiscalCode))
-            {
-                MessageBox.Show("codice fiscale vuoto!");
-                return false;
-            }
-
             if (string.IsNullOrEmpty(patient.Name))
             {
                 MessageBox.Show("nome vuoto!");
@@ -64,7 +58,12 @@ namespace InserimentoDatiCroceRossa.UserControls
             {
                 MessageBox.Show("cognome vuoto!");
                 return false;
-            }            
+            }
+            if (patient.Bday == null)
+            {
+                MessageBox.Show("data di nascita non inserita!");
+                return false;
+            }
 
             return true;
         }

@@ -67,19 +67,20 @@
             <GroupBox Grid.Row="3" Grid.ColumnSpan="2" Header="Servizio" BorderThickness="2">
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="150"/>
+                        <ColumnDefinition Width="125"/>
                         <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="150"/>
+                        <ColumnDefinition Width="115"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
 
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
 
-                    <TextBlock Grid.Row="0" Name="ServiceDateTextBlock" Text="Data Servizio" Margin="5,5,0,0"/>
-                    <TextBlock Grid.Row="0" Grid.Column="2" Name="ServiceTypologyTextBlock" Text="Tipologia Servizio" Margin="5,5,0,0"/>
+                    <TextBlock Grid.Row="0" Name="ServiceDateTextBlock" Text="Data" Margin="5,5,0,0"/>
+                    <TextBlock Grid.Row="0" Grid.Column="2" Name="ServiceTypologyTextBlock" Text="Tipologia" Margin="5,5,0,0"/>
 
                     <xctk:DateTimePicker Grid.Row="0" 
                                      Grid.Column="1"
@@ -97,13 +98,22 @@
                           SelectedValue="{Binding ElementName=dataCollectionDetailUserControl,Path=DataContext.ServiceType,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                           DisplayMemberPath="Value"/>
 
-                    <TextBlock Grid.Row="1" Name="ServicePlaceTextBlock" Text="Località Servizio" Margin="5,5,0,0"/>
-                    <TextBlock Grid.Row="1" Grid.Column="2" Name="ServiceRoadtextBlock" Text="Via Servizio" Margin="5,5,0,0"/>
+                    <TextBlock Grid.Row="1" Name="ServicePlaceFromTextBlock" Text="Località da" Margin="5,5,0,0"/>
+                    <TextBlock Grid.Row="1" Grid.Column="2" Name="ServiceRoadFromtextBlock" Text="Via" Margin="5,5,0,0"/>
 
                     <TextBox Grid.Row="1" Grid.Column="1" Margin="0,5,0,0" 
-                         Text="{Binding ElementName=dataCollectionDetailUserControl,Path=DataContext.PlaceValue,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                         Text="{Binding ElementName=dataCollectionDetailUserControl,Path=DataContext.PlaceValueFrom,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
                     <TextBox Grid.Row="1" Grid.Column="3" Margin="0,5,0,0" 
-                         Text="{Binding ElementName=dataCollectionDetailUserControl,Path=DataContext.AddressValue,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                         Text="{Binding ElementName=dataCollectionDetailUserControl,Path=DataContext.AddressValueFrom,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+
+                    <TextBlock Grid.Row="2" Name="ServicePlaceToTextBlock" Text="Località a" Margin="5,5,0,0"/>
+                    <TextBlock Grid.Row="2" Grid.Column="2" Name="ServiceRoadTotextBlock" Text="Via" Margin="5,5,0,0"/>
+
+                    <TextBox Grid.Row="2" Grid.Column="1" Margin="0,5,0,0" 
+                         Text="{Binding ElementName=dataCollectionDetailUserControl,Path=DataContext.PlaceValueTo,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBox Grid.Row="2" Grid.Column="3" Margin="0,5,0,0" 
+                         Text="{Binding ElementName=dataCollectionDetailUserControl,Path=DataContext.AddressValueTo,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+
                 </Grid>
             </GroupBox>
 

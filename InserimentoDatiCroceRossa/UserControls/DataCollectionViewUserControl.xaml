@@ -48,12 +48,14 @@
                             <GridView x:Name="DataCollectionGrid"
                                       AllowsColumnReorder="False">
                                 <GridViewColumn Header="N° bolla" Width="Auto" DisplayMemberBinding="{Binding Path=BillNumber,Mode=OneWay}"/>
-                                <GridViewColumn Header="Data di servizio" Width="Auto" DisplayMemberBinding="{Binding Path=ServiceDate,Mode=OneWay}"/>
+                                <GridViewColumn Header="Data di servizio" Width="Auto" DisplayMemberBinding="{Binding Path=ServiceDate,Mode=OneWay,StringFormat=dd-MM-yyyy}"/>
                                 <GridViewColumn Header="Tipologia di servizio" Width="Auto" DisplayMemberBinding="{Binding Path=ServiceTypeToString,Mode=OneWay}"/>
                                 <GridViewColumn Header="Paziente" Width="Auto" DisplayMemberBinding="{Binding Path=PatientFCdAndFullName,Mode=OneWay}"/>
-                                <GridViewColumn Header="Patologia" Width="Auto" DisplayMemberBinding="{Binding Path=PathologyName,Mode=OneWay}"/>
-                                <GridViewColumn Header="Indirizzo" Width="Auto" DisplayMemberBinding="{Binding Path=AddressValue,Mode=OneWay}"/>
-                                <GridViewColumn Header="Città" Width="Auto" DisplayMemberBinding="{Binding Path=PlaceValue,Mode=OneWay}"/>
+                                <GridViewColumn Header="Patologia" Width="Auto" DisplayMemberBinding="{Binding Path=PathologyName,Mode=OneWay}"/>                                
+                                <GridViewColumn Header="Città" Width="Auto" DisplayMemberBinding="{Binding Path=PlaceValueFrom,Mode=OneWay}"/>
+                                <GridViewColumn Header="Indirizzo" Width="Auto" DisplayMemberBinding="{Binding Path=AddressValueFrom,Mode=OneWay}"/>
+                                <GridViewColumn Header="Città" Width="Auto" DisplayMemberBinding="{Binding Path=PlaceValueTo,Mode=OneWay}"/>
+                                <GridViewColumn Header="Indirizzo" Width="Auto" DisplayMemberBinding="{Binding Path=AddressValueTo,Mode=OneWay}"/>
                                 <!--<GridViewColumn Header="Servizio da" Width="Auto" DisplayMemberBinding="{Binding Path=ServiceFrom,Mode=OneWay}"/>
                                 <GridViewColumn Header="Servizio a" Width="Auto" DisplayMemberBinding="{Binding Path=ServiceTo,Mode=OneWay}"/>-->
                                 <GridViewColumn Header="Auto CRI" Width="Auto" DisplayMemberBinding="{Binding Path=AutoAndLicPlate,Mode=OneWay}"/>

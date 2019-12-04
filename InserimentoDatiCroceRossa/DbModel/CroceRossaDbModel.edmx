@@ -4,267 +4,269 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="CroceRossaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="Car">
-          <Key>
-            <PropertyRef Name="CarOwnId" />
-          </Key>
-          <Property Name="CarOwnId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="CarNam" Type="varchar" MaxLength="6" Nullable="false" />
-        </EntityType>
-        <EntityType Name="CarTar">
-          <Key>
-            <PropertyRef Name="CarTarOwnId" />
-          </Key>
-          <Property Name="CarTarOwnId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="CarId" Type="int" Nullable="false" />
-          <Property Name="TarId" Type="int" Nullable="false" />
-          <Property Name="CarTarEnb" Type="bit" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Ent">
-          <Key>
-            <PropertyRef Name="EntOwnId" />
-          </Key>
-          <Property Name="EntOwnId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="EntVal" Type="varchar" MaxLength="50" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Ind">
-          <Key>
-            <PropertyRef Name="IndOwnId" />
-          </Key>
-          <Property Name="IndOwnId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="IndVal" Type="varchar" MaxLength="100" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Ins">
-          <Key>
-            <PropertyRef Name="InsOwnId" />
-          </Key>
-          <Property Name="InsOwnId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="InsSvrDat" Type="datetime" Nullable="false" />
-          <Property Name="InsTyp" Type="int" Nullable="false" />
-          <Property Name="InsPerId" Type="int" Nullable="false" />
-          <Property Name="InsPatId" Type="int" Nullable="false" />
-          <Property Name="InsCarTarId" Type="int" Nullable="false" />
-          <Property Name="InsTimIn" Type="time" Precision="7" />
-          <Property Name="InsTimOut" Type="time" Precision="7" />
-          <Property Name="InsKmOut" Type="int" Nullable="false" />
-          <Property Name="InsKmInt" Type="int" Nullable="false" />
-          <Property Name="InsAutId" Type="int" Nullable="false" />
-          <Property Name="InsSoc1Id" Type="int" Nullable="false" />
-          <Property Name="InsSoc2Id" Type="int" />
-          <Property Name="InsChrTo" Type="int" Nullable="false" />
-          <Property Name="InsBilNum" Type="int" Nullable="false" />
-          <Property Name="InsCrtNum" Type="int" Nullable="false" />
-          <Property Name="InsIndVal" Type="varchar" MaxLength="100" />
-          <Property Name="InsPlcVal" Type="varchar" MaxLength="50" />
-        </EntityType>
-        <EntityType Name="Loc">
-          <Key>
-            <PropertyRef Name="LocOwnId" />
-          </Key>
-          <Property Name="LocOwnId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="LocPlc" Type="varchar" MaxLength="100" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Pat">
-          <Key>
-            <PropertyRef Name="PatOwnId" />
-          </Key>
-          <Property Name="PatOwnId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="PatNam" Type="varchar" MaxLength="50" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Per">
-          <Key>
-            <PropertyRef Name="PerOwnId" />
-          </Key>
-          <Property Name="PerOwnId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="PerFCd" Type="varchar" MaxLength="16" />
-          <Property Name="PerNam" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="PerSur" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="PerSex" Type="bit" />
-          <Property Name="PerBir" Type="datetime" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Tar">
-          <Key>
-            <PropertyRef Name="TarOwnId" />
-          </Key>
-          <Property Name="TarOwnId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="TarVal" Type="varchar" MaxLength="9" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Usr">
-          <Key>
-            <PropertyRef Name="UsrOwnId" />
-          </Key>
-          <Property Name="UsrOwnId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="UsrNam" Type="varchar" MaxLength="20" Nullable="false" />
-          <Property Name="UsrPsw" Type="varchar(max)" Nullable="false" />
-          <Property Name="UsrTyp" Type="char" MaxLength="1" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Vol">
-          <Key>
-            <PropertyRef Name="VolOwnId" />
-          </Key>
-          <Property Name="VolOwnId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="VolNam" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="VolSur" Type="varchar" MaxLength="50" Nullable="false" />
-        </EntityType>
-        <Association Name="FK__CarTar__CarId__60A75C0F">
-          <End Role="Car" Type="Self.Car" Multiplicity="1" />
-          <End Role="CarTar" Type="Self.CarTar" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Car">
-              <PropertyRef Name="CarOwnId" />
-            </Principal>
-            <Dependent Role="CarTar">
-              <PropertyRef Name="CarId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__CarTar__TarId__619B8048">
-          <End Role="Tar" Type="Self.Tar" Multiplicity="1" />
-          <End Role="CarTar" Type="Self.CarTar" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Tar">
-              <PropertyRef Name="TarOwnId" />
-            </Principal>
-            <Dependent Role="CarTar">
-              <PropertyRef Name="TarId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Ins__InsAutId__6D0D32F4">
-          <End Role="Vol" Type="Self.Vol" Multiplicity="1" />
-          <End Role="Ins" Type="Self.Ins" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Vol">
-              <PropertyRef Name="VolOwnId" />
-            </Principal>
-            <Dependent Role="Ins">
-              <PropertyRef Name="InsAutId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Ins__InsCarTarId__6C190EBB">
-          <End Role="CarTar" Type="Self.CarTar" Multiplicity="1" />
-          <End Role="Ins" Type="Self.Ins" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CarTar">
-              <PropertyRef Name="CarTarOwnId" />
-            </Principal>
-            <Dependent Role="Ins">
-              <PropertyRef Name="InsCarTarId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Ins__InsChrTo__6FE99F9F">
-          <End Role="Ent" Type="Self.Ent" Multiplicity="1" />
-          <End Role="Ins" Type="Self.Ins" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Ent">
-              <PropertyRef Name="EntOwnId" />
-            </Principal>
-            <Dependent Role="Ins">
-              <PropertyRef Name="InsChrTo" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Ins__InsPatId__6B24EA82">
-          <End Role="Pat" Type="Self.Pat" Multiplicity="1" />
-          <End Role="Ins" Type="Self.Ins" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Pat">
-              <PropertyRef Name="PatOwnId" />
-            </Principal>
-            <Dependent Role="Ins">
-              <PropertyRef Name="InsPatId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Ins__InsPerId__693CA210">
-          <End Role="Per" Type="Self.Per" Multiplicity="1" />
-          <End Role="Ins" Type="Self.Ins" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Per">
-              <PropertyRef Name="PerOwnId" />
-            </Principal>
-            <Dependent Role="Ins">
-              <PropertyRef Name="InsPerId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Ins__InsSoc1Id__6E01572D">
-          <End Role="Vol" Type="Self.Vol" Multiplicity="1" />
-          <End Role="Ins" Type="Self.Ins" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Vol">
-              <PropertyRef Name="VolOwnId" />
-            </Principal>
-            <Dependent Role="Ins">
-              <PropertyRef Name="InsSoc1Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Ins__InsSoc2Id__6EF57B66">
-          <End Role="Vol" Type="Self.Vol" Multiplicity="0..1" />
-          <End Role="Ins" Type="Self.Ins" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Vol">
-              <PropertyRef Name="VolOwnId" />
-            </Principal>
-            <Dependent Role="Ins">
-              <PropertyRef Name="InsSoc2Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityContainer Name="CroceRossaModelStoreContainer">
-          <EntitySet Name="Car" EntityType="Self.Car" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="CarTar" EntityType="Self.CarTar" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Ent" EntityType="Self.Ent" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Ind" EntityType="Self.Ind" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Ins" EntityType="Self.Ins" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Loc" EntityType="Self.Loc" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Pat" EntityType="Self.Pat" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Per" EntityType="Self.Per" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Tar" EntityType="Self.Tar" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Usr" EntityType="Self.Usr" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Vol" EntityType="Self.Vol" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__CarTar__CarId__60A75C0F" Association="Self.FK__CarTar__CarId__60A75C0F">
-            <End Role="Car" EntitySet="Car" />
-            <End Role="CarTar" EntitySet="CarTar" />
-          </AssociationSet>
-          <AssociationSet Name="FK__CarTar__TarId__619B8048" Association="Self.FK__CarTar__TarId__619B8048">
-            <End Role="Tar" EntitySet="Tar" />
-            <End Role="CarTar" EntitySet="CarTar" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Ins__InsAutId__6D0D32F4" Association="Self.FK__Ins__InsAutId__6D0D32F4">
-            <End Role="Vol" EntitySet="Vol" />
-            <End Role="Ins" EntitySet="Ins" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Ins__InsCarTarId__6C190EBB" Association="Self.FK__Ins__InsCarTarId__6C190EBB">
-            <End Role="CarTar" EntitySet="CarTar" />
-            <End Role="Ins" EntitySet="Ins" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Ins__InsChrTo__6FE99F9F" Association="Self.FK__Ins__InsChrTo__6FE99F9F">
-            <End Role="Ent" EntitySet="Ent" />
-            <End Role="Ins" EntitySet="Ins" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Ins__InsPatId__6B24EA82" Association="Self.FK__Ins__InsPatId__6B24EA82">
-            <End Role="Pat" EntitySet="Pat" />
-            <End Role="Ins" EntitySet="Ins" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Ins__InsPerId__693CA210" Association="Self.FK__Ins__InsPerId__693CA210">
-            <End Role="Per" EntitySet="Per" />
-            <End Role="Ins" EntitySet="Ins" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Ins__InsSoc1Id__6E01572D" Association="Self.FK__Ins__InsSoc1Id__6E01572D">
-            <End Role="Vol" EntitySet="Vol" />
-            <End Role="Ins" EntitySet="Ins" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Ins__InsSoc2Id__6EF57B66" Association="Self.FK__Ins__InsSoc2Id__6EF57B66">
-            <End Role="Vol" EntitySet="Vol" />
-            <End Role="Ins" EntitySet="Ins" />
-          </AssociationSet>
-        </EntityContainer>
-      </Schema></edmx:StorageModels>
+    <Schema Namespace="CroceRossaModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="CroceRossaModelStoreContainer">
+    <EntitySet Name="Car" EntityType="CroceRossaModel.Store.Car" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CarTar" EntityType="CroceRossaModel.Store.CarTar" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Ent" EntityType="CroceRossaModel.Store.Ent" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Ind" EntityType="CroceRossaModel.Store.Ind" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Ins" EntityType="CroceRossaModel.Store.Ins" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Loc" EntityType="CroceRossaModel.Store.Loc" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Pat" EntityType="CroceRossaModel.Store.Pat" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Per" EntityType="CroceRossaModel.Store.Per" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Tar" EntityType="CroceRossaModel.Store.Tar" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Vol" EntityType="CroceRossaModel.Store.Vol" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Usr" EntityType="CroceRossaModel.Store.Usr" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK__CarTar__CarId__60A75C0F" Association="CroceRossaModel.Store.FK__CarTar__CarId__60A75C0F">
+      <End Role="Car" EntitySet="Car" />
+      <End Role="CarTar" EntitySet="CarTar" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CarTar__TarId__619B8048" Association="CroceRossaModel.Store.FK__CarTar__TarId__619B8048">
+      <End Role="Tar" EntitySet="Tar" />
+      <End Role="CarTar" EntitySet="CarTar" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Ins__InsCarTarId__6C190EBB" Association="CroceRossaModel.Store.FK__Ins__InsCarTarId__6C190EBB">
+      <End Role="CarTar" EntitySet="CarTar" />
+      <End Role="Ins" EntitySet="Ins" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Ins__InsChrTo__6FE99F9F" Association="CroceRossaModel.Store.FK__Ins__InsChrTo__6FE99F9F">
+      <End Role="Ent" EntitySet="Ent" />
+      <End Role="Ins" EntitySet="Ins" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Ins__InsAutId__6D0D32F4" Association="CroceRossaModel.Store.FK__Ins__InsAutId__6D0D32F4">
+      <End Role="Vol" EntitySet="Vol" />
+      <End Role="Ins" EntitySet="Ins" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Ins__InsPatId__6B24EA82" Association="CroceRossaModel.Store.FK__Ins__InsPatId__6B24EA82">
+      <End Role="Pat" EntitySet="Pat" />
+      <End Role="Ins" EntitySet="Ins" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Ins__InsPerId__693CA210" Association="CroceRossaModel.Store.FK__Ins__InsPerId__693CA210">
+      <End Role="Per" EntitySet="Per" />
+      <End Role="Ins" EntitySet="Ins" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Ins__InsSoc1Id__6E01572D" Association="CroceRossaModel.Store.FK__Ins__InsSoc1Id__6E01572D">
+      <End Role="Vol" EntitySet="Vol" />
+      <End Role="Ins" EntitySet="Ins" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Ins__InsSoc2Id__6EF57B66" Association="CroceRossaModel.Store.FK__Ins__InsSoc2Id__6EF57B66">
+      <End Role="Vol" EntitySet="Vol" />
+      <End Role="Ins" EntitySet="Ins" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Car">
+    <Key>
+      <PropertyRef Name="CarOwnId" />
+    </Key>
+    <Property Name="CarOwnId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CarNam" Type="varchar" Nullable="false" MaxLength="6" />
+  </EntityType>
+  <EntityType Name="CarTar">
+    <Key>
+      <PropertyRef Name="CarTarOwnId" />
+    </Key>
+    <Property Name="CarTarOwnId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CarId" Type="int" Nullable="false" />
+    <Property Name="TarId" Type="int" Nullable="false" />
+    <Property Name="CarTarEnb" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Ent">
+    <Key>
+      <PropertyRef Name="EntOwnId" />
+    </Key>
+    <Property Name="EntOwnId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EntVal" Type="varchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Ind">
+    <Key>
+      <PropertyRef Name="IndOwnId" />
+    </Key>
+    <Property Name="IndOwnId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IndVal" Type="varchar" Nullable="false" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Ins">
+    <Key>
+      <PropertyRef Name="InsOwnId" />
+    </Key>
+    <Property Name="InsOwnId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="InsSvrDat" Type="datetime" Nullable="false" />
+    <Property Name="InsTyp" Type="int" Nullable="false" />
+    <Property Name="InsPerId" Type="int" Nullable="false" />
+    <Property Name="InsPatId" Type="int" Nullable="false" />
+    <Property Name="InsCarTarId" Type="int" Nullable="false" />
+    <Property Name="InsTimIn" Type="time" Nullable="true" Precision="7" />
+    <Property Name="InsTimOut" Type="time" Nullable="true" Precision="7" />
+    <Property Name="InsKmOut" Type="int" Nullable="false" />
+    <Property Name="InsKmInt" Type="int" Nullable="false" />
+    <Property Name="InsAutId" Type="int" Nullable="false" />
+    <Property Name="InsSoc1Id" Type="int" Nullable="false" />
+    <Property Name="InsSoc2Id" Type="int" Nullable="true" />
+    <Property Name="InsChrTo" Type="int" Nullable="false" />
+    <Property Name="InsBilNum" Type="int" Nullable="false" />
+    <Property Name="InsCrtNum" Type="int" Nullable="false" />
+    <Property Name="InsIndFrom" Type="varchar" Nullable="true" MaxLength="100" />
+    <Property Name="InsPlcFrom" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="InsPlcTo" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="InsIndTo" Type="nvarchar" Nullable="false" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Loc">
+    <Key>
+      <PropertyRef Name="LocOwnId" />
+    </Key>
+    <Property Name="LocOwnId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LocPlc" Type="varchar" Nullable="false" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Pat">
+    <Key>
+      <PropertyRef Name="PatOwnId" />
+    </Key>
+    <Property Name="PatOwnId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PatNam" Type="varchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Per">
+    <Key>
+      <PropertyRef Name="PerOwnId" />
+    </Key>
+    <Property Name="PerOwnId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PerFCd" Type="varchar" Nullable="true" MaxLength="16" />
+    <Property Name="PerNam" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="PerSur" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="PerSex" Type="bit" Nullable="true" />
+    <Property Name="PerBir" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Tar">
+    <Key>
+      <PropertyRef Name="TarOwnId" />
+    </Key>
+    <Property Name="TarOwnId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TarVal" Type="varchar" Nullable="false" MaxLength="9" />
+  </EntityType>
+  <EntityType Name="Vol">
+    <Key>
+      <PropertyRef Name="VolOwnId" />
+    </Key>
+    <Property Name="VolOwnId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="VolNam" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="VolSur" Type="varchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Usr">
+    <Key>
+      <PropertyRef Name="UsrOwnId" />
+    </Key>
+    <Property Name="UsrOwnId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UsrNam" Type="varchar" Nullable="false" MaxLength="20" />
+    <Property Name="UsrPsw" Type="varchar(max)" Nullable="false" />
+    <Property Name="UsrTyp" Type="char" Nullable="false" MaxLength="1" />
+  </EntityType>
+  <Association Name="FK__CarTar__CarId__60A75C0F">
+    <End Role="Car" Type="CroceRossaModel.Store.Car" Multiplicity="1" />
+    <End Role="CarTar" Type="CroceRossaModel.Store.CarTar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Car">
+        <PropertyRef Name="CarOwnId" />
+      </Principal>
+      <Dependent Role="CarTar">
+        <PropertyRef Name="CarId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CarTar__TarId__619B8048">
+    <End Role="Tar" Type="CroceRossaModel.Store.Tar" Multiplicity="1" />
+    <End Role="CarTar" Type="CroceRossaModel.Store.CarTar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tar">
+        <PropertyRef Name="TarOwnId" />
+      </Principal>
+      <Dependent Role="CarTar">
+        <PropertyRef Name="TarId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Ins__InsCarTarId__6C190EBB">
+    <End Role="CarTar" Type="CroceRossaModel.Store.CarTar" Multiplicity="1" />
+    <End Role="Ins" Type="CroceRossaModel.Store.Ins" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CarTar">
+        <PropertyRef Name="CarTarOwnId" />
+      </Principal>
+      <Dependent Role="Ins">
+        <PropertyRef Name="InsCarTarId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Ins__InsChrTo__6FE99F9F">
+    <End Role="Ent" Type="CroceRossaModel.Store.Ent" Multiplicity="1" />
+    <End Role="Ins" Type="CroceRossaModel.Store.Ins" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ent">
+        <PropertyRef Name="EntOwnId" />
+      </Principal>
+      <Dependent Role="Ins">
+        <PropertyRef Name="InsChrTo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Ins__InsAutId__6D0D32F4">
+    <End Role="Vol" Type="CroceRossaModel.Store.Vol" Multiplicity="1" />
+    <End Role="Ins" Type="CroceRossaModel.Store.Ins" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vol">
+        <PropertyRef Name="VolOwnId" />
+      </Principal>
+      <Dependent Role="Ins">
+        <PropertyRef Name="InsAutId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Ins__InsPatId__6B24EA82">
+    <End Role="Pat" Type="CroceRossaModel.Store.Pat" Multiplicity="1" />
+    <End Role="Ins" Type="CroceRossaModel.Store.Ins" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pat">
+        <PropertyRef Name="PatOwnId" />
+      </Principal>
+      <Dependent Role="Ins">
+        <PropertyRef Name="InsPatId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Ins__InsPerId__693CA210">
+    <End Role="Per" Type="CroceRossaModel.Store.Per" Multiplicity="1" />
+    <End Role="Ins" Type="CroceRossaModel.Store.Ins" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Per">
+        <PropertyRef Name="PerOwnId" />
+      </Principal>
+      <Dependent Role="Ins">
+        <PropertyRef Name="InsPerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Ins__InsSoc1Id__6E01572D">
+    <End Role="Vol" Type="CroceRossaModel.Store.Vol" Multiplicity="1" />
+    <End Role="Ins" Type="CroceRossaModel.Store.Ins" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vol">
+        <PropertyRef Name="VolOwnId" />
+      </Principal>
+      <Dependent Role="Ins">
+        <PropertyRef Name="InsSoc1Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Ins__InsSoc2Id__6EF57B66">
+    <End Role="Vol" Type="CroceRossaModel.Store.Vol" Multiplicity="0..1" />
+    <End Role="Ins" Type="CroceRossaModel.Store.Ins" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vol">
+        <PropertyRef Name="VolOwnId" />
+      </Principal>
+      <Dependent Role="Ins">
+        <PropertyRef Name="InsSoc2Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="CroceRossaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -330,8 +332,10 @@
           <NavigationProperty Name="Per" Relationship="Self.FK__Ins__InsPerId__693CA210" FromRole="Ins" ToRole="Per" />
           <NavigationProperty Name="Vol1" Relationship="Self.FK__Ins__InsSoc1Id__6E01572D" FromRole="Ins" ToRole="Vol" />
           <NavigationProperty Name="Vol2" Relationship="Self.FK__Ins__InsSoc2Id__6EF57B66" FromRole="Ins" ToRole="Vol" />
-          <Property Name="InsIndVal" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="InsPlcVal" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="InsIndFrom" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="InsPlcFrom" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="InsPlcTo" Type="String" Nullable="false" MaxLength="50" />
+          <Property Name="InsIndTo" Type="String" Nullable="false" MaxLength="100" />
         </EntityType>
         <EntityType Name="Loc">
           <Key>
@@ -549,124 +553,125 @@
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
-      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="CroceRossaModelStoreContainer" CdmEntityContainer="CroceRossaEntities">
-          <EntitySetMapping Name="Car">
-            <EntityTypeMapping TypeName="CroceRossaModel.Car">
-              <MappingFragment StoreEntitySet="Car">
-                <ScalarProperty Name="CarOwnId" ColumnName="CarOwnId" />
-                <ScalarProperty Name="CarNam" ColumnName="CarNam" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="CarTar">
-            <EntityTypeMapping TypeName="CroceRossaModel.CarTar">
-              <MappingFragment StoreEntitySet="CarTar">
-                <ScalarProperty Name="CarTarEnb" ColumnName="CarTarEnb" />
-                <ScalarProperty Name="CarTarOwnId" ColumnName="CarTarOwnId" />
-                <ScalarProperty Name="CarId" ColumnName="CarId" />
-                <ScalarProperty Name="TarId" ColumnName="TarId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Ent">
-            <EntityTypeMapping TypeName="CroceRossaModel.Ent">
-              <MappingFragment StoreEntitySet="Ent">
-                <ScalarProperty Name="EntOwnId" ColumnName="EntOwnId" />
-                <ScalarProperty Name="EntVal" ColumnName="EntVal" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Ind">
-            <EntityTypeMapping TypeName="CroceRossaModel.Ind">
-              <MappingFragment StoreEntitySet="Ind">
-                <ScalarProperty Name="IndOwnId" ColumnName="IndOwnId" />
-                <ScalarProperty Name="IndVal" ColumnName="IndVal" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Ins">
-            <EntityTypeMapping TypeName="CroceRossaModel.Ins">
-              <MappingFragment StoreEntitySet="Ins">
-                <ScalarProperty Name="InsPlcVal" ColumnName="InsPlcVal" />
-                <ScalarProperty Name="InsIndVal" ColumnName="InsIndVal" />
-                <ScalarProperty Name="InsOwnId" ColumnName="InsOwnId" />
-                <ScalarProperty Name="InsSvrDat" ColumnName="InsSvrDat" />
-                <ScalarProperty Name="InsTyp" ColumnName="InsTyp" />
-                <ScalarProperty Name="InsPerId" ColumnName="InsPerId" />
-                <ScalarProperty Name="InsPatId" ColumnName="InsPatId" />
-                <ScalarProperty Name="InsCarTarId" ColumnName="InsCarTarId" />
-                <ScalarProperty Name="InsTimIn" ColumnName="InsTimIn" />
-                <ScalarProperty Name="InsTimOut" ColumnName="InsTimOut" />
-                <ScalarProperty Name="InsKmOut" ColumnName="InsKmOut" />
-                <ScalarProperty Name="InsKmInt" ColumnName="InsKmInt" />
-                <ScalarProperty Name="InsAutId" ColumnName="InsAutId" />
-                <ScalarProperty Name="InsSoc1Id" ColumnName="InsSoc1Id" />
-                <ScalarProperty Name="InsSoc2Id" ColumnName="InsSoc2Id" />
-                <ScalarProperty Name="InsChrTo" ColumnName="InsChrTo" />
-                <ScalarProperty Name="InsBilNum" ColumnName="InsBilNum" />
-                <ScalarProperty Name="InsCrtNum" ColumnName="InsCrtNum" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Loc">
-            <EntityTypeMapping TypeName="CroceRossaModel.Loc">
-              <MappingFragment StoreEntitySet="Loc">
-                <ScalarProperty Name="LocOwnId" ColumnName="LocOwnId" />
-                <ScalarProperty Name="LocPlc" ColumnName="LocPlc" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Pat">
-            <EntityTypeMapping TypeName="CroceRossaModel.Pat">
-              <MappingFragment StoreEntitySet="Pat">
-                <ScalarProperty Name="PatOwnId" ColumnName="PatOwnId" />
-                <ScalarProperty Name="PatNam" ColumnName="PatNam" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Per">
-            <EntityTypeMapping TypeName="CroceRossaModel.Per">
-              <MappingFragment StoreEntitySet="Per">
-                <ScalarProperty Name="PerOwnId" ColumnName="PerOwnId" />
-                <ScalarProperty Name="PerFCd" ColumnName="PerFCd" />
-                <ScalarProperty Name="PerNam" ColumnName="PerNam" />
-                <ScalarProperty Name="PerSur" ColumnName="PerSur" />
-                <ScalarProperty Name="PerSex" ColumnName="PerSex" />
-                <ScalarProperty Name="PerBir" ColumnName="PerBir" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Tar">
-            <EntityTypeMapping TypeName="CroceRossaModel.Tar">
-              <MappingFragment StoreEntitySet="Tar">
-                <ScalarProperty Name="TarOwnId" ColumnName="TarOwnId" />
-                <ScalarProperty Name="TarVal" ColumnName="TarVal" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Vol">
-            <EntityTypeMapping TypeName="CroceRossaModel.Vol">
-              <MappingFragment StoreEntitySet="Vol">
-                <ScalarProperty Name="VolOwnId" ColumnName="VolOwnId" />
-                <ScalarProperty Name="VolNam" ColumnName="VolNam" />
-                <ScalarProperty Name="VolSur" ColumnName="VolSur" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Usr">
-            <EntityTypeMapping TypeName="CroceRossaModel.Usr">
-              <MappingFragment StoreEntitySet="Usr">
-                <ScalarProperty Name="UsrTyp" ColumnName="UsrTyp" />
-                <ScalarProperty Name="UsrPsw" ColumnName="UsrPsw" />
-                <ScalarProperty Name="UsrNam" ColumnName="UsrNam" />
-                <ScalarProperty Name="UsrOwnId" ColumnName="UsrOwnId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-        </EntityContainerMapping>
-      </Mapping>
-    </edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CroceRossaModelStoreContainer" CdmEntityContainer="CroceRossaEntities">
+    <EntitySetMapping Name="Car">
+      <EntityTypeMapping TypeName="IsTypeOf(CroceRossaModel.Car)">
+        <MappingFragment StoreEntitySet="Car">
+          <ScalarProperty Name="CarOwnId" ColumnName="CarOwnId" />
+          <ScalarProperty Name="CarNam" ColumnName="CarNam" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CarTar">
+      <EntityTypeMapping TypeName="IsTypeOf(CroceRossaModel.CarTar)">
+        <MappingFragment StoreEntitySet="CarTar">
+          <ScalarProperty Name="CarTarOwnId" ColumnName="CarTarOwnId" />
+          <ScalarProperty Name="CarId" ColumnName="CarId" />
+          <ScalarProperty Name="TarId" ColumnName="TarId" />
+          <ScalarProperty Name="CarTarEnb" ColumnName="CarTarEnb" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ent">
+      <EntityTypeMapping TypeName="IsTypeOf(CroceRossaModel.Ent)">
+        <MappingFragment StoreEntitySet="Ent">
+          <ScalarProperty Name="EntOwnId" ColumnName="EntOwnId" />
+          <ScalarProperty Name="EntVal" ColumnName="EntVal" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ind">
+      <EntityTypeMapping TypeName="IsTypeOf(CroceRossaModel.Ind)">
+        <MappingFragment StoreEntitySet="Ind">
+          <ScalarProperty Name="IndOwnId" ColumnName="IndOwnId" />
+          <ScalarProperty Name="IndVal" ColumnName="IndVal" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ins">
+      <EntityTypeMapping TypeName="IsTypeOf(CroceRossaModel.Ins)">
+        <MappingFragment StoreEntitySet="Ins">
+          <ScalarProperty Name="InsOwnId" ColumnName="InsOwnId" />
+          <ScalarProperty Name="InsSvrDat" ColumnName="InsSvrDat" />
+          <ScalarProperty Name="InsTyp" ColumnName="InsTyp" />
+          <ScalarProperty Name="InsPerId" ColumnName="InsPerId" />
+          <ScalarProperty Name="InsPatId" ColumnName="InsPatId" />
+          <ScalarProperty Name="InsCarTarId" ColumnName="InsCarTarId" />
+          <ScalarProperty Name="InsTimIn" ColumnName="InsTimIn" />
+          <ScalarProperty Name="InsTimOut" ColumnName="InsTimOut" />
+          <ScalarProperty Name="InsKmOut" ColumnName="InsKmOut" />
+          <ScalarProperty Name="InsKmInt" ColumnName="InsKmInt" />
+          <ScalarProperty Name="InsAutId" ColumnName="InsAutId" />
+          <ScalarProperty Name="InsSoc1Id" ColumnName="InsSoc1Id" />
+          <ScalarProperty Name="InsSoc2Id" ColumnName="InsSoc2Id" />
+          <ScalarProperty Name="InsChrTo" ColumnName="InsChrTo" />
+          <ScalarProperty Name="InsBilNum" ColumnName="InsBilNum" />
+          <ScalarProperty Name="InsCrtNum" ColumnName="InsCrtNum" />
+          <ScalarProperty Name="InsIndFrom" ColumnName="InsIndFrom" />
+          <ScalarProperty Name="InsPlcFrom" ColumnName="InsPlcFrom" />
+          <ScalarProperty Name="InsPlcTo" ColumnName="InsPlcTo" />
+          <ScalarProperty Name="InsIndTo" ColumnName="InsIndTo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Loc">
+      <EntityTypeMapping TypeName="IsTypeOf(CroceRossaModel.Loc)">
+        <MappingFragment StoreEntitySet="Loc">
+          <ScalarProperty Name="LocOwnId" ColumnName="LocOwnId" />
+          <ScalarProperty Name="LocPlc" ColumnName="LocPlc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pat">
+      <EntityTypeMapping TypeName="IsTypeOf(CroceRossaModel.Pat)">
+        <MappingFragment StoreEntitySet="Pat">
+          <ScalarProperty Name="PatOwnId" ColumnName="PatOwnId" />
+          <ScalarProperty Name="PatNam" ColumnName="PatNam" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Per">
+      <EntityTypeMapping TypeName="IsTypeOf(CroceRossaModel.Per)">
+        <MappingFragment StoreEntitySet="Per">
+          <ScalarProperty Name="PerOwnId" ColumnName="PerOwnId" />
+          <ScalarProperty Name="PerFCd" ColumnName="PerFCd" />
+          <ScalarProperty Name="PerNam" ColumnName="PerNam" />
+          <ScalarProperty Name="PerSur" ColumnName="PerSur" />
+          <ScalarProperty Name="PerSex" ColumnName="PerSex" />
+          <ScalarProperty Name="PerBir" ColumnName="PerBir" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tar">
+      <EntityTypeMapping TypeName="IsTypeOf(CroceRossaModel.Tar)">
+        <MappingFragment StoreEntitySet="Tar">
+          <ScalarProperty Name="TarOwnId" ColumnName="TarOwnId" />
+          <ScalarProperty Name="TarVal" ColumnName="TarVal" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Vol">
+      <EntityTypeMapping TypeName="IsTypeOf(CroceRossaModel.Vol)">
+        <MappingFragment StoreEntitySet="Vol">
+          <ScalarProperty Name="VolOwnId" ColumnName="VolOwnId" />
+          <ScalarProperty Name="VolNam" ColumnName="VolNam" />
+          <ScalarProperty Name="VolSur" ColumnName="VolSur" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Usr">
+      <EntityTypeMapping TypeName="IsTypeOf(CroceRossaModel.Usr)">
+        <MappingFragment StoreEntitySet="Usr">
+          <ScalarProperty Name="UsrOwnId" ColumnName="UsrOwnId" />
+          <ScalarProperty Name="UsrNam" ColumnName="UsrNam" />
+          <ScalarProperty Name="UsrPsw" ColumnName="UsrPsw" />
+          <ScalarProperty Name="UsrTyp" ColumnName="UsrTyp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
   <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
@@ -680,7 +685,7 @@
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
         <DesignerProperty Name="EnablePluralization" Value="false" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
-        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="Nessuno" />
       </DesignerInfoPropertySet>
     </Options>

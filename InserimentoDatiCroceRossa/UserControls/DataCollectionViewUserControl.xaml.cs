@@ -33,11 +33,11 @@ namespace InserimentoDatiCroceRossa.UserControls
             if (string.IsNullOrEmpty(FilterTextBox.Text))
                 return null;
             else
-                return new Predicate<object>(o =>  ((DataCollectionViewEntity)o).AddressValue.ToLower().Contains(FilterTextBox.Text.ToLower())
+                return new Predicate<object>(o =>  ((DataCollectionViewEntity)o).AddressValueFrom.ToLower().Contains(FilterTextBox.Text.ToLower())
                 || ((DataCollectionViewEntity)o).AutoAndLicPlate.ToLower().Contains(FilterTextBox.Text.ToLower())
                 || ((DataCollectionViewEntity)o).DriverName.ToLower().Contains(FilterTextBox.Text.ToLower())
                 || ((DataCollectionViewEntity)o).EntityName.ToLower().Contains(FilterTextBox.Text.ToLower())
-                || ((DataCollectionViewEntity)o).PlaceValue.ToLower().Contains(FilterTextBox.Text.ToLower())
+                || ((DataCollectionViewEntity)o).PlaceValueFrom.ToLower().Contains(FilterTextBox.Text.ToLower())
                 || ((DataCollectionViewEntity)o).PatientFCdAndFullName.ToLower().Contains(FilterTextBox.Text.ToLower())
                 || ((DataCollectionViewEntity)o).Rescuer1Name.ToLower().Contains(FilterTextBox.Text.ToLower())
                 || ((DataCollectionViewEntity)o).Rescuer2Name.ToLower().Contains(FilterTextBox.Text.ToLower())

@@ -30,8 +30,10 @@ namespace InserimentoDatiCroceRossa.DbModel
         public int InsChrTo { get; set; }
         public int InsBilNum { get; set; }
         public int InsCrtNum { get; set; }
-        public string InsIndVal { get; set; }
-        public string InsPlcVal { get; set; }
+        public string InsIndFrom { get; set; }
+        public string InsPlcFrom { get; set; }
+        public string InsPlcTo { get; set; }
+        public string InsIndTo { get; set; }
     
         public virtual CarTar CarTar { get; set; }
         public virtual Ent Ent { get; set; }

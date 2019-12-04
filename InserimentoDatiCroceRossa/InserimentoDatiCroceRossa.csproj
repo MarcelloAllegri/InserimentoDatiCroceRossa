@@ -394,6 +394,7 @@
       <LastGenOutput>CroceRossaDbModel.Context.cs</LastGenOutput>
       <DependentUpon>CroceRossaDbModel.edmx</DependentUpon>
     </Content>
+    <Content Include="DbModel\CroceRossaDbModel.edmx.sql" />
     <Content Include="DbModel\CroceRossaDbModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>CroceRossaDbModel.edmx</DependentUpon>

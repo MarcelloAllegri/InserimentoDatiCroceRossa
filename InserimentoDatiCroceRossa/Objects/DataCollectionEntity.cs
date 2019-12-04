@@ -54,21 +54,21 @@ namespace InserimentoDatiCroceRossa.Objects
             set { m_PatientId = value; NotifyPropertyChanged(nameof(PatientId)); }
         }
 
-        private string m_AddressValue;
+        private string m_AddressValueFrom;
 
-        public string AddressValue
+        public string AddressValueFrom
         {
-            get { return m_AddressValue; }
-            set { m_AddressValue = value; NotifyPropertyChanged(nameof(AddressValue)); }
+            get { return m_AddressValueFrom; }
+            set { m_AddressValueFrom = value; NotifyPropertyChanged(nameof(AddressValueFrom)); }
         }
 
         
-        private string m_PlaceValue;
+        private string m_PlaceValueFrom;
 
-        public string PlaceValue
+        public string PlaceValueFrom
         {
-            get { return m_PlaceValue; }
-            set { m_PlaceValue = value; NotifyPropertyChanged(nameof(PlaceValue)); }
+            get { return m_PlaceValueFrom; }
+            set { m_PlaceValueFrom = value; NotifyPropertyChanged(nameof(PlaceValueFrom)); }
         }
 
         private int m_PathologyId;
@@ -195,6 +195,32 @@ namespace InserimentoDatiCroceRossa.Objects
                 }
             }
         }
+
+        private string m_AddressValueTo;
+
+        public string AddressValueTo
+        {
+            get { return m_AddressValueTo; }
+            set 
+            { 
+                m_AddressValueTo = value;
+                NotifyPropertyChanged(nameof(AddressValueTo));
+            }
+        }
+
+        private string m_PlaceValueTo;
+
+        public string PlaceValueTo
+        {
+            get { return m_PlaceValueTo; }
+            set 
+            { 
+                m_PlaceValueTo = value;
+                NotifyPropertyChanged(nameof(PlaceValueTo));
+            }
+        }
+
+
 
     }
 }

@@ -14,33 +14,32 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="90"/>
-            <ColumnDefinition Width="120"/>
-            <ColumnDefinition Width="90"/>
-            <ColumnDefinition Width="160"/>
+            <ColumnDefinition Width="130"/>
+            <ColumnDefinition Width="370"/>            
         </Grid.ColumnDefinitions>
 
         <Label x:Name="FiscalCodeLabel" Grid.Row="1" Grid.Column="0" Content="Codice Fiscale"/>
         <Label x:Name="SurnameLabel" Grid.Row="2" Grid.Column="0" Content="Cognome"/>
         <Label x:Name="NameLabel" Grid.Row="3" Grid.Column="0" Content="Nome"/>
         <Label x:Name="SexLabel" Grid.Row="4" Grid.Column="0" Content="Sesso"/>
-        <Label x:Name="BDayLabel" Grid.Row="4" Grid.Column="2" Content="Data di nascita"/>
+        <Label x:Name="BDayLabel" Grid.Row="5" Grid.Column="0" Content="Data di nascita"/>
 
-        <TextBox x:Name="FiscalCodeTextBox" Grid.Row="1" Grid.Column="1" Margin="5,5,0,0" Grid.ColumnSpan="3"
+        <TextBox x:Name="FiscalCodeTextBox" Grid.Row="1" Grid.Column="1" Margin="5,5,0,0" 
                    Text="{Binding ElementName=patientDetailUC, Path=DataContext.FiscalCode,Mode=TwoWay}"/>
-        <TextBox x:Name="SurnameTextBox" Grid.Row="2" Grid.Column="1" Margin="5,5,0,0" Grid.ColumnSpan="3"
+        <TextBox x:Name="SurnameTextBox" Grid.Row="2" Grid.Column="1" Margin="5,5,0,0" 
                  Text="{Binding ElementName=patientDetailUC,Path=DataContext.Surname,Mode=TwoWay}"/>
-        <TextBox x:Name="NameTextBox" Grid.Row="3" Grid.Column="1" Margin="5,5,0,0" Grid.ColumnSpan="3"
+        <TextBox x:Name="NameTextBox" Grid.Row="3" Grid.Column="1" Margin="5,5,0,0" 
                  Text="{Binding ElementName=patientDetailUC,Path=DataContext.Name,Mode=TwoWay}"/>
         <ComboBox x:Name="SexChooserComboBox" Grid.Row="4" Grid.Column="1" Margin="5,5,0,0"
                   ItemsSource="{Binding ElementName=patientDetailUC,Path=SexsDictionary,Mode=OneWay}"
                   SelectedValue="{Binding ElementName=patientDetailUC,Path=DataContext.SexConverter,Mode=TwoWay}"
                   SelectedValuePath="Key"
                   DisplayMemberPath="Value"/>
-        <DatePicker x:Name="BDayPicker" Grid.Row="4" Grid.Column="3" Margin="5,5,0,0"
+        <DatePicker x:Name="BDayPicker" Grid.Row="5" Grid.Column="1" Margin="5,5,0,0"
                     FirstDayOfWeek="Monday"
                     SelectedDate="{Binding ElementName=patientDetailUC,Path=DataContext.Bday, Mode=TwoWay}"/>
     </Grid>
