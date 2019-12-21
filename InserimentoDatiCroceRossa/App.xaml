@@ -8,16 +8,26 @@
         <ResourceDictionary>
             <Style TargetType="{x:Type Window}">
                 <Setter Property="FontSize" Value="15" />
-                <Setter Property="FontFamily" Value="Verdana"/>
+                <Setter Property="FontFamily" Value="Consolas"/>
                 <Setter Property="HorizontalAlignment" Value="Left"/>
             </Style>
 
+            <Style TargetType="{x:Type MenuItem}">
+                <Setter Property="FontSize" Value="15" />
+                <Setter Property="FontFamily" Value="Consolas"/>
+                <Setter Property="HorizontalAlignment" Value="Left"/>
+            </Style>
+            
             <Style TargetType="{x:Type xctk:IntegerUpDown}">
                 <Setter Property="TextAlignment" Value="Left" />
             </Style>
 
             <Style TargetType="{x:Type xctk:DateTimePicker}">
                 <Setter Property="TextAlignment" Value="Left" />
+            </Style>
+
+            <Style TargetType="ToolBar">
+                <Setter Property="Height" Value="35"/>
             </Style>
         </ResourceDictionary>
     </Application.Resources>

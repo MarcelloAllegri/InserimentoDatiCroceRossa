@@ -7,7 +7,7 @@
         xmlns:images="clr-namespace:InserimentoDatiCroceRossa.Objects"
         mc:Ignorable="d"        
         WindowState="Maximized"
-        Title="Data View" Height="450" Width="800">
+        Title="Data View">
 
     <Window.Resources>
         
@@ -19,7 +19,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Menu x:Name="GlobalMenu" Height="25" Grid.Row="0">          
+        <Menu x:Name="GlobalMenu" Height="Auto" Grid.Row="0">          
 
             <MenuItem Header="Amministrazione">
                 <MenuItem Header="Utenti" x:Name="UsersMenuItem" Click="UsersMenuItem_Click">

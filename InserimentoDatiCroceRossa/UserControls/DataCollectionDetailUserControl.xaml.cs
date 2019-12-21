@@ -30,6 +30,7 @@ namespace InserimentoDatiCroceRossa.UserControls
         private ObservableCollection<CarLicencePlateAssociationEntity> m_carLicPlateAssociations;
         private ObservableCollection<VolunteerEntity> m_volunteersList;
         private ObservableCollection<AuthorityEntity> m_entitiesList;
+        private ObservableCollection<CityEntity> m_citiesCollection;
         protected void NotifyPropertyChanged(string name)
         {
             PropertyChangedEventHandler handler = PropertyChanged;
@@ -100,6 +101,16 @@ namespace InserimentoDatiCroceRossa.UserControls
                 NotifyPropertyChanged(nameof(EntitiesList));
             }
         }
+
+        public ObservableCollection<CityEntity> CitiesCollection
+        {
+            get { return m_citiesCollection; }
+            set 
+            { 
+                m_citiesCollection = value;
+                NotifyPropertyChanged(nameof(CitiesCollection));
+            }
+        }
         public DataCollectionDetailUserControl()
         {
             InitializeComponent();
@@ -120,7 +131,8 @@ namespace InserimentoDatiCroceRossa.UserControls
                 this.PatientsCollection = new ObservableCollection<PatientEntity>(new PatientService().GetAllPatients());
                 this.CarLicPlateAssociations = new ObservableCollection<CarLicencePlateAssociationEntity>(new CarLicPlateAssociationService().GetAllAssociation().Where(x=>x.IsEnabled == true).OrderBy(x=> x.CarName));
                 this.VolunteersList = new ObservableCollection<VolunteerEntity>(new VolunteerService().GetAllVolunteers());
-                this.EntitiesList = new ObservableCollection<AuthorityEntity>(new AuthorityService().GetAllAuthorities());                
+                this.EntitiesList = new ObservableCollection<AuthorityEntity>(new AuthorityService().GetAllAuthorities());
+                this.CitiesCollection = new ObservableCollection<CityEntity>(new CityService().GetAllCities());
             }
         }
         private void PatientChooserButton_Click(object sender, RoutedEventArgs e)

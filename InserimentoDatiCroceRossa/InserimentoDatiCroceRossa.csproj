@@ -408,7 +408,6 @@
     <Resource Include="Images\Menu\Floppy.png" />
     <Resource Include="Images\Menu\add.png" />
     <Resource Include="Images\Menu\garbage.png" />
-    <Resource Include="Images\Menu\options.png" />
     <Resource Include="Images\Menu\account.png" />
   </ItemGroup>
   <ItemGroup>

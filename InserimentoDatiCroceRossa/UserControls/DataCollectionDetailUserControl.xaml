@@ -92,25 +92,35 @@
                                      Format="ShortDate"
                                      FormatString="dd - MM - yyyy"/>
 
-                    <ComboBox Grid.Row="0" Grid.Column="3" Margin="0,5,0,0"
-                          ItemsSource="{Binding ElementName=dataCollectionDetailUserControl,Path=ServiceTypologiesCollection,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"
-                          SelectedValuePath="Key"
-                          SelectedValue="{Binding ElementName=dataCollectionDetailUserControl,Path=DataContext.ServiceType,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
-                          DisplayMemberPath="Value"/>
+                    <ComboBox Grid.Row="0" Grid.Column="3" Margin="0,5,0,0"                              
+                              ItemsSource="{Binding ElementName=dataCollectionDetailUserControl,Path=ServiceTypologiesCollection,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"                          
+                              SelectedValuePath="Key"
+                              SelectedValue="{Binding ElementName=dataCollectionDetailUserControl,Path=DataContext.ServiceType,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                              DisplayMemberPath="Value"/>
 
                     <TextBlock Grid.Row="1" Name="ServicePlaceFromTextBlock" Text="Località da" Margin="5,5,0,0"/>
                     <TextBlock Grid.Row="1" Grid.Column="2" Name="ServiceRoadFromtextBlock" Text="Via" Margin="5,5,0,0"/>
 
-                    <TextBox Grid.Row="1" Grid.Column="1" Margin="0,5,0,0" 
-                         Text="{Binding ElementName=dataCollectionDetailUserControl,Path=DataContext.PlaceValueFrom,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                    <ComboBox Grid.Row="1" Grid.Column="1" Margin="0,5,0,0"
+                              Text="{Binding ElementName=dataCollectionDetailUserControl,Path=DataContext.PlaceValueFrom,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"
+                              ItemsSource="{Binding ElementName=dataCollectionDetailUserControl,Path=CitiesCollection,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"
+                              SelectedValue="{Binding ElementName=dataCollectionDetailUserControl,Path=DataContext.PlaceValueFrom,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                              SelectedValuePath="CityName"
+                              DisplayMemberPath="CityName"
+                              IsEditable="True"/>
                     <TextBox Grid.Row="1" Grid.Column="3" Margin="0,5,0,0" 
-                         Text="{Binding ElementName=dataCollectionDetailUserControl,Path=DataContext.AddressValueFrom,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                             Text="{Binding ElementName=dataCollectionDetailUserControl,Path=DataContext.AddressValueFrom,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
 
                     <TextBlock Grid.Row="2" Name="ServicePlaceToTextBlock" Text="Località a" Margin="5,5,0,0"/>
                     <TextBlock Grid.Row="2" Grid.Column="2" Name="ServiceRoadTotextBlock" Text="Via" Margin="5,5,0,0"/>
 
-                    <TextBox Grid.Row="2" Grid.Column="1" Margin="0,5,0,0" 
-                         Text="{Binding ElementName=dataCollectionDetailUserControl,Path=DataContext.PlaceValueTo,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                    <ComboBox Grid.Row="2" Grid.Column="1" Margin="0,5,0,0"
+                              Text="{Binding ElementName=dataCollectionDetailUserControl,Path=DataContext.PlaceValueTo,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"
+                              ItemsSource="{Binding ElementName=dataCollectionDetailUserControl,Path=CitiesCollection,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"
+                              SelectedValue="{Binding ElementName=dataCollectionDetailUserControl,Path=DataContext.PlaceValueTo,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                              SelectedValuePath="CityName"
+                              DisplayMemberPath="CityName"
+                              IsEditable="True"/>
                     <TextBox Grid.Row="2" Grid.Column="3" Margin="0,5,0,0" 
                          Text="{Binding ElementName=dataCollectionDetailUserControl,Path=DataContext.AddressValueTo,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
 
@@ -202,7 +212,7 @@
 
         <Grid Grid.Column="1" Margin="5,0,5,0">
             <Grid.RowDefinitions>
-                <RowDefinition Height="30"/>
+                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
