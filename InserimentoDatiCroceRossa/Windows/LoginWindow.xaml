@@ -31,7 +31,7 @@
             </Grid.RowDefinitions>
         
             <Image Source="/Images/Croce_logo.png" />
-            <TextBlock Grid.Row="1" Text="Comune di Soragna" HorizontalAlignment="Center" Foreground="#c90000" FontWeight="Bold" VerticalAlignment="Top">
+            <TextBlock Grid.Row="1" Text="Comitato di Soragna" HorizontalAlignment="Center" Foreground="#c90000" FontWeight="Bold" VerticalAlignment="Top">
                 
             </TextBlock>
         </Grid>
